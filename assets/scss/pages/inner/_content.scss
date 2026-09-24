@@ -70,3 +70,55 @@
 .cta-phone .ic{width:1.5rem;height:1.5rem;color:var(--gold-soft);}
 .cta-phone small{display:block;font-size:var(--t-2xs);opacity:.8;letter-spacing:.06em;text-transform:uppercase;}
 .cta-phone:hover{color:var(--gold-soft);}
+
+/* photo stays in view beside long text */
+@media (min-width:1101px){
+  .split--sticky>.split-media,.split--form>.split-text{align-self:start;position:sticky;top:calc(var(--nav-h) + var(--sp-3));}
+}
+.split--form .split-text{display:grid;gap:var(--sp-3);}
+.split--form .split-media img{aspect-ratio:16/10;}
+
+/* long documents: contents on the left (or right, with a booking card, for articles) */
+.doc{display:grid;grid-template-columns:minmax(13rem,17rem) minmax(0,54rem);justify-content:center;align-items:start;gap:var(--sp-4) clamp(2rem,5vw,6rem);}
+.doc--flat{grid-template-columns:minmax(0,54rem);}
+.doc--post{grid-template-columns:minmax(0,52rem) minmax(15rem,19rem);}
+.doc-toc,.doc-side{position:sticky;top:calc(var(--nav-h) + var(--sp-3));}
+.doc-side{display:grid;gap:var(--sp-3);}
+.doc-toc{max-height:calc(100svh - var(--nav-h) - var(--sp-4));overflow:auto;scrollbar-width:thin;}
+.doc-toc-h{margin-bottom:var(--sp-1);font-size:var(--t-2xs);letter-spacing:.09em;text-transform:uppercase;color:var(--brand);}
+.doc-toc ol{padding:0;margin:0;list-style:none;border-left:1px solid var(--line);}
+.doc-toc a{display:block;margin-left:-1px;padding:.42rem 0 .42rem 1rem;border-left:2px solid transparent;font-size:var(--t-sm);line-height:1.35;text-decoration:none;color:var(--text);transition:color .25s,border-color .25s;}
+.doc-toc a:hover{color:var(--brand);}
+.doc-toc a.on{border-left-color:var(--brand);color:var(--brand);}
+.doc [id]{scroll-margin-top:calc(var(--nav-h) + 1.5rem);}
+.side-book{display:grid;justify-items:start;gap:.7rem;padding:var(--sp-3);background:var(--brand);color:#fff;}
+.side-book .script{color:var(--gold-soft);}
+.side-book h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.1;color:#fff;}
+.side-phone{font-size:var(--t-lead);text-decoration:none;color:#fff;line-height:1.25;}
+.side-phone small{display:block;font-size:var(--t-2xs);letter-spacing:.06em;text-transform:uppercase;opacity:.8;}
+.side-phone:hover{color:var(--gold-soft);}
+.prose--legal h4{margin-top:1.8em;font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.2;color:var(--ink);}
+@include bp-stack{
+  .doc,.doc--post,.doc--flat{grid-template-columns:minmax(0,1fr);}
+  .doc-toc{display:none;}
+  .doc-side{position:static;}
+}
+
+/* local attractions: each walking distance is a block with its places in flowing columns */
+.walk-wrap{display:grid;gap:var(--sp-3);}
+.walk{padding:var(--sp-3);background:#fff;border-top:3px solid var(--brand);}
+.walk h3{margin-bottom:var(--sp-2);font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.2;color:var(--ink);}
+.walk-list{columns:17rem;column-gap:var(--sp-4);padding:0;list-style:none;}
+.walk-list li{break-inside:avoid;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:var(--t-sm);line-height:1.4;color:var(--text-2);}
+.walk-list a{color:var(--brand-dark);text-underline-offset:3px;}
+.walk-list a:hover{color:var(--brand);}
+
+/* FAQ: photograph beside the questions */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--sp-4) clamp(2rem,6vw,7rem);align-items:start;}
+.faq-media{overflow:hidden;background:var(--cream-2);}
+.faq-media img{width:100%;aspect-ratio:4/5;object-fit:cover;}
+@media (min-width:1101px){.faq-media{position:sticky;top:calc(var(--nav-h) + var(--sp-3));}}
+@include bp-stack{
+  .faq-grid{grid-template-columns:minmax(0,1fr);}
+  .faq-media img{aspect-ratio:16/9;}
+}

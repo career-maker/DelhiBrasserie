@@ -41,7 +41,8 @@ assets/
   js/main.js             header, drawer, carousel, hero, preloader, cookie consent, open status
   js/modules/            loaded only on pages that list them in front matter (`scripts: gallery`):
                          gallery (lightbox), blog (show more), menu (chip highlight),
-                         forms (contact, feedback, reservation), booking (pre/post-theatre wizards)
+                         forms (contact, feedback, reservation), booking (pre/post-theatre wizards),
+                         toc (contents list on legal pages and articles)
   fonts/  images/  video/  files/
     images/live/         photographs from the live site (page images, gallery, blog/ featured images, posts/ in-article images)
     images/restaurant/   graded photographs used for banners
@@ -62,6 +63,8 @@ assets/
 | Pre- and post-theatre dining | `pre-post-theatre-dining.html` | two 5-step booking wizards |
 | Blog + 35 articles | `new-blog.html`, `<slug>.html` | article file names are the live slugs |
 | Reviews (critics) + Influencer videos | `reviews.html`, `influencer-videos.html` | tab links at the top of both |
+
+To add an influencer video: in `src/pages/influencer-videos/index.html` copy the `<article class="vcard">`, change the file and title, and point the Instagram / Facebook / TikTok links at that video's posts. Put the compressed mp4 in `assets/video/` (keep files well under GitHub's 100 MB limit).
 | Customer feedback | `customer-feedback.html` | linked from the side rail |
 | FAQ, Contact, Reservations, Special offers | `frequently-asked-questions.html`, `contact-us.html`, `reservations.html`, `special-offers.html` | live text |
 | Privacy, Cookie policy, Terms | `privacy-policy.html`, `cookie-policy.html`, `terms-conditions.html` | live text |
