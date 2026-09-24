@@ -11,7 +11,7 @@ Only the home page is built so far. It follows `docs/Home Page .pdf`; the copy i
 | Home page (header, sections, footer are inline so search engines see them) | `index.html` |
 | Shared header, drawer, sticky rail, location block, footer, buttons | `delhi.css` |
 | Sticky header, drawer, photo carousel, marquee pause, reveal, hide-empty | `delhi.js` |
-| Colours and shape: ivory paper, warm ink, logo red for booking actions, deep red bands; radii `--r`, `--r-lg`, `--r-btn`. The `--color-*` group is legacy for the other template pages | `theme.css` |
+| Colours: Pandhal UI tokens with the logo red as brand colour (`--brand`), gold `--gold`, cream and white surfaces, square corners; the `--color-*` group is legacy for the other template pages | `theme.css` |
 | Logo (from `images/logo.pdf`), favicons, the peacock ornament taken from the logo, Tripadvisor-style badges | `images/logo.svg`, `images/favicon*`, `images/peacock.svg`, `images/badge-winner-*.svg` |
 | Restaurant photos, resized from `docs/Drive resources` | `images/restaurant/` |
 
@@ -22,6 +22,10 @@ Only the home page is built so far. It follows `docs/Home Page .pdf`; the copy i
 **Icons** are Phosphor Icons (MIT licence), inlined as a sprite at the top of `index.html`.
 
 **Photography**: the client's originals in `docs/` are colour-graded (softer highlights, calmer orange walls, warm mids, light grain) and cut into close-up details (lanterns, mirrors, table settings) so each section shows a different scene. Graded files live in `images/restaurant/`. Re-run the grading if new photos arrive.
+
+**UI language (from the Pandhal site, `D:\iss\pandhal`)**: Gallery Modern headings with one coloured word, Brittany Signature script overlines, ITC Kabel body text (fonts are in `fonts/`, copied from Pandhal; check their licence covers this client), square uppercase buttons with a sweep-fill hover, thin gold circular arrows and dots, a glass strip over the hero, gold circle preloader (once per visit), grey footer with a ghost outline wordmark, round sticky icons. Colour is the Delhi Brasserie red instead of Pandhal green.
+
+**Fluid type**: every text size is a `clamp()` built on `--u` in `delhi.css`. Change the scale there, not per section.
 
 **Layout**: on desktop (1101px wide and 600px tall or more) every home page section is one screen tall, type is sized from the screen height so it still fits on shorter laptops, and the page snaps softly from section to section. Tablets and phones stack normally. **Hero**: circular dark vignette (clear centre, dark edges), and a liquid-glass booking card that shows live open/closed status (London time). **Type**: Bodoni Moda (display) and Manrope (text) from Google Fonts. **Motion**: slow hero zoom and scroll shift, curtain reveal on photographs (`.reveal-mask`), fade-up on text (`.reveal`); all of it is switched off for visitors who prefer reduced motion.
 

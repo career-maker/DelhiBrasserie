@@ -15,7 +15,7 @@
 
   function onScroll() {
     var y = window.pageYOffset || doc.documentElement.scrollTop;
-    if (header) header.classList.toggle('is-stuck', y > (topbar ? topbar.offsetHeight : 0));
+    if (header) header.classList.toggle('is-stuck', y > 40);
     if (toTop) toTop.classList.toggle('show', y > 700);
     ticking = false;
   }
@@ -94,30 +94,41 @@
     }
   }
 
-  /* ---------- photo carousel (native scroll-snap + arrows + gentle autoplay) ---------- */
+  /* ---------- photo carousel (native scroll-snap, arrows, dots, gentle autoplay) ---------- */
   doc.querySelectorAll('[data-carousel]').forEach(function (root) {
     var track = root.querySelector('[data-track]');
     var prev = root.querySelector('[data-prev]');
     var next = root.querySelector('[data-next]');
+    var dotsWrap = root.querySelector('[data-dots]');
     var interval = parseInt(root.getAttribute('data-interval'), 10) || 5500;
-    var timer = null, paused = false;
+    var timer = null, paused = false, dots = [];
     if (!track) return;
+    var items = [].slice.call(track.children);
 
-    function step() {
-      var first = track.firstElementChild;
-      if (!first) return 300;
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      return first.getBoundingClientRect().width + gap;
+    function offsetOf(el) {
+      return el.getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
     }
-    function atEnd() {
-      return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    function current() {
+      var best = 0, min = Infinity;
+      items.forEach(function (el, i) {
+        var d = Math.abs(offsetOf(el) - track.scrollLeft);
+        if (d < min) { min = d; best = i; }
+      });
+      return best;
+    }
+    function atEnd() { return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; }
+    function goTo(i) {
+      i = Math.max(0, Math.min(items.length - 1, i));
+      track.scrollTo({ left: offsetOf(items[i]), behavior: reduceMotion ? 'auto' : 'smooth' });
     }
     function move(dir) {
-      if (dir > 0 && atEnd()) { track.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
-      track.scrollBy({ left: dir * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+      if (dir > 0 && atEnd()) { goTo(0); return; }
+      goTo(current() + dir);
     }
     function sync() {
+      var i = atEnd() ? items.length - 1 : current();
       if (prev) prev.disabled = track.scrollLeft < 4;
+      dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
     }
     function stop() { clearInterval(timer); timer = null; }
     function play() {
@@ -126,6 +137,16 @@
       timer = setInterval(function () { move(1); }, interval);
     }
 
+    if (dotsWrap) {
+      dots = items.map(function (_, i) {
+        var b = doc.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Show photo ' + (i + 1) + ' of ' + items.length);
+        b.addEventListener('click', function () { goTo(i); play(); });
+        dotsWrap.appendChild(b);
+        return b;
+      });
+    }
     if (prev) prev.addEventListener('click', function () { move(-1); play(); });
     if (next) next.addEventListener('click', function () { move(1); play(); });
     track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); }, { passive: true });
@@ -195,30 +216,48 @@
   })();
 
 
-  /* ---------- hero headline: words rise into place ---------- */
+
+  /* ---------- preloader: gold circle swells, then the page is revealed (once per visit) ---------- */
   (function () {
-    var h1 = doc.querySelector('.hero h1');
-    if (!h1 || reduceMotion) return;
-    var i = 0;
-    function walk(node) {
-      [].slice.call(node.childNodes).forEach(function (n) {
-        if (n.nodeType === 3) {
-          var frag = doc.createDocumentFragment();
-          n.textContent.split(/(\s+)/).forEach(function (part) {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.appendChild(doc.createTextNode(' ')); return; }
-            var w = doc.createElement('span'); w.className = 'w';
-            var inner = doc.createElement('span'); inner.textContent = part;
-            inner.style.setProperty('--i', i++);
-            w.appendChild(inner); frag.appendChild(w);
-          });
-          node.replaceChild(frag, n);
-        } else if (n.nodeType === 1) { walk(n); }
-      });
+    var pre = doc.getElementById('preloader');
+    if (!pre) return;
+    var html = doc.documentElement;
+    function finish() {
+      pre.classList.add('go');
+      setTimeout(function () { pre.classList.add('gone'); }, 1300);
+      try { sessionStorage.setItem('dbPre', '1'); } catch (e) { /* private mode */ }
     }
-    walk(h1);
-    h1.classList.add('split');
+    if (!html.classList.contains('pre-on')) { pre.classList.add('gone'); return; }
+    if (doc.readyState === 'complete') setTimeout(finish, 350);
+    else window.addEventListener('load', function () { setTimeout(finish, 350); });
+    setTimeout(function () { if (!pre.classList.contains('go')) finish(); }, 5000);
   })();
+
+  /* ---------- hero slides: fade, counter, arrows, slow autoplay ---------- */
+  doc.querySelectorAll('[data-hero]').forEach(function (hero) {
+    var slides = [].slice.call(hero.querySelectorAll('.hero-slide'));
+    var cur = hero.querySelector('[data-count-cur]');
+    var tot = hero.querySelector('[data-count-tot]');
+    var prev = hero.querySelector('[data-hero-prev]');
+    var next = hero.querySelector('[data-hero-next]');
+    var i = 0, timer = null;
+    if (slides.length < 2) return;
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    if (tot) tot.textContent = pad(slides.length);
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      if (cur) cur.textContent = pad(i + 1);
+    }
+    function restart() {
+      clearInterval(timer);
+      if (reduceMotion) return;
+      timer = setInterval(function () { if (!doc.hidden) go(i + 1); }, 7000);
+    }
+    if (prev) prev.addEventListener('click', function () { go(i - 1); restart(); });
+    if (next) next.addEventListener('click', function () { go(i + 1); restart(); });
+    restart();
+  });
 
   /* ---------- hide a section when its content is empty ---------- */
   doc.querySelectorAll('[data-hide-if-empty]').forEach(function (sec) {

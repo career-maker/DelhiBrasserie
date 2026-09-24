@@ -1,41 +1,51 @@
 /* ==========================================================================
    THEME - Delhi Brasserie. Change these values to re-brand the whole site.
-   Loaded before components.css / delhi.css and each page's inline styles.
-
-   Two groups:
-   1. Site tokens used by the Delhi Brasserie pages: ivory paper, deep ink,
-      the logo red for actions, and a muted antique gold for fine detail.
-   2. Legacy tokens (--color-*) still used by the original template pages.
+   The UI language (type, buttons, surfaces, motion) follows the Pandhal site;
+   the brand colour is the Delhi Brasserie logo red instead of Pandhal green.
+   Loaded before delhi.css and each page's inline styles.
    ========================================================================== */
 :root {
-  /* --- Delhi Brasserie --- */
-  --paper: #FBF7EE;          /* page background: ivory */
-  --paper-2: #F2EADA;        /* tinted bands */
-  --ink: #241B18;            /* headings and text: warm near-black */
-  --muted: #6A5F57;          /* secondary text */
-  --line: rgba(36, 27, 24, .14);
-  --red: #D61820;            /* logo red: booking actions, highlights */
-  --red-hover: #B5131B;
-  --red-dark: #A5121A;       /* red text on ivory, italic emphasis */
-  --red-band: #8E1119;       /* red section band */
-  --deep: #4E0A10;           /* top bar, footer, darkest red */
-  --gold: #B8935A;           /* antique gold: hairlines and ornaments only */
-  --sand: #E9DCC0;           /* light detail on dark backgrounds */
-  --r: 24px;                 /* cards and photographs */
-  --r-lg: 32px;              /* large panels */
-  --r-btn: 999px;            /* page buttons (pills) */
-  --radius: 2px;             /* corner radius for buttons and cards */
+  /* --- brand --- */
+  --brand: #D61820;          /* logo red: buttons, links, coloured words in headings */
+  --brand-dark: #A9121A;     /* hover, small text on cream */
+  --brand-deep: #6E0D12;     /* footer accents, dark panels */
+  --gold: #FFC66F;           /* Pandhal gold: sweeps, arrows, counters */
+  --gold-soft: #FFD28D;      /* gold circles, script text on photos */
 
-  /* --- legacy template tokens --- */
+  /* --- surfaces --- */
+  --white: #FFFFFF;
+  --cream: #FFEBCD;          /* warm section background */
+  --cream-2: #FFF5E5;        /* paler warm section background */
+  --grey: #F5F5F5;          /* footer */
+  --grey-bar: #F4F4F4;      /* top utility bar */
+  --night: #040D10;          /* photo overlays */
+
+  /* --- text --- */
+  --ink: #000000;            /* headings */
+  --text: #4F4F4F;           /* body */
+  --text-2: #363636;         /* nav and utility links */
+  --line: rgba(173, 161, 149, .35);
+
+  /* --- shape: Pandhal is square; circles only for icons, badges, arrows --- */
+  --radius: 0;
+
+  /* --- aliases kept for older pages and shared code --- */
+  --red: var(--brand);
+  --red-dark: var(--brand-dark);
+  --sand: var(--gold-soft);
+  --paper: var(--white);
+  --paper-2: var(--cream-2);
+  --muted: var(--text);
+  --deep: var(--brand-deep);
   --color-primary: #D61820;
-  --color-primary-dark: #A5121A;
-  --color-deep: #4E0A10;
-  --color-accent: #E9DCC0;
-  --color-accent-dark: #A5121A;
-  --color-sand: #E9DCC0;
-  --color-ink: #241B18;
-  --color-muted: #6A5F57;
-  --color-cream: #F2EADA;
-  --color-paper: #FBF7EE;
-  --color-line: #D9CFBD;
+  --color-primary-dark: #A9121A;
+  --color-deep: #6E0D12;
+  --color-accent: #FFD28D;
+  --color-accent-dark: #A9121A;
+  --color-sand: #FFD28D;
+  --color-ink: #000000;
+  --color-muted: #4F4F4F;
+  --color-cream: #FFEBCD;
+  --color-paper: #FFFFFF;
+  --color-line: #E4DACB;
 }
