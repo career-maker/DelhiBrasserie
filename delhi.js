@@ -1,5 +1,5 @@
-/* Delhi Brasserie — shared behaviour: sticky header, drawer, reveal-on-scroll,
-   image slider, notice ticker, scroll-to-top, hide-empty sections.
+/* Delhi Brasserie - shared behaviour: sticky header, drawer, reveal-on-scroll,
+   photo carousel, booking marquee pause, scroll-to-top, hide-empty sections.
    No dependencies. Everything degrades gracefully without JS. */
 (function () {
   'use strict';
@@ -87,88 +87,82 @@
         entries.forEach(function (en) {
           if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       reveals.forEach(function (el) { io.observe(el); });
     } else {
       reveals.forEach(function (el) { el.classList.add('in-view'); });
     }
   }
 
-  /* ---------- image slider (fade) ---------- */
-  doc.querySelectorAll('[data-slider]').forEach(function (root) {
-    var slides = [].slice.call(root.querySelectorAll('[data-slide]'));
-    var dotsWrap = root.querySelector('[data-dots]');
+  /* ---------- photo carousel (native scroll-snap + arrows + gentle autoplay) ---------- */
+  doc.querySelectorAll('[data-carousel]').forEach(function (root) {
+    var track = root.querySelector('[data-track]');
     var prev = root.querySelector('[data-prev]');
     var next = root.querySelector('[data-next]');
-    var interval = parseInt(root.getAttribute('data-interval'), 10) || 6000;
-    var index = 0, timer = null, paused = false;
-    if (slides.length < 2) return;
+    var interval = parseInt(root.getAttribute('data-interval'), 10) || 5500;
+    var timer = null, paused = false;
+    if (!track) return;
 
-    var dots = slides.map(function (_, i) {
-      var b = doc.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Show photo ' + (i + 1) + ' of ' + slides.length);
-      b.addEventListener('click', function () { go(i); restart(); });
-      if (dotsWrap) dotsWrap.appendChild(b);
-      return b;
-    });
-
-    function go(i) {
-      index = (i + slides.length) % slides.length;
-      slides.forEach(function (s, k) {
-        var on = k === index;
-        s.classList.toggle('is-active', on);
-        s.setAttribute('aria-hidden', on ? 'false' : 'true');
-      });
-      dots.forEach(function (d, k) {
-        d.classList.toggle('on', k === index);
-        if (k === index) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
-      });
+    function step() {
+      var first = track.firstElementChild;
+      if (!first) return 300;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return first.getBoundingClientRect().width + gap;
     }
-    function restart() {
-      clearInterval(timer);
+    function atEnd() {
+      return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    }
+    function move(dir) {
+      if (dir > 0 && atEnd()) { track.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
+      track.scrollBy({ left: dir * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    function sync() {
+      if (prev) prev.disabled = track.scrollLeft < 4;
+    }
+    function stop() { clearInterval(timer); timer = null; }
+    function play() {
+      stop();
       if (reduceMotion || paused) return;
-      timer = setInterval(function () { go(index + 1); }, interval);
+      timer = setInterval(function () { move(1); }, interval);
     }
-    if (prev) prev.addEventListener('click', function () { go(index - 1); restart(); });
-    if (next) next.addEventListener('click', function () { go(index + 1); restart(); });
-    root.addEventListener('mouseenter', function () { paused = true; restart(); });
-    root.addEventListener('mouseleave', function () { paused = false; restart(); });
-    root.addEventListener('focusin', function () { paused = true; restart(); });
-    root.addEventListener('focusout', function () { paused = false; restart(); });
-    doc.addEventListener('visibilitychange', function () {
-      paused = doc.hidden; restart();
+
+    if (prev) prev.addEventListener('click', function () { move(-1); play(); });
+    if (next) next.addEventListener('click', function () { move(1); play(); });
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(sync); }, { passive: true });
+    ['mouseenter', 'focusin', 'touchstart'].forEach(function (ev) {
+      root.addEventListener(ev, function () { paused = true; stop(); }, { passive: true });
     });
-
-    /* swipe */
-    var sx = null;
-    root.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
-    root.addEventListener('touchend', function (e) {
-      if (sx === null) return;
-      var dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) { go(index + (dx < 0 ? 1 : -1)); restart(); }
-      sx = null;
+    ['mouseleave', 'focusout'].forEach(function (ev) {
+      root.addEventListener(ev, function () { paused = false; play(); });
+    });
+    root.addEventListener('touchend', function () {
+      setTimeout(function () { paused = false; play(); }, 4000);
     }, { passive: true });
+    doc.addEventListener('visibilitychange', function () { paused = doc.hidden; if (paused) stop(); else play(); });
 
-    go(0);
-    restart();
+    /* only run the autoplay while the carousel is on screen */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          paused = !en.isIntersecting;
+          if (paused) stop(); else play();
+        });
+      }, { threshold: 0.35 }).observe(root);
+    } else {
+      play();
+    }
+    sync();
   });
 
-  /* ---------- notice ticker (hero bottom strip) ---------- */
-  doc.querySelectorAll('[data-ticker]').forEach(function (root) {
-    var items = [].slice.call(root.querySelectorAll('[data-tick]'));
-    if (items.length < 2) return;
-    var i = 0;
-    root.classList.add('is-live');
-    function show(n) {
-      items.forEach(function (it, k) { it.classList.toggle('is-active', k === n); });
-    }
-    show(0);
-    if (reduceMotion) return;
-    setInterval(function () {
-      if (doc.hidden) return;
-      i = (i + 1) % items.length; show(i);
-    }, 5500);
+  /* ---------- marquee pause button ---------- */
+  doc.querySelectorAll('.marquee').forEach(function (m) {
+    var btn = m.querySelector('.marquee-pause');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var on = m.classList.toggle('is-paused');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? 'Play notice' : 'Pause notice');
+    });
   });
 
   /* ---------- hide a section when its content is empty ---------- */

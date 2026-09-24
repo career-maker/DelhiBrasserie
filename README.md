@@ -10,12 +10,16 @@ Only the home page is built so far. It follows `docs/Home Page .pdf`; the copy i
 |---|---|
 | Home page (header, sections, footer are inline so search engines see them) | `index.html` |
 | Shared header, drawer, sticky rail, location block, footer, buttons | `delhi.css` |
-| Sticky header, drawer, slider, notice ticker, reveal, hide-empty | `delhi.js` |
-| Colours (logo red primary, deep red bands, gold accents) | `theme.css` |
+| Sticky header, drawer, photo carousel, marquee pause, reveal, hide-empty | `delhi.js` |
+| Colours (logo red primary, deep red bands, sand details on dark) | `theme.css` |
 | Logo (from `images/logo.pdf`), favicons, Tripadvisor-style badges | `images/logo.svg`, `images/favicon*`, `images/badge-winner-*.svg` |
 | Restaurant photos, resized from `docs/Drive resources` | `images/restaurant/` |
 
-**Special offer section** (section 2): edit its text in `index.html`. To hide it, add the `hidden` attribute to `<section id="special-offer">`, or empty the heading marked `data-required` and the script hides it.
+**Booking marquee** (strip under the hero): the Friday/Saturday notice. It is written 3 times in a visible group and 3 times in a hidden copy so the loop is seamless; edit all six `.marquee-item` lines together. It pauses on hover, focus or with the pause button, and shows one static line for visitors who prefer reduced motion.
+
+**Special offer section** (section 2, styled as a ticket): edit its text in `index.html` and change the big number in `.stub-num` when the offer changes. To hide it, add the `hidden` attribute to `<section id="special-offer">`, or empty the heading marked `data-required` and the script hides it.
+
+**Icons** are Phosphor Icons (MIT licence), inlined as a sprite at the top of `index.html`.
 
 **Links** use the live site's existing URL paths (`/menus/main-menu/`, `/reviews/`, `/reservations/`, `/new-blog/` and so on) so SEO is kept. Two menus replace the old four: `/menus/main-menu/` is the Food Menu (mains and desserts, anchor `#desserts`) and `/menus/drinks-menu/` is the Drinks Menu (drinks and wine, anchor `#wine`). Set up 301 redirects from `/menus/desserts-liqueurs-menu/` and `/menus/wine-menu/`. New paths still to confirm: `/pre-post-theatre-dining/` and `/influencer-videos/`.
 
