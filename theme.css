@@ -1,0 +1,12 @@
+/* ==========================================================================
+   THEME — change these values to re-brand the whole site.
+   Loaded before components.css and each page's inline styles.
+   ========================================================================== */
+:root {
+  --color-primary: #1E4951;       /* main brand colour: buttons, footer, dark sections */
+  --color-primary-dark: #0F3A46;  /* hover state of primary */
+  --color-accent: #D7BB51;        /* highlights, borders, hover accents */
+  --color-accent-dark: #AA8D3F;   /* accent for text/icons on light backgrounds */
+  --color-ink: #171813;           /* body text / headings */
+  --color-cream: #F7F3EC;         /* soft section background */
+}
