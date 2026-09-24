@@ -217,20 +217,25 @@
 
 
 
-  /* ---------- preloader: gold circle swells, then the page is revealed (once per visit) ---------- */
+  /* ---------- preloader (same sequence as the Pandhal site) ---------- */
   (function () {
     var pre = doc.getElementById('preloader');
-    if (!pre) return;
     var html = doc.documentElement;
+    if (!pre) { html.classList.add('pre-done'); return; }
+    var circle = pre.querySelector('.circle');
+    var done = false;
     function finish() {
-      pre.classList.add('go');
-      setTimeout(function () { pre.classList.add('gone'); }, 1300);
-      try { sessionStorage.setItem('dbPre', '1'); } catch (e) { /* private mode */ }
+      if (done) return;
+      done = true;
+      if (circle) { circle.style.transition = 'transform 1.6s'; circle.style.transform = 'scale(16)'; }
+      pre.style.opacity = '0';
+      html.classList.add('pre-done');
+      setTimeout(function () { pre.style.display = 'none'; }, 1000);
     }
-    if (!html.classList.contains('pre-on')) { pre.classList.add('gone'); return; }
-    if (doc.readyState === 'complete') setTimeout(finish, 350);
-    else window.addEventListener('load', function () { setTimeout(finish, 350); });
-    setTimeout(function () { if (!pre.classList.contains('go')) finish(); }, 5000);
+    if (reduceMotion) { pre.style.display = 'none'; html.classList.add('pre-done'); return; }
+    if (doc.readyState === 'complete') finish();
+    else window.addEventListener('load', finish);
+    setTimeout(finish, 6000); /* never leave visitors on the loader */
   })();
 
   /* ---------- hero slides: fade, counter, arrows, slow autoplay ---------- */

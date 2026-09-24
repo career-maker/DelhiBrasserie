@@ -23,7 +23,7 @@ Only the home page is built so far. It follows `docs/Home Page .pdf`; the copy i
 
 **Photography**: the client's originals in `docs/` are colour-graded (softer highlights, calmer orange walls, warm mids, light grain) and cut into close-up details (lanterns, mirrors, table settings) so each section shows a different scene. Graded files live in `images/restaurant/`. Re-run the grading if new photos arrive.
 
-**UI language (from the Pandhal site, `D:\iss\pandhal`)**: Gallery Modern headings with one coloured word, Brittany Signature script overlines, ITC Kabel body text (fonts are in `fonts/`, copied from Pandhal; check their licence covers this client), square uppercase buttons with a sweep-fill hover, thin gold circular arrows and dots, a glass strip over the hero, gold circle preloader (once per visit), grey footer with a ghost outline wordmark, round sticky icons. Colour is the Delhi Brasserie red instead of Pandhal green.
+**UI language (from the Pandhal site, `D:\iss\pandhal`)**: Gallery Modern headings with one coloured word, Brittany Signature script overlines, ITC Kabel body text (fonts are in `fonts/`, copied from Pandhal; check their licence covers this client), square uppercase buttons with a sweep-fill hover, thin gold circular arrows and dots, a glass strip over the hero, gold circle preloader with the footer logo (same sequence as Pandhal, runs on every page load), grey footer with a ghost outline wordmark, round sticky icons. Colour is the Delhi Brasserie red instead of Pandhal green.
 
 **Fluid type**: every text size is a `clamp()` built on `--u` in `delhi.css`. Change the scale there, not per section.
 
