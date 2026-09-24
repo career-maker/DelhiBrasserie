@@ -1,0 +1,24 @@
+<!-- ReDi (ReservationDiary) placeholder.
+     The live site runs the ReDi Restaurant Reservation WordPress plugin. A static site cannot host that plugin, so:
+       1. paste the ReDi embed snippet here (replacing the form below), or
+       2. set data-endpoint on the form to a URL that forwards the booking to ReDi / e-mail.
+     Fields mirror the ReDi form on the live site. -->
+<form class="form form--res" data-form="reservation" data-endpoint="" novalidate>
+  <div class="f-grid">
+    <div class="f-row"><label for="r-guests">Guests:*</label>
+      <select id="r-guests" name="persons" required>
+        <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>More than 20 Guests</option>
+      </select></div>
+    <div class="f-row"><label for="r-date">Date:*</label><input id="r-date" name="date" type="date" required></div>
+    <div class="f-row"><label for="r-time">Time:</label>
+      <select id="r-time" name="time"></select></div>
+  </div>
+  <div class="f-grid">
+    <div class="f-row"><label for="r-name">Name:*</label><input id="r-name" name="name" type="text" required autocomplete="name"></div>
+    <div class="f-row"><label for="r-phone">Phone:*</label><input id="r-phone" name="phone" type="tel" required autocomplete="tel"></div>
+    <div class="f-row"><label for="r-email">Email:*</label><input id="r-email" name="email" type="email" required autocomplete="email"></div>
+  </div>
+  <div class="f-row"><label for="r-comment">Comment:</label><textarea id="r-comment" name="comment" rows="4"></textarea></div>
+  <div class="f-actions"><button class="btn btn-red" type="submit">Make a reservation</button></div>
+  <p class="f-status" role="status" aria-live="polite"></p>
+</form>

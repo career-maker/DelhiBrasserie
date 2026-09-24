@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" class="is-home">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,17 +20,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 <link rel="preload" as="image" href="assets/images/restaurant/storefront.jpg" fetchpriority="high">
-
 <script>document.documentElement.classList.add('js','pre-on');</script>
 <link rel="preload" href="assets/fonts/GalleryModernRegular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ITCKabelStd-Book.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/BrittanySignatureRegular.woff2" as="font" type="font/woff2" crossorigin>
 
-<link href="assets/css/main.min.css?v=20260924b" rel="stylesheet">
+<link href="assets/css/main.min.css?v=2e619f0a" rel="stylesheet">
 
-<!-- Google Analytics (GA4): paste the existing measurement tag here (the live site already uses GA). -->
+<!-- Google Analytics (GA4): paste the existing measurement tag here in consent-gated form:
+     <script type="text/plain" data-cookie="analytics" src="..."></script> -->
 <!-- Brevo newsletter: paste the existing Brevo subscription form / script here if it is kept. -->
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -68,7 +67,7 @@
 </script>
 
 </head>
-<body>
+<body class="page-home">
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- preloader: same sequence as the Pandhal site (gold circle + logo, swells away once the page has loaded). Uses the footer logo. -->
@@ -131,32 +130,32 @@
 
       <nav class="nav nav-left" aria-label="Main menu">
         <ul>
-          <li><a href="/" aria-label="Home" aria-current="page"><svg class="ic home-ic" aria-hidden="true"><use href="#i-home"/></svg></a></li>
+          <li><a href="index.html" aria-label="Home" class="active" aria-current="page"><svg class="ic home-ic" aria-hidden="true"><use href="#i-home"/></svg></a></li>
           <li class="has-sub">
-            <a class="fliplink" href="/about-us/"><span class="Link" data-after="About"><span>About</span></span> <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
-            <ul class="sub"><li><a href="/about-us/history/">History</a></li></ul>
+            <a class="fliplink" href="about-us.html"><span class="Link" data-after="About"><span>About</span></span> <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
+            <ul class="sub"><li><a href="history.html">History</a></li></ul>
           </li>
           <li class="has-sub">
-            <a class="fliplink" href="/menus/"><span class="Link" data-after="Menu"><span>Menu</span></span> <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
+            <a class="fliplink" href="menus.html"><span class="Link" data-after="Menu"><span>Menu</span></span> <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
             <ul class="sub">
-              <li><a href="/menus/main-menu/">Food Menu</a></li>
-              <li><a href="/menus/drinks-menu/">Drinks Menu</a></li>
+              <li><a href="main-menu.html">Food Menu</a></li>
+              <li><a href="drinks-menu.html">Drinks Menu</a></li>
             </ul>
           </li>
-          <li><a class="fliplink" href="/pre-post-theatre-dining/"><span class="Link" data-after="Pre- and Post-Dining"><span>Pre- and Post-Dining</span></span></a></li>
+          <li><a class="fliplink" href="pre-post-theatre-dining.html"><span class="Link" data-after="Pre- and Post-Dining"><span>Pre- and Post-Dining</span></span></a></li>
         </ul>
       </nav>
 
-      <a class="brand" href="/" aria-label="The Delhi Brasserie, Soho. Since 1985. Home">
+      <a class="brand" href="index.html" aria-label="The Delhi Brasserie, Soho. Since 1985. Home">
         <img src="assets/images/logo-header.svg" width="1371" height="1024" alt="The Delhi Brasserie, Soho. Since 1985">
       </a>
 
       <nav class="nav nav-right" aria-label="More pages">
         <ul>
-          <li><a class="fliplink" href="/about-us/gallery/"><span class="Link" data-after="Gallery"><span>Gallery</span></span></a></li>
-          <li><a class="fliplink" href="/new-blog/"><span class="Link" data-after="Blog"><span>Blog</span></span></a></li>
-          <li><a class="fliplink" href="/reviews/"><span class="Link" data-after="Review"><span>Review</span></span></a></li>
-          <li><a class="fliplink" href="/influencer-videos/"><span class="Link" data-after="Influencer videos"><span>Influencer videos</span></span></a></li>
+          <li><a class="fliplink" href="gallery.html"><span class="Link" data-after="Gallery"><span>Gallery</span></span></a></li>
+          <li><a class="fliplink" href="new-blog.html"><span class="Link" data-after="Blog"><span>Blog</span></span></a></li>
+          <li><a class="fliplink" href="reviews.html"><span class="Link" data-after="Review"><span>Review</span></span></a></li>
+          <li><a class="fliplink" href="influencer-videos.html"><span class="Link" data-after="Influencer videos"><span>Influencer videos</span></span></a></li>
         </ul>
       </nav>
 
@@ -174,42 +173,43 @@
     <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
   </div>
   <nav class="drawer-main" aria-label="Site pages">
-    <a href="/">Home</a>
-    <a href="/about-us/">About</a>
-    <div class="sub-l"><a href="/about-us/history/">History</a></div>
-    <a href="/menus/">Menu</a>
-    <div class="sub-l"><a href="/menus/main-menu/">Food Menu</a><a href="/menus/drinks-menu/">Drinks Menu</a></div>
-    <a href="/pre-post-theatre-dining/">Pre- and Post-Dining</a>
-    <a href="/about-us/gallery/">Gallery</a>
-    <a href="/new-blog/">Blog</a>
-    <a href="/reviews/">Review</a>
-    <a href="/influencer-videos/">Influencer videos</a>
+    <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="about-us.html">About</a>
+    <div class="sub-l"><a href="history.html">History</a></div>
+    <a href="menus.html">Menu</a>
+    <div class="sub-l"><a href="main-menu.html">Food Menu</a><a href="drinks-menu.html">Drinks Menu</a></div>
+    <a href="pre-post-theatre-dining.html">Pre- and Post-Dining</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="new-blog.html">Blog</a>
+    <a href="reviews.html">Review</a>
+    <a href="influencer-videos.html">Influencer videos</a>
   </nav>
   <h2>More</h2>
   <nav class="drawer-extra" aria-label="More links">
-    <a href="/frequently-asked-questions/">FAQ</a>
-    <a href="/about-us/local-attractions/">Local Attraction</a>
-    <a href="/contact-us/">Contact us</a>
+    <a href="frequently-asked-questions.html">FAQ</a>
+    <a href="local-attractions.html">Local Attraction</a>
+    <a href="contact-us.html">Contact us</a>
   </nav>
   <div class="drawer-contact">
     <a href="tel:+442074378261"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>020 7437 8261 (after 4 PM)</a>
     <a href="https://wa.me/447562600591" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>07562 600591 (WhatsApp)</a>
     <a href="mailto:info@delhibrasserie.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>info@delhibrasserie.com</a>
   </div>
-  <a class="btn btn-red" href="/reservations/">Book a table <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <a class="btn btn-red" href="reservations.html">Book a table <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 </aside>
 
 <!-- sticky quick actions -->
 <aside class="rail" aria-label="Quick actions">
-  <a class="rail-book" href="/reservations/"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="tip">Book a table</span><span class="cap">Book</span></a>
-  <a href="/reviews/customer-feedback/"><svg class="ic" aria-hidden="true"><use href="#i-feedback"/></svg><span class="tip">Customer feedback</span><span class="cap">Feedback</span></a>
-  <a href="/menus/main-menu/"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="tip">Food menu</span><span class="cap">Menu</span></a>
+  <a class="rail-book" href="reservations.html"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="tip">Book a table</span><span class="cap">Book</span></a>
+  <a href="customer-feedback.html"><svg class="ic" aria-hidden="true"><use href="#i-feedback"/></svg><span class="tip">Customer feedback</span><span class="cap">Feedback</span></a>
+  <a href="main-menu.html"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="tip">Food menu</span><span class="cap">Menu</span></a>
   <a href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="tip">Order delivery</span><span class="cap">Delivery</span></a>
   <a class="rail-wa" href="https://wa.me/447562600591" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span class="tip">Chat on WhatsApp</span><span class="cap">WhatsApp</span></a>
 </aside>
 <button class="to-top" type="button" aria-label="Back to top"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg><span>Top</span></button>
 
 <main id="main">
+
 
 <!-- ======================= 1. HERO ======================= -->
 <section class="hero" id="top" aria-label="Welcome to The Delhi Brasserie" data-hero>
@@ -223,8 +223,8 @@
       <p class="script">Estd 1985</p>
       <h1>Authentic Indian Cuisine in the <em>Heart of Soho</em></h1>
       <div class="hero-ctas">
-        <a class="btn btn-red" href="/reservations/">Book a table</a>
-        <a class="btn btn-line" href="/menus/main-menu/">View menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-red" href="reservations.html">Book a table</a>
+        <a class="btn btn-line" href="main-menu.html">View menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
     <div class="hero-strip glass" role="group" aria-label="Opening times and contact">
@@ -279,8 +279,8 @@
         <div><dt>Friday and Saturday</dt><dd>After 9:00 PM</dd></div>
       </dl>
       <div class="offer-cta">
-        <a class="btn btn-red" href="/reservations/">Book a table</a>
-        <a class="btn btn-gold" href="/special-offers/">View special offer <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-red" href="reservations.html">Book a table</a>
+        <a class="btn btn-gold" href="special-offers.html">View special offer <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <p class="offer-note"><strong>Blue Badge holders</strong> receive 10% off.</p>
     </div>
@@ -305,7 +305,7 @@
         <p>We hope to see and serve you soon.</p>
       </div>
       <div class="intro-actions">
-        <a class="btn btn-gold" href="/about-us/history/">Discover our story <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-gold" href="history.html">Discover our story <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="ta-chip" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener">
           <span class="ta-badges"><img src="assets/images/tripadvisor/travellers-choice-2024.png" width="200" height="220" loading="lazy" decoding="async" alt="Tripadvisor Travellers' Choice Awards 2024"><img src="assets/images/tripadvisor/travellers-choice-2025.png" width="200" height="220" loading="lazy" decoding="async" alt="Tripadvisor Travellers' Choice Awards 2025"></span>
           <span><strong>Tripadvisor Winner 2024 and 2025</strong>Read what guests say</span>
@@ -344,15 +344,15 @@
         </details>
         <details class="row" name="soho">
           <summary>Best Dessert Place In London Soho <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="row-body"><p>We also bring unique Indian <a href="/menus/main-menu/#desserts">desserts</a> made especially for you from the best of ingredients. You can find a variety of desserts on our menu for you to pick and devour. Our chefs are always waiting on you to make the best dessert for you as you would love at our Best restaurant in Soho London.</p></div>
+          <div class="row-body"><p>We also bring unique Indian <a href="main-menu.html#desserts">desserts</a> made especially for you from the best of ingredients. You can find a variety of desserts on our menu for you to pick and devour. Our chefs are always waiting on you to make the best dessert for you as you would love at our Best restaurant in Soho London.</p></div>
         </details>
         <details class="row" name="soho">
           <summary>Best Wine Restaurants In Soho London <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="row-body"><p>We bring you a wide range of white, rose, and red <a href="/menus/drinks-menu/#wine">wines</a> with diverse champagnes that you must taste at our restaurant in soho. Adding to the exotic menu of wines is the French house wine that we have. We are sure that you will be mind-blown at our wines in our restaurant.</p></div>
+          <div class="row-body"><p>We bring you a wide range of white, rose, and red <a href="drinks-menu.html#wine">wines</a> with diverse champagnes that you must taste at our restaurant in soho. Adding to the exotic menu of wines is the French house wine that we have. We are sure that you will be mind-blown at our wines in our restaurant.</p></div>
         </details>
         <details class="row" name="soho">
           <summary>Indian Restaurant With Drinks In Soho London <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="row-body"><p>Who does not want to have a few <a href="/menus/drinks-menu/">drinks</a> while having an Indian dinner at one of the finest Indian restaurants in London, right? That&rsquo;s why we bring you all types of drinks that you will love right at our restaurant in soho London. All you need to do is to pick your favorite drink and order them.</p></div>
+          <div class="row-body"><p>Who does not want to have a few <a href="drinks-menu.html">drinks</a> while having an Indian dinner at one of the finest Indian restaurants in London, right? That&rsquo;s why we bring you all types of drinks that you will love right at our restaurant in soho London. All you need to do is to pick your favorite drink and order them.</p></div>
         </details>
       </div>
     </div>
@@ -364,7 +364,7 @@
         <span class="bag" aria-hidden="true"><svg class="ic"><use href="#i-bag"/></svg></span>
         <div class="takeaway-copy">
           <h2 id="takeaway-h">Takeaway available for collection or delivery</h2>
-          <p>For collection please check out our <a href="/menus/main-menu/"><strong>Restaurant Menu here</strong></a> and then call us on <a href="tel:+442074378261">020 7437 8261</a>, or for delivery via Deliveroo please <a href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener"><strong>click here</strong></a> to place your order.</p>
+          <p>For collection please check out our <a href="main-menu.html"><strong>Restaurant Menu here</strong></a> and then call us on <a href="tel:+442074378261">020 7437 8261</a>, or for delivery via Deliveroo please <a href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener"><strong>click here</strong></a> to place your order.</p>
         </div>
         <a class="btn btn-light" href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener">Order on Deliveroo <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
@@ -383,7 +383,7 @@
       <p class="dish">Fish of the day, Nan Bread, Lamb Pasanda, Chicken Korai, Vegetables, Pilau Rice &amp; Sweets</p>
       <p class="menu-line">Menu 2</p>
       <p class="dish">Tandoori Quail, Nan Bread, Lamb Kata Masala, Chicken Korma, Vegetables, Pilau Rice &amp; Sweets</p>
-      <a class="text-link" href="/menus/main-menu/">See the full menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="text-link" href="main-menu.html">See the full menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
 
     <article class="t-card t-quotes reveal" style="--d:.08s">
@@ -392,7 +392,7 @@
       <blockquote><p>Good quality ingredients are cooked with great care and experience and there are interesting and original touches.</p><cite>Egon Ronay</cite></blockquote>
       <blockquote><p>Enjoy an Indian treat in the heart of Soho. The service is attentive without becoming affusive.</p><cite>What&rsquo;s on in London</cite></blockquote>
       <blockquote><p>Delicious food, excellent service and pleasant surrounds - all in the traditional Indian style.</p><cite>Asian Times</cite></blockquote>
-      <a class="text-link" href="/reviews/">Read more reviews <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="text-link" href="reviews.html">Read more reviews <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
 
     <article class="t-card t-party reveal" style="--d:.16s">
@@ -402,7 +402,7 @@
         <p>Whatever the time of year there&rsquo;s always a reason to get together with family &amp; friends and the Delhi Brasserie Soho offers the perfect place &amp; space.</p>
         <p>Did you know that we have three separate dining areas, suitable for &lsquo;Private Parties&rsquo; for up to 30 people. And they&rsquo;re proving particularly popular right now due to the benefits of better social distancing.</p>
         <p>Availability is increasingly limited, as you may expect, so please do get in touch ASAP if you&rsquo;d like to find out more.</p>
-        <a class="text-link" href="/contact-us/">Enquire about a private party <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="text-link" href="contact-us.html">Enquire about a private party <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </article>
   </div>
@@ -438,8 +438,8 @@
       <h2 class="h2" id="prepost-h">Make Your Soho <em>Evening Complete</em></h2>
       <p>Enjoy authentic Indian cuisine before the show or settle in for dinner after the curtain falls. Our location in Soho makes Delhi Brasserie a convenient choice for your West End evening.</p>
       <div class="prepost-ctas">
-        <a class="btn btn-red" href="/reservations/">Book a table</a>
-        <a class="btn btn-line" href="/pre-post-theatre-dining/">View more <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-red" href="reservations.html">Book a table</a>
+        <a class="btn btn-line" href="pre-post-theatre-dining.html">View more <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </div>
@@ -494,32 +494,20 @@
     <div class="exp-head reveal">
       <h2 class="h2" id="exp-h">Experience the Best of <em>Indian Cuisines</em> Here at Delhi Brasserie</h2>
       <p>We know that you love Indian cuisine and recipes, and if you are wondering about the best dine-in restaurant near me, undoubtedly it is us. We have diverse Indian recipes and delicacies that you and your loved ones will love. Our ambience is magical and serene, the best one you would love to have a great dining time at.</p>
-      <p>You can also check our menu on our website and prepare yourself for a great gastronomical experience that you might not have had in a long time in an best Indian restaurant London Soho. But it is time that you have to check best Indian restaurant London. Check our <a href="/menus/main-menu/"><strong>menus</strong></a> right here!!!</p>
+      <p>You can also check our menu on our website and prepare yourself for a great gastronomical experience that you might not have had in a long time in an best Indian restaurant London Soho. But it is time that you have to check best Indian restaurant London. Check our <a href="main-menu.html"><strong>menus</strong></a> right here!!!</p>
     </div>
     <div class="tiles">
-      <a class="tile reveal-mask" href="/menus/main-menu/">
+      <a class="tile reveal-mask" href="main-menu.html">
         <img src="assets/images/restaurant/detail-rose.jpg" width="1358" height="1500" loading="lazy" decoding="async" alt="A place setting with white linen, a bottle of red wine and roses">
         <span class="tile-label"><h3>Food Menu</h3><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
-      <a class="tile reveal-mask" href="/menus/drinks-menu/" style="--d:.12s">
+      <a class="tile reveal-mask" href="drinks-menu.html" style="--d:.12s">
         <img src="assets/images/restaurant/detail-glass.jpg" width="1500" height="1400" loading="lazy" decoding="async" alt="Wine glasses, a bottle and a candle on a table laid for dinner">
         <span class="tile-label"><h3>Drinks Menu</h3><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
     </div>
   </div>
 </section>
-
-</main>
-
-
-
-
-
-
-
-
-
-
 
 <!-- ======================= LOCATION ======================= -->
 <section class="location" aria-labelledby="loc-h">
@@ -559,6 +547,8 @@
   </div>
 </section>
 
+
+</main>
 <!-- ======================= FOOTER ======================= -->
 <footer class="site-footer">
   <div class="wrap footer-top">
@@ -570,14 +560,14 @@
     <nav aria-label="Quick links">
       <h3>Quick Links</h3>
       <ul class="footer-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about-us/">About</a></li>
-        <li><a href="/menus/">Menu</a></li>
-        <li><a href="/pre-post-theatre-dining/">Pre- and Post-Dining</a></li>
-        <li><a href="/about-us/gallery/">Gallery</a></li>
-        <li><a href="/new-blog/">Blog</a></li>
-        <li><a href="/reviews/">Review</a></li>
-        <li><a href="/influencer-videos/">Influencer videos</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About</a></li>
+        <li><a href="menus.html">Menu</a></li>
+        <li><a href="pre-post-theatre-dining.html">Pre- and Post-Dining</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="new-blog.html">Blog</a></li>
+        <li><a href="reviews.html">Review</a></li>
+        <li><a href="influencer-videos.html">Influencer videos</a></li>
       </ul>
     </nav>
     <div>
@@ -605,15 +595,59 @@
     <div class="wrap footer-bottom-in">
       <div class="bl"><img src="assets/images/logo.svg" width="38" height="38" loading="lazy" alt=""><span>&copy; 2013-26 Delhi Brasserie</span></div>
       <ul>
-        <li><a href="/privacy-policy/">Privacy Policy</a></li>
-        <li><a href="/cookie-policy/">Cookie Policy</a></li>
-        <li><a href="/terms-conditions/">Terms &amp; Conditions</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        <li><button class="cookie-link" type="button" data-cookie-open>Cookie settings</button></li>
+        <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
       </ul>
       <p class="credit">Designed &amp; Developed by <strong>intersmart</strong></p>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=20260924b" defer></script>
+
+<!-- ======================= COOKIE CONSENT =======================
+     The choice is stored in the db_consent cookie for 12 months. Scripts that need consent are written as
+     <script type="text/plain" data-cookie="analytics" src="..."></script> (or data-cookie="functional")
+     and are switched on by assets/js/main.js only after the visitor allows that category. -->
+<div class="cookie-bar" id="cookieBar" role="region" aria-label="Cookie consent">
+  <div class="wrap cookie-bar-in">
+    <p class="cookie-text">This website uses cookies to improve your experience. We&rsquo;ll assume you&rsquo;re ok with this, but you can opt-out if you wish.</p>
+    <div class="cookie-actions">
+      <button class="cookie-link" type="button" data-cookie-open>Cookie settings</button>
+      <a class="cookie-link" href="cookie-policy.html">Read more</a>
+      <button class="btn btn-red" type="button" data-cookie-accept>Accept</button>
+    </div>
+  </div>
+</div>
+
+<div class="cookie-modal" id="cookieModal" role="dialog" aria-modal="true" aria-labelledby="cookieTitle" aria-hidden="true">
+  <div class="cookie-panel">
+    <h2 id="cookieTitle">Cookie settings</h2>
+    <p>Choose which cookies we may use. Strictly necessary cookies are always on because the site needs them to work.</p>
+    <div class="cookie-opts">
+      <div class="cookie-opt">
+        <div><strong id="ck-n">Strictly necessary</strong><small>Keep the site working, for example remembering this choice.</small></div>
+        <label class="switch"><input type="checkbox" checked disabled aria-labelledby="ck-n"><span class="track-sw" aria-hidden="true"></span></label>
+      </div>
+      <div class="cookie-opt">
+        <div><strong id="ck-a">Analytics</strong><small>Help us understand how the site is used (Google Analytics).</small></div>
+        <label class="switch"><input type="checkbox" data-cookie-cat="analytics" aria-labelledby="ck-a"><span class="track-sw" aria-hidden="true"></span></label>
+      </div>
+      <div class="cookie-opt">
+        <div><strong id="ck-f">Functional and third-party</strong><small>Newsletter sign-up (Brevo) and other embedded content.</small></div>
+        <label class="switch"><input type="checkbox" data-cookie-cat="functional" aria-labelledby="ck-f"><span class="track-sw" aria-hidden="true"></span></label>
+      </div>
+    </div>
+    <div class="cookie-panel-actions">
+      <button class="btn btn-red" type="button" data-cookie-save>Save choices</button>
+      <button class="btn btn-line-dark" type="button" data-cookie-all>Accept all</button>
+      <button class="cookie-link" type="button" data-cookie-reject>Reject non-essential</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js?v=2e619f0a" defer></script>
+
 </body>
 </html>

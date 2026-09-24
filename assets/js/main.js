@@ -221,7 +221,7 @@
   (function () {
     var pre = doc.getElementById('preloader');
     var html = doc.documentElement;
-    if (!pre) { html.classList.add('pre-done'); return; }
+    if (!pre) { html.classList.add('pre-done'); doc.dispatchEvent(new Event('db:ready')); return; }
     var circle = pre.querySelector('.circle');
     var done = false;
     function finish() {
@@ -230,9 +230,10 @@
       if (circle) { circle.style.transition = 'transform 1.6s'; circle.style.transform = 'scale(16)'; }
       pre.style.opacity = '0';
       html.classList.add('pre-done');
+      doc.dispatchEvent(new Event('db:ready'));
       setTimeout(function () { pre.style.display = 'none'; }, 1000);
     }
-    if (reduceMotion) { pre.style.display = 'none'; html.classList.add('pre-done'); return; }
+    if (reduceMotion) { pre.style.display = 'none'; html.classList.add('pre-done'); doc.dispatchEvent(new Event('db:ready')); return; }
     if (doc.readyState === 'complete') finish();
     else window.addEventListener('load', finish);
     setTimeout(finish, 6000); /* never leave visitors on the loader */
@@ -263,6 +264,113 @@
     if (next) next.addEventListener('click', function () { go(i + 1); restart(); });
     restart();
   });
+
+  /* ---------- cookie consent ---------- */
+  (function () {
+    var bar = doc.getElementById('cookieBar');
+    var modal = doc.getElementById('cookieModal');
+    if (!bar || !modal) return;
+    var html = doc.documentElement;
+    var NAME = 'db_consent';
+    var cats = ['analytics', 'functional'];
+    var boxes = [].slice.call(modal.querySelectorAll('[data-cookie-cat]'));
+    var lastFocus = null;
+
+    function read() {
+      var m = doc.cookie.match(new RegExp('(?:^|;\\s*)' + NAME + '=([^;]+)'));
+      if (!m) return null;
+      try { return JSON.parse(decodeURIComponent(m[1])); } catch (e) { return null; }
+    }
+    function write(choice) {
+      var c = NAME + '=' + encodeURIComponent(JSON.stringify(choice)) + '; max-age=' + (60 * 60 * 24 * 365) + '; path=/; SameSite=Lax';
+      if (location.protocol === 'https:') c += '; Secure';
+      doc.cookie = c;
+    }
+    /* switch on scripts that were held back: <script type="text/plain" data-cookie="analytics" src="..."> */
+    function activate(choice) {
+      [].slice.call(doc.querySelectorAll('script[type="text/plain"][data-cookie]')).forEach(function (old) {
+        if (!choice[old.getAttribute('data-cookie')] || old.getAttribute('data-done')) return;
+        var s = doc.createElement('script');
+        [].slice.call(old.attributes).forEach(function (a) {
+          if (a.name !== 'type' && a.name !== 'data-cookie') s.setAttribute(a.name, a.value);
+        });
+        s.text = old.text;
+        old.setAttribute('data-done', '1');
+        old.parentNode.insertBefore(s, old.nextSibling);
+      });
+    }
+    function all(v) { var c = {}; cats.forEach(function (k) { c[k] = v; }); return c; }
+
+    /* bar */
+    function measure() { html.style.setProperty('--cc-h', bar.classList.contains('is-open') ? bar.offsetHeight + 'px' : '0px'); }
+    function showBar() {
+      bar.classList.add('is-open');
+      html.classList.add('cc-open');
+      measure();
+    }
+    function hideBar() {
+      bar.classList.remove('is-open');
+      html.classList.remove('cc-open');
+      measure();
+    }
+    window.addEventListener('resize', measure);
+
+    /* dialog */
+    function focusables() { return modal.querySelectorAll('button:not([disabled]),input:not([disabled])'); }
+    function openModal() {
+      var cur = read() || {};
+      boxes.forEach(function (b) { b.checked = !!cur[b.getAttribute('data-cookie-cat')]; });
+      lastFocus = doc.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      doc.body.classList.add('no-scroll');
+      setTimeout(function () { var f = focusables(); if (f.length) f[0].focus(); }, 60);
+    }
+    function closeModal(skipFocus) {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      doc.body.classList.remove('no-scroll');
+      if (!skipFocus && lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    function save(choice) {
+      choice.necessary = true;
+      write(choice);
+      activate(choice);
+      window.dbConsent = choice;
+      doc.dispatchEvent(new CustomEvent('db:consent', { detail: choice }));
+      closeModal(true);
+      hideBar();
+    }
+
+    doc.querySelectorAll('[data-cookie-open]').forEach(function (b) { b.addEventListener('click', openModal); });
+    doc.querySelectorAll('[data-cookie-accept],[data-cookie-all]').forEach(function (b) { b.addEventListener('click', function () { save(all(true)); }); });
+    var rej = modal.querySelector('[data-cookie-reject]');
+    if (rej) rej.addEventListener('click', function () { save(all(false)); });
+    var sv = modal.querySelector('[data-cookie-save]');
+    if (sv) sv.addEventListener('click', function () {
+      var c = {};
+      boxes.forEach(function (b) { c[b.getAttribute('data-cookie-cat')] = b.checked; });
+      save(c);
+    });
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    doc.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { closeModal(); return; }
+      if (e.key === 'Tab') {
+        var f = focusables(); if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    /* first visit: show the bar once the preloader has finished. Returning visitor: apply the stored choice. */
+    var stored = read();
+    if (stored) { window.dbConsent = stored; activate(stored); return; }
+    function later() { setTimeout(showBar, 1300); }  /* after the preloader circle has swelled away */
+    if (html.classList.contains('pre-done')) later();
+    else doc.addEventListener('db:ready', later, { once: true });
+  })();
 
   /* ---------- hide a section when its content is empty ---------- */
   doc.querySelectorAll('[data-hide-if-empty]').forEach(function (sec) {

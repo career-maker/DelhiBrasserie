@@ -1,0 +1,143 @@
+---
+title: Pre and Post Theatre Dining in Soho | The Delhi Brasserie
+description: Book a pre-theatre or post-theatre table at The Delhi Brasserie, 44 Frith Street, Soho. Choose your show and we suggest the best time to dine.
+path: /pre-post-theatre-dining/
+layout: inner
+og_image: /assets/images/restaurant/hall-3.jpg
+scripts: booking
+h1: Pre- and Post-Theatre Dining
+banner: /assets/images/restaurant/hall-3.jpg
+banner_pos: 50% 55%
+crumb: Pre- and Post-Dining
+kicker: Dinner and a show
+---
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div class="prose prose--center reveal">
+      <h2>Dinner and a show in Soho</h2>
+      <p>Book a pre-theatre or post-theatre table at The Delhi Brasserie, 44 Frith Street, Soho. Tell us about your show and we will suggest the best time to dine.</p>
+      <p><strong>On Fridays &amp; Saturdays please call the restaurant for bookings of more than 8 persons.</strong> <a href="tel:+442074378261">020 7437 8261</a> (after 4 PM)</p>
+    </div>
+  </div>
+</section>
+<section class="section section--cream" id="book" data-booking>
+  <div class="wrap">
+    <div class="bk-tabs" role="tablist" aria-label="Choose booking type">
+      <button class="bk-tab" role="tab" id="tab-pre" aria-selected="true" aria-controls="pre-theatre" type="button" data-tab="pre-theatre">Pre-Theatre</button>
+      <button class="bk-tab" role="tab" id="tab-post" aria-selected="false" aria-controls="post-theatre" type="button" data-tab="post-theatre">Post-Theatre</button>
+    </div>
+
+      <div class="wz" data-wizard="pre" data-availability="" data-endpoint="" id="pre-theatre" role="tabpanel" aria-labelledby="tab-pre">
+        <div class="wz-head"><h2>Pre-Theatre Dining</h2><ol class="wz-steps" aria-label="Booking steps"><li>Select show</li><li>Dining requirements</li><li>Select table</li><li>Guest details</li><li>Confirmation</li></ol></div>
+        <form class="wz-body form" novalidate>
+        <section class="wz-step" data-step="1">
+          <h3>Select your show</h3>
+          <div class="f-grid">
+            <div class="f-row"><label for="pre-theatre-sel">Theatre*</label><select id="pre-theatre-sel" name="theatre" required><option value="">Select theatre</option><option>Prince Edward Theatre</option><option>Gielgud Theatre</option><option>Apollo Theatre</option><option>Other theatre</option></select></div>
+            <div class="f-row"><label for="pre-show">Show</label><input id="pre-show" name="show" type="text" autocomplete="off"></div>
+          </div>
+          <div class="f-grid">
+            <div class="f-row"><label for="pre-showdate">Show date*</label><input id="pre-showdate" name="showDate" type="date" required data-min-today></div>
+            <div class="f-row"><label for="pre-showtime">Show time*</label><select id="pre-showtime" name="showTime" required data-times data-from="18:30" data-to="21:00" data-step="15" data-placeholder="Select time"></select></div>
+          </div>
+          <p class="wz-hint">The restaurant opens at 5:00 PM, so pre-theatre tables are for evening performances.</p>
+        </section>
+        <section class="wz-step" data-step="2" hidden>
+          <h3>Dining requirements</h3>
+          <div class="wz-note" data-rec aria-live="polite"></div>
+          <div class="f-grid">
+            <div class="f-row"><label for="pre-guests">Number of guests*</label><select id="pre-guests" name="guests" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>More than 20 Guests</option></select></div>
+            <div class="f-row"><label for="pre-date">Preferred date*</label><input id="pre-date" name="date" type="date" required data-min-today></div>
+            <div class="f-row"><label for="pre-arrival">Arrival time*</label><select id="pre-arrival" name="arrival" required></select></div>
+          </div>
+          <div class="wz-note wz-note--warn" data-call hidden></div>
+        </section>
+        <section class="wz-step" data-step="3" hidden>
+          <h3>Select your table</h3>
+          <p class="wz-hint" data-slot-hint></p>
+          <fieldset class="slots" data-slots aria-label="Available times"></fieldset>
+          <fieldset class="choices" aria-label="Table type">
+            <label class="choice"><input type="radio" name="seating" value="Indoor table" checked><span><b>Indoor table</b>Dine in our restaurant at 44 Frith Street.</span></label>
+            <label class="choice"><input type="radio" name="seating" value="Private dining"><span><b>Private dining</b>Ask for a private room. We confirm availability with you.</span></label>
+          </fieldset>
+        </section>
+        
+        <section class="wz-step" data-step="4" hidden>
+          <h3>Guest details</h3>
+          <div class="f-grid">
+            <div class="f-row"><label for="pre-name">Name*</label><input id="pre-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="f-row"><label for="pre-email">Email*</label><input id="pre-email" name="email" type="email" required autocomplete="email"></div>
+            <div class="f-row"><label for="pre-phone">Phone*</label><input id="pre-phone" name="phone" type="tel" required autocomplete="tel"></div>
+          </div>
+          <div class="f-row"><label for="pre-diet">Dietary requirements</label><input id="pre-diet" name="dietary" type="text"></div>
+          <div class="f-row"><label for="pre-req">Special requests</label><textarea id="pre-req" name="requests" rows="3"></textarea></div>
+        </section>
+        <section class="wz-step wz-done" data-step="5" hidden aria-live="polite"></section>
+        
+        <div class="wz-nav">
+          <button class="btn btn-line-dark" type="button" data-prev hidden>Back</button>
+          <span class="spacer"></span>
+          <button class="btn btn-red" type="button" data-next>Continue <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button class="btn btn-red" type="submit" data-submit hidden>Confirm booking</button>
+        </div>
+        <p class="f-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="wz" data-wizard="post" data-availability="" data-endpoint="" id="post-theatre" role="tabpanel" aria-labelledby="tab-post" hidden>
+        <div class="wz-head"><h2>Post-Theatre Dining</h2><ol class="wz-steps" aria-label="Booking steps"><li>Show details</li><li>Party details</li><li>Available tables</li><li>Guest details</li><li>Confirmation</li></ol></div>
+        <form class="wz-body form" novalidate>
+        <section class="wz-step" data-step="1">
+          <h3>Your show</h3>
+          <div class="f-grid">
+            <div class="f-row"><label for="post-theatre-sel">Theatre*</label><select id="post-theatre-sel" name="theatre" required><option value="">Select theatre</option><option>Prince Edward Theatre</option><option>Gielgud Theatre</option><option>Apollo Theatre</option><option>Other theatre</option></select></div>
+            <div class="f-row"><label for="post-show">Show</label><input id="post-show" name="show" type="text" autocomplete="off"></div>
+          </div>
+          <div class="f-grid">
+            <div class="f-row"><label for="post-showdate">Show date*</label><input id="post-showdate" name="showDate" type="date" required data-min-today></div>
+            <div class="f-row"><label for="post-showend">Show ends*</label><select id="post-showend" name="showEnd" required data-times data-from="20:30" data-to="23:15" data-step="15" data-placeholder="Approximate end time"></select></div>
+          </div>
+          <div class="wz-note" data-suggest aria-live="polite" hidden></div>
+        </section>
+        <section class="wz-step" data-step="2" hidden>
+          <h3>Party details</h3>
+          <div class="f-grid">
+            <div class="f-row"><label for="post-guests">Number of guests*</label><select id="post-guests" name="guests" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>More than 20 Guests</option></select></div>
+            <div class="f-row"><label for="post-time">Preferred time*</label><select id="post-time" name="time" required></select></div>
+          </div>
+          <div class="f-row"><label for="post-dietary">Dietary requirements</label><input id="post-dietary" name="dietary" type="text"></div>
+          <div class="wz-note wz-note--warn" data-call hidden></div>
+        </section>
+        <section class="wz-step" data-step="3" hidden>
+          <h3>Available tables</h3>
+          <p class="wz-hint" data-slot-hint></p>
+          <fieldset class="slots" data-slots aria-label="Available times"></fieldset>
+        </section>
+        
+        <section class="wz-step" data-step="4" hidden>
+          <h3>Guest details</h3>
+          <div class="f-grid">
+            <div class="f-row"><label for="post-name">Name*</label><input id="post-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="f-row"><label for="post-email">Email*</label><input id="post-email" name="email" type="email" required autocomplete="email"></div>
+            <div class="f-row"><label for="post-phone">Phone*</label><input id="post-phone" name="phone" type="tel" required autocomplete="tel"></div>
+          </div>
+          <div class="f-row"><label for="post-diet">Dietary requirements</label><input id="post-diet" name="dietary" type="text"></div>
+          <div class="f-row"><label for="post-req">Special requests</label><textarea id="post-req" name="requests" rows="3"></textarea></div>
+        </section>
+        <section class="wz-step wz-done" data-step="5" hidden aria-live="polite"></section>
+        
+        <div class="wz-nav">
+          <button class="btn btn-line-dark" type="button" data-prev hidden>Back</button>
+          <span class="spacer"></span>
+          <button class="btn btn-red" type="button" data-next>Continue <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button class="btn btn-red" type="submit" data-submit hidden>Confirm booking</button>
+        </div>
+        <p class="f-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    <div class="bk-more">
+      <h2>Planning your evening</h2>
+      <div class="post-grid post-grid--3"><article class="post-card post-card--sm reveal"><a class="pc-img" href="/pre-theatre-dinner-near-prince-edward-theatre/"><img src="/assets/images/live/blog/pre-theatre-dinner-near-prince-edward-theatre.webp" alt="" loading="lazy" decoding="async" width="1080" height="675"></a><div class="pc-body"><h3><a href="/pre-theatre-dinner-near-prince-edward-theatre/">Best Pre-Theatre Indian Restaurant Near Prince Edward Theatre</a></h3></div></article><article class="post-card post-card--sm reveal"><a class="pc-img" href="/pre-theatre-dinner-soho-london/"><img src="/assets/images/live/blog/pre-theatre-dinner-soho-london.webp" alt="" loading="lazy" decoding="async" width="1080" height="675"></a><div class="pc-body"><h3><a href="/pre-theatre-dinner-soho-london/">Pre Theatre Dinner London: The Ultimate Guide to Dinner and a Show in Soho (2026)</a></h3></div></article><article class="post-card post-card--sm reveal"><a class="pc-img" href="/restaurants-near-gielgud-theatre/"><img src="/assets/images/live/blog/restaurants-near-gielgud-theatre.webp" alt="" loading="lazy" decoding="async" width="1080" height="675"></a><div class="pc-body"><h3><a href="/restaurants-near-gielgud-theatre/">Where to Eat After a Show at the Gielgud or Apollo Theatre</a></h3></div></article></div>
+    </div>
+  </div>
+</section>

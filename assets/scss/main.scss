@@ -26,6 +26,7 @@
 @use 'components/drawer';
 @use 'components/rail';
 @use 'components/marquee';
+@use 'components/cookie';
 
 // layout
 @use 'layout/header';
@@ -43,3 +44,14 @@
 @use 'pages/home/why';
 @use 'pages/home/experience';
 @use 'pages/home/responsive';
+
+// pages: inner
+@use 'pages/inner/banner';
+@use 'pages/inner/content';
+@use 'pages/inner/menu';
+@use 'pages/inner/reviews';
+@use 'pages/inner/gallery';
+@use 'pages/inner/blog';
+@use 'pages/inner/forms';
+@use 'pages/inner/booking';
+@use 'pages/inner/error';

@@ -1,0 +1,7 @@
+// 404 page
+
+.nf{display:grid;justify-items:center;gap:var(--sp-2);padding:var(--sec-y) 0;text-align:center;}
+.nf .num{font-family:var(--serif);font-size:clamp(5rem,calc(var(--u) * 16),13rem);line-height:.9;color:var(--brand);}
+.nf h1{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.15;color:var(--ink);}
+.nf p{max-width:44ch;font-size:var(--t-lead);}
+.nf-links{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--sp-2);margin-top:var(--sp-2);}

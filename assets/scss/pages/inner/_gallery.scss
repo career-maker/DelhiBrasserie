@@ -1,0 +1,32 @@
+// Gallery grid and lightbox
+
+@use '../../abstracts/mixins' as *;
+
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));gap:clamp(.6rem,calc(var(--u) * 1),1.2rem);}
+.g-item{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--cream-2);cursor:zoom-in;}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease);}
+.g-item::after{content:"";position:absolute;inset:0;background:rgba(214,24,32,0);transition:background-color .35s;}
+.g-item:hover img,.g-item:focus-visible img{transform:scale(1.06);}
+.g-item:hover::after,.g-item:focus-visible::after{background:rgba(214,24,32,.18);}
+
+/* lightbox (native <dialog>, built by assets/js/modules/gallery.js) */
+.lb{position:fixed;inset:0;width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;background:rgba(4,13,16,.94);color:#fff;}
+.lb::backdrop{background:transparent;}
+.lb[open]{display:grid;grid-template-rows:1fr auto;animation:lbIn .35s var(--ease);}
+@keyframes lbIn{from{opacity:0;}to{opacity:1;}}
+.lb-stage{position:relative;display:grid;place-items:center;min-height:0;padding:clamp(3.4rem,7vh,5rem) clamp(3rem,8vw,7rem) .5rem;}
+.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
+.lb-bar{display:flex;align-items:center;justify-content:center;gap:var(--sp-2);padding:.4rem 1rem calc(.9rem + env(safe-area-inset-bottom));font-size:var(--t-xs);letter-spacing:.06em;}
+.lb button{position:absolute;display:grid;place-items:center;width:clamp(42px,calc(var(--u) * 3.4),54px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold-soft);background:rgba(4,13,16,.4);color:var(--gold-soft);transition:background-color .25s,color .25s;}
+.lb button:hover{background:var(--gold-soft);color:var(--ink);}
+.lb button .ic{width:44%;height:44%;}
+.lb-close{top:clamp(.7rem,2vh,1.4rem);right:clamp(.7rem,2vw,1.6rem);}
+.lb-prev,.lb-next{top:50%;translate:0 -50%;}
+.lb-prev{left:clamp(.5rem,2vw,1.6rem);}
+.lb-next{right:clamp(.5rem,2vw,1.6rem);}
+.lb-prev .ic{transform:scaleX(-1);}
+@include bp-narrow{.g-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@include bp-phone{
+  .lb-stage{padding-inline:.5rem;}
+  .lb-prev,.lb-next{top:auto;bottom:.6rem;translate:none;}
+}

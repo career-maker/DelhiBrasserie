@@ -36,8 +36,9 @@
   --gutter-r:var(--gutter);
   --btn-h:clamp(46px,calc(var(--u) * 3.5),58px);
 }
+/* the fit-to-screen scale is for the home page only; inner pages keep the readable width-based scale */
 @include bp-fit{
-  :root{
+  :root.is-home{
     --u:min(1vw,1.55vh);
     --m-eyebrow:.86rem;--m-2xs:.7rem;--m-xs:.76rem;--m-sm:.8rem;--m-body:.84rem;--m-lead:.98rem;--m-h3:1.2rem;--m-h2:1.7rem;--m-hero:2rem;--m-script:1.7rem;--m-num:2.2rem;
     --sp-1:clamp(.3rem,calc(var(--u) * .6),.85rem);

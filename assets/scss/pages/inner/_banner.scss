@@ -1,0 +1,33 @@
+// Inner pages: title banner
+// Photograph with a circular vignette, script overline, page title and breadcrumb.
+
+@use '../../abstracts/mixins' as *;
+
+.page-banner{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(300px,calc(var(--u) * 30),470px);color:#fff;background:#1a120e;overflow:hidden;}
+.page-banner-img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;animation:heroZoom 9s ease-out both;}
+.page-banner::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle farthest-side at 50% 42%,rgba(4,13,16,.06) 0,rgba(4,13,16,.22) 28%,rgba(4,13,16,.52) 50%,rgba(4,13,16,.78) 76%,rgba(4,13,16,.92) 100%);}
+.page-banner-in{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:var(--sp-4);padding-bottom:var(--sp-4);}
+.page-banner .script{margin-bottom:.55rem;line-height:1.25;text-shadow:0 2px 14px rgba(0,0,0,.45);}
+.page-banner h1{max-width:24ch;font-family:var(--serif);font-weight:400;font-size:var(--t-hero);line-height:1.14;color:#fff;text-wrap:balance;text-shadow:0 2px 20px rgba(0,0,0,.55);margin-bottom:var(--sp-2);}
+.page-banner-in>*{animation:heroUp 1s var(--ease) both;}
+.page-banner-in>.script{animation-delay:calc(var(--pre) + .05s);}
+.page-banner-in>h1{animation-delay:calc(var(--pre) + .18s);}
+.page-banner-in>.crumbs{animation-delay:calc(var(--pre) + .32s);}
+.js.pre-on:not(.pre-done) .page-banner-in>*{animation:none;opacity:0;}
+
+.crumbs ol{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.25rem .8rem;padding:0;list-style:none;font-size:var(--t-2xs);letter-spacing:.09em;text-transform:uppercase;}
+.crumbs li{display:inline-flex;align-items:center;gap:.8rem;}
+.crumbs li+li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.crumbs a{text-decoration:none;color:rgba(255,255,255,.86);transition:color .25s;}
+.crumbs a:hover{color:var(--gold-soft);}
+.crumbs [aria-current]{color:var(--gold-soft);}
+
+/* long titles (articles) and legal pages get a lower banner and a smaller title */
+.page-banner--compact{min-height:clamp(240px,calc(var(--u) * 22),340px);}
+.page-banner--compact h1{max-width:34ch;font-size:var(--t-h2);}
+
+@include bp-phone{
+  .page-banner{min-height:260px;}
+  .page-banner h1{font-size:clamp(1.7rem,7.2vw,2.15rem);}
+  .page-banner--compact h1{font-size:clamp(1.4rem,6vw,1.75rem);}
+}

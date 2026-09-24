@@ -1,0 +1,40 @@
+<!-- ======================= COOKIE CONSENT =======================
+     The choice is stored in the db_consent cookie for 12 months. Scripts that need consent are written as
+     <script type="text/plain" data-cookie="analytics" src="..."></script> (or data-cookie="functional")
+     and are switched on by assets/js/main.js only after the visitor allows that category. -->
+<div class="cookie-bar" id="cookieBar" role="region" aria-label="Cookie consent">
+  <div class="wrap cookie-bar-in">
+    <p class="cookie-text">This website uses cookies to improve your experience. We&rsquo;ll assume you&rsquo;re ok with this, but you can opt-out if you wish.</p>
+    <div class="cookie-actions">
+      <button class="cookie-link" type="button" data-cookie-open>Cookie settings</button>
+      <a class="cookie-link" href="/cookie-policy/">Read more</a>
+      <button class="btn btn-red" type="button" data-cookie-accept>Accept</button>
+    </div>
+  </div>
+</div>
+
+<div class="cookie-modal" id="cookieModal" role="dialog" aria-modal="true" aria-labelledby="cookieTitle" aria-hidden="true">
+  <div class="cookie-panel">
+    <h2 id="cookieTitle">Cookie settings</h2>
+    <p>Choose which cookies we may use. Strictly necessary cookies are always on because the site needs them to work.</p>
+    <div class="cookie-opts">
+      <div class="cookie-opt">
+        <div><strong id="ck-n">Strictly necessary</strong><small>Keep the site working, for example remembering this choice.</small></div>
+        <label class="switch"><input type="checkbox" checked disabled aria-labelledby="ck-n"><span class="track-sw" aria-hidden="true"></span></label>
+      </div>
+      <div class="cookie-opt">
+        <div><strong id="ck-a">Analytics</strong><small>Help us understand how the site is used (Google Analytics).</small></div>
+        <label class="switch"><input type="checkbox" data-cookie-cat="analytics" aria-labelledby="ck-a"><span class="track-sw" aria-hidden="true"></span></label>
+      </div>
+      <div class="cookie-opt">
+        <div><strong id="ck-f">Functional and third-party</strong><small>Newsletter sign-up (Brevo) and other embedded content.</small></div>
+        <label class="switch"><input type="checkbox" data-cookie-cat="functional" aria-labelledby="ck-f"><span class="track-sw" aria-hidden="true"></span></label>
+      </div>
+    </div>
+    <div class="cookie-panel-actions">
+      <button class="btn btn-red" type="button" data-cookie-save>Save choices</button>
+      <button class="btn btn-line-dark" type="button" data-cookie-all>Accept all</button>
+      <button class="cookie-link" type="button" data-cookie-reject>Reject non-essential</button>
+    </div>
+  </div>
+</div>

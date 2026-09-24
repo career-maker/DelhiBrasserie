@@ -2,10 +2,13 @@
   "name": "delhi-brasserie",
   "version": "1.0.0",
   "private": true,
-  "description": "The Delhi Brasserie website (home page)",
+  "description": "The Delhi Brasserie website",
   "scripts": {
-    "build": "sass assets/scss/main.scss assets/css/main.min.css --style=compressed --source-map --no-charset",
+    "build": "npm run build:css && npm run build:html",
+    "build:css": "sass assets/scss/main.scss assets/css/main.min.css --style=compressed --source-map --no-charset",
+    "build:html": "node build.mjs",
     "watch": "sass --watch assets/scss/main.scss assets/css/main.min.css --style=expanded --source-map",
+    "watch:html": "node --watch-path=src --watch-path=build.mjs build.mjs",
     "serve": "python -m http.server 8000"
   },
   "devDependencies": {
