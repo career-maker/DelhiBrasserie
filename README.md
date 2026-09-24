@@ -21,6 +21,8 @@ Only the home page is built so far. It follows `docs/Home Page .pdf`; the copy i
 
 **Icons** are Phosphor Icons (MIT licence), inlined as a sprite at the top of `index.html`.
 
+**Photography**: the client's originals in `docs/` are colour-graded (softer highlights, calmer orange walls, warm mids, light grain) and cut into close-up details (lanterns, mirrors, table settings) so each section shows a different scene. Graded files live in `images/restaurant/`. Re-run the grading if new photos arrive.
+
 **Layout**: on desktop (1101px wide and 600px tall or more) every home page section is one screen tall, type is sized from the screen height so it still fits on shorter laptops, and the page snaps softly from section to section. Tablets and phones stack normally. **Hero**: circular dark vignette (clear centre, dark edges), and a liquid-glass booking card that shows live open/closed status (London time). **Type**: Bodoni Moda (display) and Manrope (text) from Google Fonts. **Motion**: slow hero zoom and scroll shift, curtain reveal on photographs (`.reveal-mask`), fade-up on text (`.reveal`); all of it is switched off for visitors who prefer reduced motion.
 
 **Links** use the live site's existing URL paths (`/menus/main-menu/`, `/reviews/`, `/reservations/`, `/new-blog/` and so on) so SEO is kept. Two menus replace the old four: `/menus/main-menu/` is the Food Menu (mains and desserts, anchor `#desserts`) and `/menus/drinks-menu/` is the Drinks Menu (drinks and wine, anchor `#wine`). Set up 301 redirects from `/menus/desserts-liqueurs-menu/` and `/menus/wine-menu/`. New paths still to confirm: `/pre-post-theatre-dining/` and `/influencer-videos/`.

@@ -194,6 +194,32 @@
     } catch (e) { /* keep the static text */ }
   })();
 
+
+  /* ---------- hero headline: words rise into place ---------- */
+  (function () {
+    var h1 = doc.querySelector('.hero h1');
+    if (!h1 || reduceMotion) return;
+    var i = 0;
+    function walk(node) {
+      [].slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = doc.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(doc.createTextNode(' ')); return; }
+            var w = doc.createElement('span'); w.className = 'w';
+            var inner = doc.createElement('span'); inner.textContent = part;
+            inner.style.setProperty('--i', i++);
+            w.appendChild(inner); frag.appendChild(w);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1) { walk(n); }
+      });
+    }
+    walk(h1);
+    h1.classList.add('split');
+  })();
+
   /* ---------- hide a section when its content is empty ---------- */
   doc.querySelectorAll('[data-hide-if-empty]').forEach(function (sec) {
     var probe = sec.querySelector('[data-required]');

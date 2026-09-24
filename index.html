@@ -73,7 +73,7 @@
 :root{
   --r:24px;--r-lg:32px;--r-btn:999px;
   --hdr:72px;--vpad:clamp(.9rem,3.2vh,2.6rem);--fs:clamp(.8rem,1.7vh,1rem);
-  --grade:saturate(.94) contrast(1.04) sepia(.05);
+  --grade:none;
 }
 
 /* ---------- glass (liquid-glass approximation: backdrop blur + layered highlights) ---------- */
@@ -120,8 +120,16 @@
 .hc-phone:hover{color:var(--sand);}
 .hc-badge{display:block;width:88px;margin:1.1rem auto 0;transition:transform .6s var(--ease);}
 .hc-badge:hover{transform:rotate(-5deg);}
-.hero-inner>.hero-copy,.hero-inner>.hero-card{animation:heroUp 1.3s var(--ease) both;}
-.hero-inner>.hero-card{animation-delay:.35s;}
+.hero-inner>.hero-card{animation:heroUp 1.3s var(--ease) both;animation-delay:.9s;}
+.hero-copy>*{animation:heroUp 1.1s var(--ease) both;}
+.hero-copy>.hero-estd{animation-delay:.05s;}
+.hero-copy>h1{animation-delay:.1s;}
+.hero-copy>.hero-sub{animation-delay:.95s;}
+.hero-copy>.hero-ctas{animation-delay:1.1s;}
+.hero h1.split{animation:none;}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em;}
+.hero h1 .w>span{display:inline-block;transform:translateY(112%);animation:wordUp 1.1s var(--ease) forwards;animation-delay:calc(var(--i) * 75ms + .15s);}
+@keyframes wordUp{to{transform:none;}}
 @keyframes heroUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
 
 /* ---------- 2. SPECIAL OFFER: bento ---------- */
@@ -240,7 +248,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 .best .cols{margin-top:1.4rem;column-gap:3rem;color:rgba(255,255,255,.86);}
 .best .cols p{break-inside:avoid;margin-bottom:.9rem;}
 .best-photo{position:relative;min-height:440px;overflow:hidden;border-radius:var(--r-lg) 0 0 var(--r-lg);margin:clamp(.8rem,1.6vw,1.5rem) 0 clamp(.8rem,1.6vw,1.5rem) 0;}
-.best-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:var(--grade);}
+.best-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:24% 50%;filter:var(--grade);}
 
 /* ---------- 7. PRE & POST DINING ---------- */
 .prepost{background:var(--paper);padding:clamp(.8rem,1.4vw,1.2rem);}
@@ -258,6 +266,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 
 /* ---------- 8. WHY OUR GUESTS LOVE ---------- */
 .why{padding:clamp(3.5rem,7vw,7rem) 0;background:var(--paper);}
+.why-grid{display:grid;grid-template-columns:1fr;gap:2rem;}
 .why-title{max-width:16em;}
 .why-photo{position:relative;max-width:440px;border-radius:var(--r-lg);overflow:hidden;}
 .why-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:var(--grade);}
@@ -359,7 +368,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 
   .why-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(1.5rem,3.5vw,4rem);align-items:stretch;}
   .why-photo{max-width:none;min-height:100%;}
-  .why-photo img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;}
+  .why-photo img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-position:50% 30%;}
   .why-main{justify-content:center;}
   .why-title{max-width:none;font-size:clamp(1.9rem,min(3.4vw,5.6vh),3.1rem);}
   .why-split{grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3.5rem);align-items:start;}
@@ -368,6 +377,8 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
   .exp-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,4vw,5rem);align-items:center;}
   .exp-head .h2{font-size:clamp(2rem,min(3.6vw,6vh),3.4rem);}
   .exp-head p{font-size:var(--fs);line-height:1.6;}
+  .faq-grid{grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr);gap:clamp(1.5rem,3.5vw,4rem);}
+  .faq-photo{min-height:0;}
   .tile{min-height:clamp(260px,62vh,620px);}
 }
 @media (min-width:1101px) and (max-width:1350px) and (min-height:600px){
@@ -376,6 +387,34 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 }
 
 .glass.tile-chip{background:linear-gradient(150deg,rgba(255,255,255,.2) 0,rgba(255,255,255,.05) 50%,rgba(255,255,255,.1) 100%),rgba(22,11,8,.5);}
+
+/* soho accordions with a photo beside them */
+.faq-grid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:stretch;}
+.faq-photo{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:220px;}
+.faq-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+
+/* hover lift */
+.t-card,.offer-pct,.offer-main{transition:transform .6s var(--ease),box-shadow .6s var(--ease);}
+@media (hover:hover){
+  .t-menu:hover,.t-quotes:hover,.t-party:hover{transform:translateY(-6px);}
+  .t-menu:hover{box-shadow:0 40px 70px -32px rgba(36,27,24,.5);}
+  .offer-pct:hover{transform:translateY(-4px);}
+}
+
+/* framed photographs drift slowly against the scroll (scroll-driven, supported browsers only) */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .offer-photo img,.best-photo img,.why-photo img,.faq-photo img,.tile img{inset:-8% 0 auto 0;height:116%;animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;}
+    @keyframes drift{from{transform:translateY(-6%);}to{transform:translateY(6%);}}
+    .tile:hover img,.tile:focus-visible img{animation-play-state:paused;}
+  }
+}
+
+@media (min-width:1101px) and (min-height:600px){
+  .faq-grid{grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr);gap:clamp(1.5rem,3.5vw,4rem);}
+  .faq-photo{min-height:0;}
+  .soho .faq-sec{padding-bottom:1.2rem;}
+}
 </style>
 </head>
 <body>
@@ -589,7 +628,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
           <p class="offer-note"><strong>Blue Badge holders</strong> receive 10% off.</p>
         </div>
       </article>
-      <figure class="offer-photo reveal-mask"><img src="images/restaurant/table-2.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of red wine and fresh roses"></figure>
+      <figure class="offer-photo reveal-mask"><img src="images/restaurant/detail-table.jpg" width="1500" height="1076" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of red wine and fresh roses"></figure>
       <aside class="offer-pct reveal">
         <p class="pct"><span>10</span><sup>%</sup></p>
         <p class="pct-text">off your<br>total bill</p>
@@ -625,11 +664,11 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
     <div class="carousel reveal" data-carousel data-interval="5500" role="group" aria-roledescription="carousel" aria-label="Photos of the restaurant" style="--d:.1s">
       <ul class="track" data-track tabindex="0" aria-label="Restaurant photos. Scroll sideways to see more.">
         <li><img src="images/restaurant/hall-1.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="Long dining room with white tablecloths, patterned mirrors and hanging lanterns"></li>
-        <li><img src="images/restaurant/table-3.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A long table laid for dinner with white linen, wine and a rose"></li>
-        <li><img src="images/restaurant/room-1.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="Dining room with fish murals on the wall and tables laid with white linen"></li>
+        <li><img src="images/restaurant/table-1.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table set with white linen, a bottle of red wine and roses"></li>
+        <li><img src="images/restaurant/detail-fish.jpg" width="1800" height="952" loading="lazy" decoding="async" alt="Fish mural and an arched niche on a dining room wall"></li>
         <li><img src="images/restaurant/sign-1.jpg" width="1259" height="1600" loading="lazy" decoding="async" alt="The hanging Delhi Brasserie Indian Cuisine sign above the restaurant window"></li>
         <li><img src="images/restaurant/room-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="Dining room with a chandelier and tables laid for dinner"></li>
-        <li><img src="images/restaurant/table-1.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table set with white linen, a bottle of red wine and roses"></li>
+        <li><img src="images/restaurant/hall-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The main dining hall lit by lanterns, with carved wall panels"></li>
       </ul>
       <div class="carousel-ui">
         <button type="button" data-prev aria-label="Previous photo"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
@@ -642,7 +681,8 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 <!-- ======================= 4. FOUR SOHO ACCORDIONS + TAKEAWAY ======================= -->
 <div class="soho">
   <section class="faq-sec" aria-label="Why Delhi Brasserie">
-    <div class="wrap">
+    <div class="wrap faq-grid">
+      <figure class="faq-photo reveal-mask"><img src="images/restaurant/detail-mirrors.jpg" width="1523" height="1600" loading="lazy" decoding="async" alt="Jewel-coloured mirrors and carved panels on the dining room wall"></figure>
       <div class="rows faq reveal">
         <details class="row" name="soho">
           <summary>Best Indian Restaurant London Soho <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
@@ -726,7 +766,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
         <p>Just as much as our impeccable cuisines and delicacies, our guests appreciate the way we treat them, take care of them, and offer them the best service.</p>
       </div>
     </div>
-    <figure class="best-photo reveal-mask"><img src="images/restaurant/hall-2.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The dining hall with tables laid for dinner under decorative lanterns"></figure>
+    <figure class="best-photo reveal-mask"><img src="images/restaurant/detail-lanterns.jpg" width="1800" height="1463" loading="lazy" decoding="async" alt="Jewel-coloured lanterns and a flower arrangement in the dining room"></figure>
   </div>
 </section>
 
@@ -749,7 +789,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 <!-- ======================= 8. WHY OUR GUESTS LOVE ======================= -->
 <section class="why" aria-labelledby="why-h">
   <div class="wrap why-grid">
-    <figure class="why-photo reveal-mask"><img src="images/restaurant/hall-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The main dining hall with carved mirrors and lanterns"></figure>
+    <figure class="why-photo reveal-mask"><img src="images/restaurant/sign-2.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="The hanging Delhi Brasserie Indian Cuisine sign above the entrance"></figure>
     <div class="why-main">
       <h2 class="h2 why-title reveal" id="why-h">Why Our Guests Love Our <em>Authentic Indian Restaurant</em> in Soho London</h2>
       <div class="why-split">
@@ -799,11 +839,11 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
     </div>
     <div class="tiles">
       <a class="tile reveal-mask" href="/menus/main-menu/">
-        <img src="images/restaurant/table-3.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A long table laid for dinner with white linen, wine and a rose">
+        <img src="images/restaurant/detail-rose.jpg" width="1358" height="1500" loading="lazy" decoding="async" alt="A place setting with white linen, a bottle of red wine and roses">
         <span class="tile-chip glass"><span>Food Menu</span><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
       <a class="tile reveal-mask" href="/menus/drinks-menu/" style="--d:.12s">
-        <img src="images/restaurant/table-4.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of wine and glasses">
+        <img src="images/restaurant/detail-glass.jpg" width="1500" height="1400" loading="lazy" decoding="async" alt="Wine glasses, a bottle and a candle on a table laid for dinner">
         <span class="tile-chip glass"><span>Drinks Menu</span><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
     </div>
