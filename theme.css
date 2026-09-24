@@ -1,12 +1,16 @@
 /* ==========================================================================
-   THEME — change these values to re-brand the whole site.
-   Loaded before components.css and each page's inline styles.
+   THEME — Delhi Brasserie. Change these values to re-brand the whole site.
+   Loaded before components.css / delhi.css and each page's inline styles.
+   Primary colour is the logo red (#D61820).
    ========================================================================== */
 :root {
-  --color-primary: #1E4951;       /* main brand colour: buttons, footer, dark sections */
-  --color-primary-dark: #0F3A46;  /* hover state of primary */
-  --color-accent: #D7BB51;        /* highlights, borders, hover accents */
-  --color-accent-dark: #AA8D3F;   /* accent for text/icons on light backgrounds */
-  --color-ink: #171813;           /* body text / headings */
-  --color-cream: #F7F3EC;         /* soft section background */
+  --color-primary: #D61820;       /* logo red: buttons, links, highlights */
+  --color-primary-dark: #A5121A;  /* deeper red: hover, headings, red bands */
+  --color-deep: #6B0E14;          /* deepest red: top bar, footer, dark bands */
+  --color-accent: #C9A24A;        /* gold: ornaments, badges, hairlines */
+  --color-accent-dark: #A9822B;   /* gold for text/icons on light backgrounds */
+  --color-gold: #C9A24A;          /* alias of --color-accent */
+  --color-ink: #211F19;           /* body text */
+  --color-cream: #F7F0E4;         /* soft section background */
+  --color-paper: #FCF8F1;         /* page background */
 }

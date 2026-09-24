@@ -1,3 +1,33 @@
+# Delhi Brasserie website
+
+Built from the brand-neutral multi-page static HTML/CSS/JS template below. No build step.
+
+## Delhi Brasserie: home page (`index.html`)
+
+Only the home page is built so far. It follows `docs/Home Page .pdf`; the copy is the live site's existing text (kept for SEO).
+
+| Part | Files |
+|---|---|
+| Home page (header, sections, footer are inline so search engines see them) | `index.html` |
+| Shared header, drawer, sticky rail, location block, footer, buttons | `delhi.css` |
+| Sticky header, drawer, slider, notice ticker, reveal, hide-empty | `delhi.js` |
+| Colours (logo red primary, deep red bands, gold accents) | `theme.css` |
+| Logo (from `images/logo.pdf`), favicons, Tripadvisor-style badges | `images/logo.svg`, `images/favicon*`, `images/badge-winner-*.svg` |
+| Restaurant photos, resized from `docs/Drive resources` | `images/restaurant/` |
+
+**Special offer section** (section 2): edit its text in `index.html`. To hide it, add the `hidden` attribute to `<section id="special-offer">`, or empty the heading marked `data-required` and the script hides it.
+
+**Links** use the live site's existing URL paths (`/menus/main-menu/`, `/reviews/`, `/reservations/`, `/new-blog/` and so on) so SEO is kept. Two menus replace the old four: `/menus/main-menu/` is the Food Menu (mains and desserts, anchor `#desserts`) and `/menus/drinks-menu/` is the Drinks Menu (drinks and wine, anchor `#wine`). Set up 301 redirects from `/menus/desserts-liqueurs-menu/` and `/menus/wine-menu/`. New paths still to confirm: `/pre-post-theatre-dining/` and `/influencer-videos/`.
+
+**To finish before launch**
+- Replace the generated Tripadvisor badge (`images/badge-winner-*.svg`) with the official Winner 2024/2025 artwork.
+- Paste the Google Analytics and Brevo tags where marked in the `<head>` of `index.html`.
+- Reservations link to `/reservations/` (existing Redi widget page, unchanged).
+- Special offer wording ("during May", code `SPRING1026`) is copied from the live offers page; check it is current.
+- Food photos ("DB Food Images") and the "Watch Our Video" clip were not in the supplied files. The location block has a map instead.
+- YouTube is in the requirements PDF but no URL was supplied; Facebook, Instagram, X and TikTok (from the client doc) are linked.
+- `docs/` holds client files (including credentials) and is git-ignored.
+
 # Website Template
 
 Brand-neutral, multi-page static HTML/CSS/JS template. No build step.

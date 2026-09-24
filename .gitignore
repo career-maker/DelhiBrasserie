@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# client documents (contain credentials) - never commit
+docs/
