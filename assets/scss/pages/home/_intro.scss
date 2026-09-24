@@ -16,7 +16,9 @@
 .track li{flex:none;height:var(--h);scroll-snap-align:start;overflow:hidden;}
 .track li:nth-child(even){height:calc(var(--h) * .84);margin-top:calc(var(--h) * .16);}
 .track img{height:100%;width:auto;max-width:none;object-fit:cover;}
+/* white veil on the left of the photos, as on the Pandhal about image: strongest at the edge, fading to clear */
+.carousel::before{content:"";position:absolute;left:0;top:0;z-index:1;width:min(62%,560px);height:var(--h);background:linear-gradient(90deg,rgba(255,255,255,.78) 0,rgba(255,255,255,.5) 34%,rgba(255,255,255,0) 100%);pointer-events:none;}
 .carousel-ui{display:flex;align-items:center;gap:var(--sp-2);margin-top:var(--sp-2);}
-.carousel-script{position:absolute;left:clamp(.8rem,calc(var(--u) * 2),2.6rem);bottom:calc(var(--sp-4) * 1.5 + 2.2rem);z-index:2;color:var(--brand);font-size:calc(var(--t-script) * .95);text-shadow:0 0 14px #fff,0 0 4px #fff;pointer-events:none;}
+.carousel-script{position:absolute;z-index:3;left:clamp(.8rem,calc(var(--u) * 2),2.6rem);bottom:calc(var(--sp-4) * 1.5 + 2.2rem);color:var(--brand);font-size:calc(var(--t-script) * .95);text-shadow:0 0 14px #fff,0 0 4px #fff;pointer-events:none;}
 .ta-chip .ta-badges{flex:none;}
 .ta-chip:hover .ta-badges{transform:translateY(-3px);}
