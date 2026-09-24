@@ -6,7 +6,7 @@
 <title>Best Indian Restaurant London Soho | Delhibrasserie</title>
 <meta name="description" content="Authentic Indian restaurant in the heart of Soho, London, since 1985. Traditional dishes, wines &amp; drinks, pre &amp; post theatre dining. Book a table at Delhi Brasserie.">
 <link rel="canonical" href="https://delhibrasserie.com/">
-<meta name="theme-color" content="#5C0C12">
+<meta name="theme-color" content="#A5121A">
 
 <meta property="og:type" content="restaurant.restaurant">
 <meta property="og:site_name" content="The Delhi Brasserie">
@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap" rel="stylesheet">
 <link href="theme.css" rel="stylesheet">
 <link href="delhi.css" rel="stylesheet">
 
@@ -70,213 +70,312 @@
 
 <style>
 [hidden]{display:none!important;}
+:root{
+  --r:24px;--r-lg:32px;--r-btn:999px;
+  --hdr:72px;--vpad:clamp(.9rem,3.2vh,2.6rem);--fs:clamp(.8rem,1.7vh,1rem);
+  --grade:saturate(.94) contrast(1.04) sepia(.05);
+}
+
+/* ---------- glass (liquid-glass approximation: backdrop blur + layered highlights) ---------- */
+.glass{position:relative;isolation:isolate;border:1px solid rgba(255,255,255,.38);background:linear-gradient(150deg,rgba(255,255,255,.26) 0,rgba(255,255,255,.07) 46%,rgba(255,255,255,.14) 100%),rgba(22,11,8,.36);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -1px 0 rgba(255,255,255,.14),0 24px 56px rgba(0,0,0,.4);color:#fff;}
+.glass::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 60% at 22% 0%,rgba(255,255,255,.34) 0,rgba(255,255,255,0) 60%);}
+@media (prefers-reduced-transparency:reduce){.glass{background:#3a1a14;-webkit-backdrop-filter:none;backdrop-filter:none;}.glass::before{display:none;}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(40,20,15,.88);}}
 
 /* ---------- 1. HERO ---------- */
-.hero{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(600px,90svh,880px);color:#fff;background:#14110e;overflow:hidden;}
-.hero-img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 38%;animation:heroZoom 24s ease-out both;}
+.hero{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(640px,94svh,940px);color:#fff;background:#1a120e;overflow:hidden;}
+.hero-media{position:absolute;inset:0;z-index:-2;}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;animation:heroZoom 26s ease-out both;filter:var(--grade);}
 @keyframes heroZoom{from{transform:scale(1.08);}to{transform:scale(1);}}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(16,12,10,.82) 0,rgba(16,12,10,.3) 24%,rgba(16,12,10,.4) 48%,rgba(16,12,10,.93) 100%),linear-gradient(90deg,rgba(16,12,10,.62),transparent 68%);}
-.hero-inner{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem;padding-top:11rem;padding-bottom:clamp(2.2rem,4.5vw,4rem);}
-.hero-copy{max-width:820px;}
-.hero-estd{margin-bottom:1rem;font-size:.9rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--color-sand);}
-.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.3rem,4.6vw,4rem);line-height:1.1;letter-spacing:-.012em;text-wrap:balance;text-shadow:0 2px 20px rgba(0,0,0,.4);}
-.hero h1 em{font-style:italic;color:var(--color-sand);padding-bottom:.06em;}
-.hero-sub{margin-top:1rem;max-width:46ch;font-size:clamp(1rem,1.25vw,1.12rem);color:rgba(255,255,255,.92);}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem;}
-.hero-badge{flex:none;display:block;width:clamp(116px,12vw,170px);filter:drop-shadow(0 6px 18px rgba(0,0,0,.5));transition:transform .5s var(--ease);}
-.hero-badge:hover{transform:rotate(-4deg) scale(1.04);}
-.hero-inner>.hero-copy,.hero-inner>.hero-badge{animation:heroUp 1s var(--ease) both;}
-.hero-inner>.hero-badge{animation-delay:.3s;}
-@keyframes heroUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:scroll()){
+    .hero-media{animation:heroShift linear both;animation-timeline:scroll(root block);animation-range:0 100vh;}
+    @keyframes heroShift{to{transform:translateY(9vh);}}
+  }
+}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle farthest-side at 50% 36%,rgba(12,6,4,0) 0,rgba(12,6,4,.14) 24%,rgba(12,6,4,.46) 46%,rgba(12,6,4,.76) 72%,rgba(12,6,4,.93) 100%);}
+.hero-inner{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2.4rem;padding-top:11rem;padding-bottom:clamp(2rem,5vh,4rem);}
+.hero-copy{max-width:1000px;}
+.hero-estd{display:flex;align-items:baseline;gap:.7rem;margin-bottom:1rem;color:var(--sand);}
+.hero-estd span{font-size:.78rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;}
+.hero-estd b{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.8rem,2.7vw,2.5rem);line-height:1;}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.9rem,min(7vw,11.5vh),7rem);line-height:.98;letter-spacing:-.025em;text-wrap:balance;max-width:11em;text-shadow:0 2px 26px rgba(0,0,0,.55);}
+.hero h1 em{font-style:italic;color:var(--sand);padding-bottom:.08em;}
+.hero-sub{margin-top:1.3rem;max-width:44ch;font-size:clamp(1rem,1.25vw,1.12rem);color:rgba(255,255,255,.92);}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem;}
+.hero-badge-m{display:none;width:118px;margin-top:1.8rem;filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));}
 
-/* ---------- 2. SPECIAL OFFER: a ticket (hide with the hidden attribute, or empty the heading) ---------- */
-.offer{padding:clamp(3rem,5.5vw,5rem) 0;background:var(--color-cream);}
-.ticket{position:relative;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr) 270px;background:#fff;border:1px solid var(--color-line);}
-.ticket-photo{position:relative;min-height:100%;}
-.ticket-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.ticket-body{padding:clamp(1.6rem,3vw,3rem);}
-.ticket-body .h2{margin:.55rem 0 .9rem;font-size:clamp(1.8rem,2.8vw,2.5rem);}
-.ticket-body .desc{max-width:52ch;color:var(--color-muted);}
-.promo{margin-top:1rem;font-size:.85rem;font-weight:800;letter-spacing:.06em;color:var(--color-primary-dark);}
-.promo span{padding:.15rem .5rem;border:1.5px dashed var(--color-primary);}
-.when{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;margin:1.4rem 0 1.5rem;padding:1.1rem 0;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);}
-.when dt{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--color-muted);}
-.when dd{margin-top:.2rem;font-family:var(--serif);font-size:1.2rem;line-height:1.3;}
-.ticket-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem 1.6rem;}
-.ticket-note{margin-top:1.3rem;font-size:.9rem;color:var(--color-muted);}
-.ticket-note strong{color:var(--color-ink);}
-.ticket-stub{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;background:var(--color-primary);color:#fff;border-left:2px dashed rgba(255,255,255,.6);}
-.ticket-stub::before,.ticket-stub::after{content:"";position:absolute;left:-13px;width:24px;height:24px;border-radius:50%;background:var(--color-cream);}
-.ticket-stub::before{top:-12px;}
-.ticket-stub::after{bottom:-12px;}
-.stub-num{font-family:var(--serif);font-size:clamp(4.4rem,7vw,6rem);font-weight:500;line-height:.95;letter-spacing:-.02em;}
-.stub-num sup{font-size:.5em;vertical-align:.55em;margin-left:.04em;}
-.stub-text{margin-top:.6rem;font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;}
-.stub-badge{display:block;width:104px;margin-top:1.6rem;transition:transform .5s var(--ease);}
-.stub-badge:hover{transform:rotate(-5deg);}
+.hero-card{width:min(310px,100%);padding:4rem 1.6rem 1.8rem;text-align:center;border-radius:var(--r-lg);overflow:visible;}
+.seal{position:absolute;top:-54px;left:50%;transform:translateX(-50%);width:108px;height:108px;border-radius:50%;background:var(--deep);box-shadow:0 10px 26px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.3);}
+.seal>svg{position:absolute;inset:0;width:100%;height:100%;}
+.seal>svg:first-child{animation:spin 30s linear infinite;}
+.seal-text{font-family:var(--sans);font-size:9.6px;font-weight:700;letter-spacing:.2em;fill:var(--sand);}
+.seal-bird{inset:28px!important;width:calc(100% - 56px)!important;height:calc(100% - 56px)!important;fill:var(--sand);}
+@keyframes spin{to{transform:rotate(360deg);}}
+.open-status{font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);}
+.open-hours{margin:.3rem 0 1.2rem;font-family:var(--serif);font-size:1.9rem;line-height:1.1;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.35);}
+.hero-card .btn{width:100%;}
+.hc-phone{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:.1rem .5rem;margin-top:1rem;font-size:.92rem;font-weight:700;text-decoration:none;color:#fff;}
+.hc-phone small{font-weight:500;color:rgba(255,255,255,.78);font-size:.8rem;}
+.hc-phone:hover{color:var(--sand);}
+.hc-badge{display:block;width:88px;margin:1.1rem auto 0;transition:transform .6s var(--ease);}
+.hc-badge:hover{transform:rotate(-5deg);}
+.hero-inner>.hero-copy,.hero-inner>.hero-card{animation:heroUp 1.3s var(--ease) both;}
+.hero-inner>.hero-card{animation-delay:.35s;}
+@keyframes heroUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
 
-/* ---------- 3. INTRO: text beside a bleeding photo carousel ---------- */
-.intro{padding:clamp(3.5rem,6vw,6rem) 0 clamp(3rem,5vw,5rem);}
-.intro-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,4vw,4.5rem);padding-left:var(--gutter);align-items:start;}
-.intro-text .h2{margin-bottom:.5rem;}
-.intro-text p{margin-top:1.05rem;max-width:60ch;color:var(--color-muted);}
-.intro-text p.lead{font-size:1.1rem;color:var(--color-ink);}
-.intro-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2rem;margin-top:2rem;}
-.ta-chip{display:flex;align-items:center;gap:.9rem;text-decoration:none;font-size:.86rem;line-height:1.35;color:var(--color-muted);}
-.ta-chip img{width:92px;flex:none;transition:transform .5s var(--ease);}
+/* ---------- 2. SPECIAL OFFER: bento ---------- */
+.offer{padding:clamp(3rem,6vw,5rem) 0;background:var(--paper);}
+.offer-bento{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(.7rem,1.3vw,1.2rem);}
+.offer-main{grid-row:1/3;display:flex;flex-direction:column;justify-content:space-between;gap:1.6rem;padding:clamp(1.6rem,3.2vw,3.2rem);background:var(--deep);color:#fff;border-radius:var(--r-lg);}
+.offer-main .label{color:var(--sand);}
+.offer-main .h2{color:#fff;margin:.8rem 0 1rem;font-size:clamp(2.2rem,min(4.4vw,7vh),4rem);}
+.offer-main .h2 em{color:var(--sand);}
+.offer-main .desc{max-width:50ch;color:rgba(255,255,255,.82);}
+.promo{margin-top:1rem;font-size:.9rem;color:rgba(255,255,255,.82);}
+.promo b{margin:0 .2rem;padding:.25rem .8rem;border-radius:var(--r-btn);background:rgba(255,255,255,.14);color:#fff;letter-spacing:.12em;}
+.when{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;margin-bottom:1.4rem;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.22);}
+.when dt{font-size:.7rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);}
+.when dd{margin-top:.25rem;font-family:var(--serif);font-size:clamp(1.3rem,3.2vh,1.7rem);line-height:1.2;color:#fff;}
+.offer-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.8rem;}
+.offer-main .text-link{color:#fff;border-color:var(--sand);}
+.offer-main .text-link:hover{color:var(--sand);}
+.offer-note{margin-top:1.2rem;font-size:.9rem;color:rgba(255,255,255,.78);}
+.offer-note strong{color:#fff;font-weight:700;}
+.offer-photo{position:relative;border-radius:var(--r-lg);overflow:hidden;}
+.offer-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:var(--grade);}
+.offer-pct{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:clamp(1.2rem,2vw,2rem) clamp(1.4rem,2.4vw,2.4rem);background:var(--paper-2);border-radius:var(--r-lg);}
+.pct{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(4.2rem,min(8vw,14vh),8rem);line-height:.85;letter-spacing:-.04em;color:var(--red);}
+.pct sup{font-size:.42em;vertical-align:.95em;margin-left:.03em;font-style:normal;}
+.pct-text{margin-right:auto;font-size:.8rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);line-height:1.5;}
+.pct-badge{flex:none;display:block;width:clamp(80px,7vw,104px);transition:transform .6s var(--ease);}
+.pct-badge:hover{transform:rotate(-5deg);}
+
+/* ---------- 3. INTRO ---------- */
+.intro{padding:clamp(3.5rem,7vw,7rem) 0;background:var(--paper);}
+.intro-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(2rem,4.5vw,5rem);padding-left:var(--gutter);align-items:center;}
+.intro-text .h2{margin-bottom:1rem;}
+.intro-text .lead{color:var(--ink);}
+.intro-body p{margin-top:.9rem;color:var(--muted);}
+.intro-body strong{color:var(--ink);font-weight:700;}
+.intro-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem 2rem;margin-top:1.8rem;}
+.ta-chip{display:flex;align-items:center;gap:.9rem;text-decoration:none;font-size:.86rem;line-height:1.4;color:var(--muted);}
+.ta-chip img{width:76px;flex:none;transition:transform .6s var(--ease);}
 .ta-chip:hover img{transform:rotate(-5deg);}
-.ta-chip strong{display:block;color:var(--color-ink);}
-.carousel{position:relative;min-width:0;}
-.track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;}
+.ta-chip strong{display:block;color:var(--ink);font-weight:700;}
+.carousel{position:relative;min-width:0;--h:clamp(300px,58vw,460px);}
+.track{display:flex;align-items:flex-start;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;}
 .track::-webkit-scrollbar{display:none;}
-.track li{flex:none;height:clamp(300px,58vw,460px);scroll-snap-align:start;}
-@media (min-width:1101px){.track li{height:clamp(440px,46vw,660px);}}
-.track img{height:100%;width:auto;max-width:none;object-fit:cover;}
-.carousel-ui{display:flex;gap:.6rem;margin-top:1rem;}
-.carousel-ui button{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;background:transparent;border:1.5px solid var(--color-ink);color:var(--color-ink);transition:background-color .25s,color .25s,opacity .25s;}
-.carousel-ui button:hover:not(:disabled){background:var(--color-ink);color:#fff;}
-.carousel-ui button:disabled{opacity:.35;cursor:default;}
+.track li{flex:none;height:var(--h);scroll-snap-align:start;border-radius:var(--r-lg);overflow:hidden;}
+.track li:nth-child(even){height:calc(var(--h) * .82);margin-top:calc(var(--h) * .18);}
+.track img{height:100%;width:auto;max-width:none;object-fit:cover;filter:var(--grade);}
+.carousel-ui{display:flex;gap:.6rem;margin-top:1.1rem;}
+.carousel-ui button{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:transparent;border:1px solid var(--ink);color:var(--ink);transition:background-color .25s,color .25s,opacity .25s;}
+.carousel-ui button:hover:not(:disabled){background:var(--ink);color:#fff;}
+.carousel-ui button:disabled{opacity:.3;cursor:default;}
 .carousel-ui [data-prev] .ic{transform:scaleX(-1);}
 
-.faq{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.6rem;align-items:start;margin-top:clamp(2.6rem,5vw,4rem);}
-details.acc{background:#fff;border:1px solid var(--color-line);}
-details.acc summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.3rem;font-family:var(--serif);font-size:1.15rem;line-height:1.3;cursor:pointer;list-style:none;}
-details.acc summary::-webkit-details-marker{display:none;}
-.plus{flex:none;display:grid;place-items:center;width:32px;height:32px;background:var(--color-primary);color:#fff;border-radius:var(--radius);transition:transform .35s var(--ease);}
+/* ---------- 4. ACCORDION ROWS (shared) + TAKEAWAY ---------- */
+.rows{border-top:1px solid var(--ink);}
+details.row{border-bottom:1px solid var(--line);}
+details.row summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:clamp(.9rem,2.4vh,1.5rem) 0;font-family:var(--serif);font-size:clamp(1.5rem,4.4vh,2.6rem);line-height:1.1;letter-spacing:-.01em;cursor:pointer;list-style:none;color:var(--ink);transition:color .25s;}
+details.row summary::-webkit-details-marker{display:none;}
+details.row summary:hover,details.row[open]>summary{color:var(--red-dark);}
+.plus{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid currentColor;background:transparent;color:inherit;transition:transform .4s var(--ease),background-color .25s,color .25s;}
 .plus .ic{width:16px;height:16px;}
-details[open]>summary .plus{transform:rotate(45deg);}
-details[open].acc{border-color:var(--color-ink);}
-.acc-body{padding:0 1.3rem 1.3rem;color:var(--color-muted);font-size:.96rem;}
-.acc-body a{color:var(--color-primary-dark);text-underline-offset:3px;}
-details[open] .acc-body{animation:accIn .4s var(--ease);}
-@keyframes accIn{from{opacity:0;transform:translateY(-5px);}to{opacity:1;transform:none;}}
+details.row:hover .plus{background:var(--red);border-color:var(--red);color:#fff;}
+details[open].row>summary .plus{transform:rotate(45deg);background:var(--red);border-color:var(--red);color:#fff;}
+.row-body{padding:0 4rem 1.4rem 0;max-width:72ch;color:var(--muted);font-size:var(--fs);line-height:1.65;}
+.row-body a{color:var(--red-dark);text-underline-offset:3px;}
+details[open] .row-body{animation:accIn .5s var(--ease);}
+@keyframes accIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+.faq-sec{padding:clamp(3rem,6vw,5rem) 0 1.5rem;background:var(--paper);}
+.takeaway{padding:1.5rem 0 clamp(3rem,6vw,5rem);background:var(--paper);}
+.takeaway-card{display:flex;align-items:center;gap:1.6rem 2rem;flex-wrap:wrap;padding:clamp(1.4rem,3vh,2.2rem) clamp(1.4rem,3vw,2.6rem);background:var(--red);color:#fff;border-radius:var(--r-lg);}
+.takeaway .bag{flex:none;display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);}
+.takeaway .bag .ic{width:1.9rem;height:1.9rem;}
+.takeaway-copy{flex:1 1 420px;}
+.takeaway h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.6vh,2.4rem);line-height:1.12;}
+.takeaway p{margin-top:.5rem;color:rgba(255,255,255,.92);font-size:var(--fs);}
+.takeaway p a{color:#fff;text-underline-offset:3px;}
 
-/* takeaway band */
-.takeaway{background:var(--color-deep);color:#fff;padding:clamp(1.8rem,3vw,2.6rem) 0;}
-.takeaway-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem 3rem;flex-wrap:wrap;}
-.takeaway-copy{display:flex;gap:1.3rem;align-items:flex-start;max-width:780px;}
-.takeaway .bag{flex:none;display:grid;place-items:center;width:56px;height:56px;border:1.5px solid var(--color-sand);color:var(--color-sand);}
-.takeaway .bag .ic{width:1.7rem;height:1.7rem;}
-.takeaway h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.2;}
-.takeaway p{margin-top:.6rem;color:rgba(255,255,255,.88);}
-.takeaway p a{color:var(--color-sand);text-underline-offset:3px;}
-.takeaway-actions{display:flex;flex-wrap:wrap;gap:.8rem;}
+/* ---------- 5. THREE CARDS ---------- */
+.trio{padding:var(--pad,clamp(4rem,8vw,7rem)) 0;background:var(--paper-2);}
+.trio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.5rem);align-items:stretch;}
+.t-card{border-radius:var(--r-lg);overflow:hidden;position:relative;display:flex;flex-direction:column;padding:clamp(1.4rem,2.6vw,2.4rem);}
+.t-card h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,4vh,2.4rem);line-height:1.05;letter-spacing:-.01em;margin-bottom:.7rem;}
+.t-card p{font-size:var(--fs);line-height:1.6;}
+.t-card .text-link{margin-top:auto;align-self:flex-start;}
+.t-menu{background:#fff;text-align:center;align-items:center;justify-content:center;box-shadow:0 30px 60px -34px rgba(36,27,24,.4);}
+.t-menu .peacock{width:64px;height:38px;margin-bottom:.9rem;color:var(--red);}
+.t-menu p{color:var(--muted);}
+.t-menu .menu-line{margin-top:1.1rem;font-size:.7rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--red-dark);}
+.t-menu .dish{margin-top:.25rem;color:var(--ink);font-family:var(--serif);font-size:clamp(1.05rem,2.5vh,1.3rem);line-height:1.35;}
+.t-menu .text-link{margin-top:auto;align-self:center;padding-top:1.2rem;}
+.t-quotes{background:var(--deep);color:#fff;}
+.t-quotes .ic-quote{width:1.8rem;height:1.8rem;color:var(--sand);margin-bottom:.3rem;}
+.t-quotes blockquote{margin:0;}
+.t-quotes blockquote+blockquote{margin-top:clamp(.6rem,1.6vh,1.1rem);padding-top:clamp(.6rem,1.6vh,1.1rem);border-top:1px solid rgba(255,255,255,.2);}
+.t-quotes blockquote p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2.35vh,1.35rem);line-height:1.32;color:#fff;}
+.t-quotes cite{display:block;margin-top:.5rem;font-size:.72rem;font-style:normal;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);}
+.t-quotes .text-link{color:#fff;border-color:var(--sand);padding-top:0;margin-top:auto;}
+.t-quotes .text-link:hover{color:var(--sand);}
+.t-quotes .text-link{margin-top:clamp(.8rem,2vh,1.4rem);}
+.t-party{padding:0;color:#fff;background:#1a120e;justify-content:flex-end;}
+.t-party>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:var(--grade);}
+.t-party::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,8,5,.05) 10%,rgba(15,8,5,.72) 34%,rgba(15,8,5,.94) 58%,rgba(15,8,5,.97) 100%);}
+.party-copy{position:relative;z-index:2;padding:clamp(1.4rem,2.6vw,2.4rem);}
+.party-copy p{color:rgba(255,255,255,.9);}
+.party-copy p+p{margin-top:.5rem;}
+.party-copy .text-link{color:#fff;border-color:var(--sand);margin-top:1rem;}
+.party-copy .text-link:hover{color:var(--sand);}
 
-/* ---------- 4. THREE CARDS ---------- */
-.trio{padding:clamp(3.5rem,6vw,5.5rem) 0;background:var(--color-paper);}
-.trio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.2rem,2.4vw,2.4rem);align-items:start;}
-.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-line);}
-.card>img{width:100%;aspect-ratio:4/3;object-fit:cover;}
-.card-body{display:flex;flex-direction:column;padding:1.6rem 1.7rem 1.8rem;}
-.card h2{margin-bottom:.8rem;font-family:var(--serif);font-weight:500;font-size:1.65rem;line-height:1.2;}
-.card p{font-size:.95rem;color:var(--color-muted);}
-.card p+p{margin-top:.75rem;}
-.menu-line{margin-top:1rem;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-ink);}
-.menu-line+p{margin-top:.2rem;}
-.card .text-link{margin-top:1.3rem;align-self:flex-start;color:var(--color-primary-dark);}
-.card-quotes{background:var(--color-deep);border-color:var(--color-deep);color:#fff;margin-top:clamp(0rem,3.5vw,3.5rem);}
-.card-quotes .card-body{padding:2rem 1.9rem 2.1rem;}
-.card-quotes .ic-quote{width:2.2rem;height:2.2rem;color:var(--color-sand);margin-bottom:.8rem;}
-.card-quotes h2{color:#fff;margin-bottom:1.2rem;}
-.card-quotes blockquote{margin:0;}
-.card-quotes blockquote+blockquote{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.2);}
-.card-quotes blockquote p{font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.45;color:#fff;}
-.card-quotes cite{display:block;margin-top:.55rem;font-size:.82rem;font-style:normal;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--color-sand);}
-.card-quotes .text-link{color:var(--color-sand);margin-top:1.6rem;}
-
-/* ---------- 5. THE BEST INDIAN RESTAURANT: text with a full-height photo ---------- */
-.best{background:var(--color-primary-dark);color:#fff;}
+/* ---------- 6. THE BEST INDIAN RESTAURANT ---------- */
+.best{background:var(--deep);color:#fff;}
 .best-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);}
-.best-text{padding:clamp(3.5rem,6vw,6rem) clamp(1.5rem,4vw,4.5rem) clamp(3.5rem,6vw,6rem) var(--gutter);}
-.best .h2{color:#fff;margin-bottom:1.4rem;max-width:16em;}
-.best .lead{font-size:clamp(1.15rem,1.6vw,1.4rem);line-height:1.5;font-family:var(--serif);max-width:38em;}
-.best .cols{margin-top:1.6rem;column-gap:3rem;color:rgba(255,255,255,.9);}
-.best .cols p{break-inside:avoid;margin-bottom:1rem;}
-.best-photo{position:relative;min-height:420px;}
-.best-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.best-text{padding:clamp(3.5rem,7vw,7rem) clamp(1.5rem,4vw,4.5rem) clamp(3.5rem,7vw,7rem) var(--gutter);}
+.best .h2{color:#fff;margin-bottom:1.2rem;max-width:13em;}
+.best .h2 em{color:var(--sand);}
+.best .lead{color:#fff;max-width:34em;}
+.best .cols{margin-top:1.4rem;column-gap:3rem;color:rgba(255,255,255,.86);}
+.best .cols p{break-inside:avoid;margin-bottom:.9rem;}
+.best-photo{position:relative;min-height:440px;overflow:hidden;border-radius:var(--r-lg) 0 0 var(--r-lg);margin:clamp(.8rem,1.6vw,1.5rem) 0 clamp(.8rem,1.6vw,1.5rem) 0;}
+.best-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:var(--grade);}
 
-/* ---------- 6. PRE & POST DINING ---------- */
-.prepost{position:relative;isolation:isolate;display:flex;align-items:center;min-height:clamp(440px,42vw,600px);background:#100d0b;color:#fff;overflow:hidden;}
-.prepost>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:30% 50%;}
-.prepost::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(16,13,11,.1) 0,rgba(16,13,11,.55) 34%,rgba(16,13,11,.95) 58%,#100d0b 100%);}
-.prepost-copy{width:min(540px,100%);margin-left:auto;padding:clamp(3rem,6vw,5.5rem) 0;}
-.prepost .label{color:var(--color-sand);}
-.prepost .h2{margin:.8rem 0 1rem;color:#fff;}
-.prepost p{max-width:44ch;color:rgba(255,255,255,.9);}
-.prepost-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem 1.8rem;margin-top:1.8rem;}
-.prepost .text-link{color:var(--color-sand);}
+/* ---------- 7. PRE & POST DINING ---------- */
+.prepost{background:var(--paper);padding:clamp(.8rem,1.4vw,1.2rem);}
+.prepost-card{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(500px,78vh,760px);border-radius:var(--r-lg);overflow:hidden;background:#1a0e0b;color:#fff;padding:clamp(1rem,2.4vw,2.2rem);}
+.prepost-card>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:var(--grade);}
+.prepost-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(15,8,5,.55) 0,rgba(15,8,5,0) 55%);}
+.prepost-copy{max-width:600px;padding:clamp(1.4rem,2.6vw,2.6rem);border-radius:var(--r-lg);}
+.prepost-copy .label{color:var(--sand);}
+.prepost-copy .h2{margin:.6rem 0 .9rem;color:#fff;font-size:clamp(2.1rem,min(4vw,6.6vh),3.6rem);}
+.prepost-copy .h2 em{color:var(--sand);}
+.prepost-copy p:not(.label){color:rgba(255,255,255,.92);}
+.prepost-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.8rem;margin-top:1.4rem;}
+.prepost-copy .text-link{color:#fff;border-color:var(--sand);}
+.prepost-copy .text-link:hover{color:var(--sand);}
 
-/* ---------- 7. WHY OUR GUESTS LOVE ---------- */
-.why{padding:clamp(3.5rem,6vw,6rem) 0;}
-.why-title{max-width:17em;}
-.why-cols{columns:3;column-gap:3rem;margin-top:1.8rem;color:var(--color-muted);}
-.why-cols p{break-inside:avoid;margin-bottom:1rem;}
-.why-body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,4vw,4.5rem);align-items:start;margin-top:clamp(2.4rem,5vw,3.6rem);}
-.why-photo{position:sticky;top:96px;}
-.why-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;}
-.why-list{border-top:1px solid var(--color-ink);}
-details.why-item{border-bottom:1px solid var(--color-line);}
-details.why-item summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;font-family:var(--serif);font-size:1.3rem;line-height:1.3;cursor:pointer;list-style:none;}
-details.why-item summary::-webkit-details-marker{display:none;}
-details.why-item .acc-body{padding:0 3rem 1.4rem 0;max-width:60ch;}
-details.why-item[open]>summary{color:var(--color-primary-dark);}
+/* ---------- 8. WHY OUR GUESTS LOVE ---------- */
+.why{padding:clamp(3.5rem,7vw,7rem) 0;background:var(--paper);}
+.why-title{max-width:16em;}
+.why-photo{position:relative;max-width:440px;border-radius:var(--r-lg);overflow:hidden;}
+.why-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:var(--grade);}
+.why-main{display:flex;flex-direction:column;gap:clamp(1.4rem,3vh,2.4rem);}
+.why-split{display:grid;grid-template-columns:1fr;gap:2rem;}
+.why-cols{color:var(--muted);}
+.why-cols p{margin-bottom:.8rem;}
+.why-list details.row summary{font-size:clamp(1.25rem,3.3vh,1.8rem);}
+.why-list .row-body{padding-right:1rem;}
 
-/* ---------- 8. EXPERIENCE + TWO TILES ---------- */
-.exp{padding:clamp(3.5rem,6vw,5.5rem) 0;background:var(--color-deep);color:#F1E9DA;}
-.exp-head{max-width:840px;margin:0 auto;text-align:center;}
-.exp-head .h2{color:#fff;}
-.exp-head p{margin-top:1.1rem;}
-.exp-head a{color:var(--color-sand);text-underline-offset:3px;}
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(2.2rem,4.5vw,3.4rem);}
-.tile{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;color:#fff;text-decoration:none;}
-.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
+/* ---------- 9. EXPERIENCE + MENU TILES ---------- */
+.exp{padding:clamp(3.5rem,7vw,7rem) 0;background:var(--paper-2);}
+.exp-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+.exp-head p{margin-top:1rem;color:var(--muted);}
+.exp-head a{color:var(--red-dark);text-underline-offset:3px;}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,1.4vw,1.3rem);}
+.tile{position:relative;display:block;min-height:clamp(260px,50vh,540px);border-radius:var(--r-lg);overflow:hidden;color:#fff;text-decoration:none;background:#1a120e;}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:var(--grade);transition:transform 1.4s var(--ease);}
 .tile:hover img,.tile:focus-visible img{transform:scale(1.05);}
-.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(16,12,10,.85) 0,rgba(16,12,10,.1) 60%);}
-.tile-label{position:absolute;left:0;right:0;bottom:0;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;padding:clamp(1.2rem,2.4vw,2.2rem);}
-.tile h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.1;}
-.tile .go{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border:1.5px solid var(--color-sand);color:var(--color-sand);transition:background-color .3s,color .3s;}
-.tile:hover .go{background:var(--color-sand);color:var(--color-deep);}
-.tile .go .ic{width:1.4rem;height:1.4rem;}
+.tile-chip{position:absolute;left:clamp(.8rem,1.4vw,1.2rem);right:clamp(.8rem,1.4vw,1.2rem);bottom:clamp(.8rem,1.4vw,1.2rem);z-index:2;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem .9rem .9rem 1.5rem;border-radius:var(--r-btn);font-family:var(--serif);font-size:clamp(1.4rem,3.4vh,2rem);line-height:1;}
+.tile .go{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#fff;color:var(--deep);transition:transform .4s var(--ease),background-color .3s,color .3s;}
+.tile:hover .go{background:var(--red);color:#fff;transform:translateX(3px);}
+.tile .go .ic{width:1.3rem;height:1.3rem;}
 
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
-  .ticket{grid-template-columns:1fr;}
-  .ticket-photo{min-height:0;aspect-ratio:16/8;}
-  .ticket-stub{border-left:0;border-top:2px dashed rgba(255,255,255,.6);flex-direction:row;flex-wrap:wrap;gap:.4rem 1.6rem;padding:1.6rem;}
-  .ticket-stub::before,.ticket-stub::after{top:-12px;bottom:auto;}
-  .ticket-stub::before{left:-12px;}
-  .ticket-stub::after{left:auto;right:-12px;}
-  .stub-text{margin-top:0;}
-  .stub-badge{margin-top:0;width:88px;}
+  .offer-bento{grid-template-columns:1fr;grid-template-rows:auto;}
+  .offer-main{grid-row:auto;}
+  .offer-photo{aspect-ratio:16/9;}
   .intro-grid{grid-template-columns:1fr;padding-right:0;}
   .intro-text{padding-right:var(--gutter);}
+  .trio-grid{grid-template-columns:1fr;max-width:640px;margin:0 auto;}
+  .t-party{min-height:520px;}
   .best-grid{grid-template-columns:1fr;}
   .best-text{padding-right:var(--gutter);}
-  .best-photo{min-height:0;aspect-ratio:16/9;}
-  .prepost::before{background:linear-gradient(90deg,rgba(16,13,11,.5) 0,rgba(16,13,11,.9) 100%);}
-  .prepost-copy{margin-left:0;}
-  .why-cols{columns:2;}
-  .why-body{grid-template-columns:1fr;}
-  .why-photo{position:static;}
-  .why-photo img{aspect-ratio:16/10;}
+  .best-photo{min-height:0;aspect-ratio:16/9;border-radius:0;margin:0;}
+  .best .cols{columns:1;}
+  .why-photo{max-width:520px;}
 }
 @media (min-width:1101px){
   .best .cols{columns:2;}
 }
-@media (max-width:900px){
-  .trio-grid{grid-template-columns:1fr;max-width:620px;margin:0 auto;}
-  .card-quotes{margin-top:0;}
-  .faq{grid-template-columns:1fr;}
+@media (max-width:767px){
+  .hero-card{display:none;}
+  .hero-badge-m{display:block;}
 }
 @media (max-width:640px){
-  .hero{min-height:clamp(600px,90svh,780px);}
-  .hero-inner{padding-top:11.5rem;}
+  .hero{min-height:clamp(620px,92svh,800px);}
+  .hero-inner{padding-top:12.5rem;}
   .when{grid-template-columns:1fr;}
   .tiles{grid-template-columns:1fr;}
-  .why-cols{columns:1;}
-  .takeaway-copy{flex-direction:column;}
   .hero-ctas .btn{flex:1 1 auto;}
+  .pct{font-size:4.6rem;}
+  .row-body{padding-right:0;}
+  .plus{width:34px;height:34px;}
 }
+
+/* ==========================================================================
+   FIT TO SCREEN: on desktop each section is one screen tall so its content
+   reads without scrolling inside it. Type is sized from the screen height.
+   ========================================================================== */
+.h2{font-size:clamp(2rem,min(4.4vw,7vh),4.2rem);line-height:1.02;letter-spacing:-.02em;}
+.lead{font-size:clamp(1.15rem,min(1.9vw,3.1vh),1.7rem);}
+
+@media (min-width:1101px) and (min-height:600px){
+  html{scroll-snap-type:y proximity;}
+  .hero,.offer,.intro,.soho,.trio,.best,.prepost,.why,.exp,.location{scroll-snap-align:start;}
+
+  .hero{min-height:max(560px,calc(100svh - 52px));}
+  .hero-inner{flex-wrap:nowrap;padding-top:9.5rem;}
+  .hero-copy{flex:1 1 auto;min-width:0;}
+  .hero-card{flex:none;}
+
+  .offer,.intro,.trio,.why,.exp{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--hdr) + var(--vpad));padding-bottom:var(--vpad);}
+  .offer-bento{height:clamp(500px,74vh,700px);}
+  .soho{min-height:100svh;display:flex;flex-direction:column;}
+  .soho .faq-sec{flex:1;display:flex;align-items:center;padding-top:calc(var(--hdr) + var(--vpad));padding-bottom:1rem;}
+  .soho .faq-sec .wrap{width:100%;}
+  .soho .takeaway{padding:0 0 var(--vpad);}
+  .best{min-height:100svh;display:flex;padding:0;}
+  .best-grid{width:100%;}
+  .best-text{padding-top:calc(var(--hdr) + var(--vpad));padding-bottom:var(--vpad);display:flex;flex-direction:column;justify-content:center;}
+  .best-photo{min-height:0;margin-top:calc(var(--hdr) + var(--vpad) * .4);margin-bottom:var(--vpad);}
+  .prepost{min-height:100svh;display:flex;padding-top:calc(var(--hdr) + .6rem);}
+  .prepost-card{flex:1;min-height:0;}
+
+  .intro-text p{font-size:var(--fs);line-height:1.6;}
+  .intro-text .h2{font-size:clamp(2rem,min(3.6vw,6vh),3.4rem);}
+  .intro-text .lead{font-size:clamp(1.15rem,min(1.6vw,2.8vh),1.5rem);line-height:1.36;}
+  .intro-body p{margin-top:calc(var(--fs) * .7);}
+  .intro-actions{margin-top:clamp(1rem,3vh,2rem);}
+  .carousel{--h:clamp(320px,66vh,660px);}
+
+  .trio-grid{grid-template-columns:1fr 1fr 1.25fr;min-height:clamp(460px,76vh,700px);}
+
+  .best .h2{font-size:clamp(2rem,min(3.8vw,6.2vh),3.6rem);}
+  .best .lead{font-size:clamp(1.15rem,min(1.6vw,2.9vh),1.5rem);}
+  .best .cols{font-size:var(--fs);line-height:1.6;}
+
+  .why-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(1.5rem,3.5vw,4rem);align-items:stretch;}
+  .why-photo{max-width:none;min-height:100%;}
+  .why-photo img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;}
+  .why-main{justify-content:center;}
+  .why-title{max-width:none;font-size:clamp(1.9rem,min(3.4vw,5.6vh),3.1rem);}
+  .why-split{grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3.5rem);align-items:start;}
+  .why-cols p{font-size:var(--fs);line-height:1.6;}
+
+  .exp-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,4vw,5rem);align-items:center;}
+  .exp-head .h2{font-size:clamp(2rem,min(3.6vw,6vh),3.4rem);}
+  .exp-head p{font-size:var(--fs);line-height:1.6;}
+  .tile{min-height:clamp(260px,62vh,620px);}
+}
+@media (min-width:1101px) and (max-width:1350px) and (min-height:600px){
+  :root{--fs:clamp(.78rem,1.6vh,.94rem);}
+  .trio-grid{grid-template-columns:1fr 1fr 1.4fr;}
+}
+
+.glass.tile-chip{background:linear-gradient(150deg,rgba(255,255,255,.2) 0,rgba(255,255,255,.05) 50%,rgba(255,255,255,.1) 100%),rgba(22,11,8,.5);}
 </style>
 </head>
 <body>
@@ -310,6 +409,7 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
     <symbol id="i-pause" viewBox="0 0 256 256"><path d="M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z"/></symbol>
     <symbol id="i-play" viewBox="0 0 256 256"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></symbol>
     <symbol id="i-quotes" viewBox="0 0 256 256"><path d="M100,56H40A16,16,0,0,0,24,72v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,100,56Zm0,80H40V72h60ZM216,56H156a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h60v8a32,32,0,0,1-32,32,8,8,0,0,0,0,16,48.05,48.05,0,0,0,48-48V72A16,16,0,0,0,216,56Zm0,80H156V72h60Z"/></symbol>
+    <symbol id="i-peacock" viewBox="520 180 1080 640"><path transform="matrix(1,0,0,-1,1026.571,567.31179)" d="M0 0C-1.52-2.902-3.179-5.666-4.974-8.567-5.251-9.12-5.666-9.534-5.941-10.086-158.347-18.239-311.028-15.614-463.433-2.764-308.955 8.843-154.339 9.81 0 0"/><path transform="matrix(1,0,0,-1,1033.4797,553.9093)" d="M0 0C-1.382-3.039-2.902-5.941-4.56-9.119-149.504 12.713-292.237 45.045-432.759 87.879-286.295 68.948-141.904 39.794 0 0"/><path transform="matrix(1,0,0,-1,1039.1444,538.29568)" d="M0 0C-.967-3.178-2.072-6.494-3.454-9.948-126.843 40.623-246.086 101.005-360.079 170.229-235.862 122.974-115.236 66.047 0 0"/><path transform="matrix(1,0,0,-1,1042.0464,520.88577)" d="M0 0C-.277-4.422-.829-8.982-1.935-13.541-99.899 53.611-192.061 129.33-277.314 212.234-179.211 149.365-86.358 78.344 0 0"/><path transform="matrix(1,0,0,-1,1041.7698,509.2788)" d="M0 0C-64.942 77.238-122.974 160.142-173.407 247.33-117.586 186.948-66.046 122.56-19.206 54.854-17.824 46.426-14.923 38.273-10.777 30.951-4.836 20.588-1.243 10.5 0 0"/><path transform="matrix(1,0,0,-1,1050.7514,381.19288)" d="M0 0C-6.633-4.559-12.436-10.639-16.858-17.686-33.714 38.965-47.393 96.446-57.618 154.616-35.649 104.183-16.443 52.507 0 0"/><path transform="matrix(1,0,0,-1,1075.3458,469.48487)" d="M0 0C-4.698 4.974-8.705 9.948-11.192 14.922-14.785 22.107-15.06 29.43-11.883 35.648-11.33 36.615-10.777 37.583-9.948 38.55-6.494 25.7-3.039 12.85 0 0"/><path transform="matrix(1,0,0,-1,1631.3546,570.0753)" d="M0 0C-150.194-12.712-300.664-15.337-450.997-7.738-451.412-4.007-452.102-.277-452.931 3.454-302.046 12.436-151.023 11.33 0 0"/><path transform="matrix(1,0,0,-1,1593.7719,466.03053)" d="M0 0C-136.792-41.59-275.794-73.508-416.868-95.202-417.974-91.609-419.355-88.017-421.013-84.563-282.84-46.427-142.457-18.377 0 0"/><path transform="matrix(1,0,0,-1,1515.428,368.06617)" d="M0 0C-110.677-67.29-226.604-126.291-346.262-176.033-348.197-172.717-350.545-169.401-353.171-166.36-240.007-101.834-121.731-46.288 0 0"/><path transform="matrix(1,0,0,-1,1429.7604,308.65187)" d="M0 0C-83.871-81.522-174.375-156.136-270.543-222.32-273.307-219.419-276.208-216.656-279.524-214.168-192.614-135.133-98.932-63.421 0 0"/><path transform="matrix(1,0,0,-1,1326.1305,261.94923)" d="M0 0C-52.506-90.78-113.302-177-181.283-256.864-183.77-255.067-186.396-253.409-189.159-251.89-190.126-251.337-191.094-250.784-192.337-250.093-135.963-161.11-71.435-77.377 0 0"/><path transform="matrix(1,0,0,-1,1152.3084,425.8225)" d="M0 0C-8.567-27.082-17.962-54.025-28.187-80.555-31.78-78.344-35.925-75.719-40.208-72.956-34.405-47.393-27.91-21.97-20.726 3.454-19.482 3.869-18.239 4.422-17.133 4.974-14.785 5.112-8.567 4.56-.967 .552Z"/><path transform="matrix(1,0,0,-1,1201.3596,226.57703)" d="M0 0C-10.915-62.04-25.7-123.389-44.215-183.632-45.735-181.697-47.393-180.177-48.498-179.072-51.815-176.309-55.407-174.236-58.309-172.44-59.553-171.749-60.657-171.058-60.657-171.334-60.796-170.92-61.349-169.953-61.763-169.262-61.763-169.124-61.901-168.985-62.04-168.847-44.63-111.506-24.042-54.993 0 0"/><path transform="matrix(1,0,0,-1,1106.573,332.55555)" d="M0 0H-1.243C-1.52 .138-1.796 .415-2.21 .415-2.764 .691-3.454 .829-4.145 .691-4.422 .967-4.836 1.106-5.251 1.244-6.218 1.658-7.323 1.658-8.29 1.244-8.567 1.381-8.981 1.381-9.257 1.52H-10.225C-10.777 1.935-11.606 2.349-12.573 2.487-13.541 2.625-14.508 2.487-15.337 1.935-15.752 2.073-16.028 2.073-16.443 2.073-16.857 2.073-17.272 1.935-17.548 1.796-17.962 2.073-18.377 2.21-18.93 2.21-17.548 43.11-14.37 83.871-9.672 124.494-4.697 83.181-1.52 41.59 0 0"/><path transform="matrix(1,0,0,-1,1107.2638,426.09913)" d="M0 0C-.414-22.522-1.381-45.045-2.901-67.429-8.013-63.836-13.264-59.967-18.239-55.96-19.344-36.34-20.035-16.58-20.449 3.04-15.337 1.796-8.013 .277 0 0"/><path transform="matrix(1,0,0,-1,1060.1924,356.45375)" d="M0 0 31.423-22.086 32.17-21.024 .747 1.062Z"/><path transform="matrix(1,0,0,-1,1091.9807,377.80824)" d="M0 0 .964 .871-25.263 29.925-26.227 29.054Z"/><path transform="matrix(1,0,0,-1,1092.1043,376.05397)" d="M0 0 1.152 .6-15.533 32.632-16.685 32.032Z"/><path transform="matrix(1,0,0,-1,1093.6814,377.10414)" d="M0 0 1.273 .258-5.951 35.922-7.224 35.664Z"/><path transform="matrix(1,0,0,-1,1094.4491,377.60414)" d="M0 0 1.295 .097-1.441 36.769-2.737 36.672Z"/><path transform="matrix(1,0,0,-1,1095.5903,377.58876)" d="M0 0 1.298-.055 2.815 35.82 1.518 35.875Z"/><path transform="matrix(1,0,0,-1,1096.7637,377.34205)" d="M0 0 1.282-.208 6.959 34.693 5.677 34.901Z"/><path transform="matrix(1,0,0,-1,1098.5526,377.22377)" d="M0 0 1.258-.324 9.929 33.334 8.671 33.658Z"/><path transform="matrix(1,0,0,-1,1099.8739,377.063)" d="M0 0 1.201-.496 13.791 29.993 12.59 30.489Z"/><path transform="matrix(1,0,0,-1,1113.0591,346.891)" d="M0 0C0 0-2.799 1.452-3.322 5.028-3.845 8.603-.963 5.145-.963 5.145-.963 5.145-.097 7.744 .882 7.306 1.861 6.868 1.933 5.057 1.933 5.057 1.933 5.057 3.296 6.956 4.323 6.309 5.349 5.662 4.859 3.492 4.859 3.492 4.859 3.492 6.25 4.298 6.911 3.473 7.572 2.647 4.769-1.186 0 0"/><path transform="matrix(1,0,0,-1,1108.0062,343.9115)" d="M0 0C0 0-2.884 1.275-3.629 4.811-4.373 8.347-1.282 5.075-1.282 5.075-1.282 5.075-.579 7.723 .425 7.347 1.43 6.971 1.614 5.168 1.614 5.168 1.614 5.168 2.856 7.148 3.921 6.566 4.986 5.984 4.632 3.788 4.632 3.788 4.632 3.788 5.97 4.679 6.681 3.896 7.392 3.113 4.834-.887 0 0"/><path transform="matrix(1,0,0,-1,1097.6874,341.74415)" d="M0 0C0 0-3.078 .688-4.497 4.011-5.916 7.335-2.246 4.728-2.246 4.728-2.246 4.728-2.073 7.462-1.015 7.289 .044 7.115 .576 5.383 .576 5.383 .576 5.383 1.408 7.568 2.566 7.204 3.724 6.841 3.805 4.619 3.805 4.619 3.805 4.619 4.944 5.753 5.794 5.124 6.644 4.494 4.914 .072 0 0"/><path transform="matrix(1,0,0,-1,1087.0477,341.42298)" d="M0 0C0 0-3.15-.15-5.398 2.68-7.645 5.509-3.417 3.966-3.417 3.966-3.417 3.966-3.973 6.648-2.906 6.761-1.84 6.874-.868 5.344-.868 5.344-.868 5.344-.643 7.671 .57 7.627 1.782 7.582 2.448 5.461 2.448 5.461 2.448 5.461 3.246 6.856 4.233 6.474 5.219 6.091 4.72 1.369 0 0"/><path transform="matrix(1,0,0,-1,1076.2063,344.08143)" d="M0 0C0 0-2.96-1.087-5.953 .938-8.945 2.964-4.448 2.759-4.448 2.759-4.448 2.759-5.783 5.151-4.799 5.579-3.815 6.006-2.43 4.838-2.43 4.838-2.43 4.838-2.913 7.125-1.743 7.447-.573 7.768 .699 5.943 .699 5.943 .699 5.943 1.042 7.514 2.098 7.445 3.153 7.375 4.093 2.721 0 0"/><path transform="matrix(1,0,0,-1,1066.3826,348.61793)" d="M0 0C0 0-2.663-1.69-6.016-.344-9.37 1.002-4.932 1.754-4.932 1.754-4.932 1.754-6.743 3.809-5.872 4.436-5.001 5.062-3.4 4.214-3.4 4.214-3.4 4.214-4.356 6.347-3.281 6.908-2.205 7.47-.576 5.957-.576 5.957-.576 5.957-.573 7.564 .473 7.72 1.519 7.876 3.423 3.526 0 0"/><path transform="matrix(1,0,0,-1,1060.8643,356.14918)" d="M0 0C0 0-2.128-2.327-5.717-1.905-9.306-1.484-5.219 .403-5.219 .403-5.219 .403-7.504 1.913-6.828 2.745-6.151 3.578-4.383 3.178-4.383 3.178-4.383 3.178-5.864 4.986-4.973 5.81-4.082 6.634-2.114 5.599-2.114 5.599-2.114 5.599-2.531 7.151-1.563 7.575-.594 7.999 2.382 4.299 0 0"/><path transform="matrix(1,0,0,-1,1092.2758,340.96974)" d="M0 0C0 0-3.149 .162-5.106 3.2-7.063 6.238-3.008 4.284-3.008 4.284-3.008 4.284-3.296 7.008-2.224 7.015-1.151 7.022-.335 5.404-.335 5.404-.335 5.404 .118 7.697 1.321 7.533 2.523 7.369 2.976 5.192 2.976 5.192 2.976 5.192 3.908 6.501 4.852 6.023 5.796 5.546 4.832 .896 0 0"/><path transform="matrix(1,0,0,-1,1102.7161,342.65223)" d="M0 0C0 0-2.884 1.275-3.629 4.811-4.373 8.347-1.282 5.075-1.282 5.075-1.282 5.075-.579 7.723 .425 7.347 1.43 6.97 1.614 5.167 1.614 5.167 1.614 5.167 2.856 7.148 3.921 6.566 4.986 5.984 4.633 3.788 4.633 3.788 4.633 3.788 5.97 4.679 6.682 3.896 7.393 3.113 4.834-.887 0 0"/><path transform="matrix(1,0,0,-1,1037.0368,474.8446)" d="M0 0C20.579-35.866 12.864-68.763-9.576-104.707-32.853-141.995-33.955-180.36 11.863-195.457 54.919-209.645 112.009-184.99 128.351-149.983 143.41-117.727 142.01-70.354 96.591-45.083 71.467-31.105 32.747-5.79 21.011 17.154 10.149 38.39 24.473 57.741 44.392 60.708 44.392 60.708 75.554 48.992 96.133 60.729 96.133 60.729 105.378 62.216 117.497 55.686 118.004 55.413 115.179 60.557 111.3 63.932 106.576 68.04 100.422 70.692 98.485 72.467 94.957 75.701 88.527 108.61 39.688 97.857-4.189 88.196-20.579 35.866 0 0"/><path transform="matrix(1,0,0,-1,1047.9143,667.6991)" d="M0 0C0 0 11.392-22.122 14.36-34.162H27.75L21.534-2.719Z"/><path transform="matrix(1,0,0,-1,1079.8501,773.1664)" d="M0 0-2.944 26.148C-2.944 26.148-1.96 29.171-.244 30.555 1.471 31.938 3.796 32.159 3.796 32.159 3.796 32.159 3.257 34.794 2.251 34.735 1.283 34.678 .037 34.74-1.13 35.203-3.509 36.147-4.328 38.436-4.328 38.436L-8.417 74.746H-14.456C-14.456 74.746-8.197 16.757-8.197 0-8.197 0-9.625-5.292-18.061-8.82-26.497-12.347-28.702-14.111-30.025-15.875-31.348-17.639-23.075-13.009-18.061-12.788-13.047-12.568-10.622-13.891-10.622-13.891-10.622-13.891-10.181-11.383-10.181-16.275-10.181-21.167-9.299-23.151-9.299-23.151-9.299-23.151-9.299-21.608-5.992-17.639-2.684-13.67-1.817-14.358 1.505-12.568 6.203-10.036 16.662-9.455 16.662-9.455 16.662-9.455 10.12-7.938 5.482-5.292 .844-2.646 0 0 0 0"/><path transform="matrix(1,0,0,-1,1101.4197,696.43618)" d="M0 0 9.26 1.543C9.26 1.543 17.024 19.891 21.411 27.254 25.797 34.617 26.238 42.657 26.238 42.657L5.292 33.542C5.292 33.542-4.826 11.188-5.61 5.043-6.394-1.102 0 0 0 0"/><path transform="matrix(1,0,0,-1,1105.8294,693.34939)" d="M0 0C0 0-5.287-49.035-3.415-62.552-1.543-76.069 3.748-82.463 7.717-83.565 11.686-84.668 26.604-88.727 28.368-90.932 28.368-90.932 32.709-92.994 29.766-92.605 26.216-92.137 17.198-87.424 9.812-88.857 2.658-90.245 1.39-90.379-1.376-91.32-3.601-92.076-9.533-96.594-11.135-97.015-13.375-97.604-12.995-96.577-12.995-96.577-12.995-96.577-5.582-91.762-5.084-89.023-4.586-86.284-9.068-60.302-12.472-54.243-15.875-48.183-16.041-50.176-17.784-49.76-18.725-49.536-19.013-47.814-19.078-46.276-19.134-44.965-15.061-45.586-12.638-43.784-10.758-42.386-10.315-37.505-10.148-36.313-8.725-26.19-8.739-5.297-6.394 0-3.417 6.725 0 0 0 0"/></symbol>
   </defs>
 </svg>
 
@@ -418,20 +518,31 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
 
 <!-- ======================= 1. HERO ======================= -->
 <section class="hero" id="top" aria-label="Welcome to The Delhi Brasserie">
-  <img class="hero-img" src="images/restaurant/storefront.jpg" width="2400" height="1814" alt="The green-fronted entrance of The Delhi Brasserie on Frith Street, Soho" fetchpriority="high">
+  <div class="hero-media"><img class="hero-img" src="images/restaurant/storefront.jpg" width="2400" height="1814" alt="The green-fronted entrance of The Delhi Brasserie on Frith Street, Soho" fetchpriority="high"></div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <p class="hero-estd">Estd 1985</p>
+      <p class="hero-estd"><span>Estd</span> <b>1985</b></p>
       <h1>Authentic Indian Cuisine in the <em>Heart of Soho</em></h1>
       <p class="hero-sub">44 Frith Street, Soho, London W1D 4SB. Open 7 days a week, 365 days a year.</p>
       <div class="hero-ctas">
         <a class="btn btn-red" href="/reservations/">Book a table <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-line-light" href="/menus/main-menu/">View menu</a>
+        <a class="btn btn-line" href="/menus/main-menu/">View menu</a>
       </div>
+      <a class="hero-badge-m" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Winner 2024 and 2025 (opens Tripadvisor)"><img src="images/badge-winner-light.svg" width="200" height="200" alt="Tripadvisor Winner 2024 and 2025"></a>
     </div>
-    <a class="hero-badge" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Winner 2024 and 2025 (opens Tripadvisor)">
-      <img src="images/badge-winner-light.svg" width="200" height="200" alt="Tripadvisor Winner 2024 and 2025">
-    </a>
+    <aside class="hero-card glass" aria-label="Book a table">
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><defs><path id="ringPath" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs><text class="seal-text" textLength="292" lengthAdjust="spacing"><textPath href="#ringPath">ESTD 1985 - SOHO, LONDON - ESTD 1985 - SOHO, LONDON -</textPath></text></svg>
+        <svg class="seal-bird" viewBox="520 180 1080 640"><use href="#i-peacock"/></svg>
+      </div>
+      <p class="open-status" data-open-status>Open 7 days a week</p>
+      <p class="open-hours" data-open-hours>From 17:00</p>
+      <a class="btn btn-red" href="/reservations/">Book a table <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="hc-phone" href="tel:+442074378261">020 7437 8261 <small>after 4 PM</small></a>
+      <a class="hc-badge" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Winner 2024 and 2025 (opens Tripadvisor)">
+        <img src="images/badge-winner-light.svg" width="200" height="200" alt="Tripadvisor Winner 2024 and 2025">
+      </a>
+    </aside>
   </div>
 </section>
 
@@ -455,36 +566,38 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
 <!-- ======================= 2. SPECIAL OFFER =======================
      Managed content. To hide the whole section: add the `hidden` attribute to the <section>,
      or delete the text inside the element marked data-required (the script then hides it).
-     Change the big number in .stub-num when the offer changes. -->
+     Change the big number in .offer-pct when the offer changes. -->
 <section class="offer" id="special-offer" data-hide-if-empty aria-labelledby="offer-h">
   <div class="wrap">
-    <article class="ticket reveal">
-      <div class="ticket-photo"><img src="images/restaurant/table-2.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of red wine and fresh roses"></div>
-      <div class="ticket-body">
-        <p class="label">Delhi Brasserie Special Offers</p>
-        <h2 class="h2" id="offer-h" data-required>Get 10% Off This Springtime</h2>
-        <p class="desc">Enjoy a special offer of 10% off your total bill during May. We no longer add a mandatory service charge, as is the norm for most London restaurants.</p>
-        <p class="promo">Quote <span>SPRING1026</span> when you make your reservation.</p>
-        <dl class="when">
-          <div><dt>Sunday to Thursday</dt><dd>5:00 PM to 10:30 PM</dd></div>
-          <div><dt>Friday and Saturday</dt><dd>After 9:00 PM</dd></div>
-        </dl>
-        <div class="ticket-cta">
-          <a class="btn btn-red" href="/reservations/">Book a table <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="text-link" href="/special-offers/">View special offer</a>
-        </div>
-        <p class="ticket-note"><strong>Blue Badge holders</strong> receive 10% off.</p>
-      </div>
-      <aside class="ticket-stub">
+    <div class="offer-bento">
+      <article class="offer-main reveal">
         <div>
-          <p class="stub-num">10<sup>%</sup></p>
-          <p class="stub-text">off your total bill</p>
+          <p class="label">Delhi Brasserie Special Offers</p>
+          <h2 class="h2" id="offer-h" data-required>Get 10% Off This <em>Springtime</em></h2>
+          <p class="desc">Enjoy a special offer of 10% off your total bill during May. We no longer add a mandatory service charge, as is the norm for most London restaurants.</p>
+          <p class="promo">Quote <b>SPRING1026</b> when you make your reservation.</p>
         </div>
-        <a class="stub-badge" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Winner 2024 and 2025 (opens Tripadvisor)">
-          <img src="images/badge-winner-light.svg" width="200" height="200" loading="lazy" alt="Tripadvisor Winner 2024 and 2025">
+        <div>
+          <dl class="when">
+            <div><dt>Sunday to Thursday</dt><dd>5:00 PM to 10:30 PM</dd></div>
+            <div><dt>Friday and Saturday</dt><dd>After 9:00 PM</dd></div>
+          </dl>
+          <div class="offer-cta">
+            <a class="btn btn-red" href="/reservations/">Book a table <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="text-link" href="/special-offers/">View special offer</a>
+          </div>
+          <p class="offer-note"><strong>Blue Badge holders</strong> receive 10% off.</p>
+        </div>
+      </article>
+      <figure class="offer-photo reveal-mask"><img src="images/restaurant/table-2.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of red wine and fresh roses"></figure>
+      <aside class="offer-pct reveal">
+        <p class="pct"><span>10</span><sup>%</sup></p>
+        <p class="pct-text">off your<br>total bill</p>
+        <a class="pct-badge" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Winner 2024 and 2025 (opens Tripadvisor)">
+          <img src="images/badge-winner-dark.svg" width="200" height="200" loading="lazy" alt="Tripadvisor Winner 2024 and 2025">
         </a>
       </aside>
-    </article>
+    </div>
   </div>
 </section>
 
@@ -492,12 +605,14 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
 <section class="intro" aria-labelledby="intro-h">
   <div class="intro-grid">
     <div class="intro-text reveal">
-      <h2 class="h2" id="intro-h">Delhi Brasserie Indian Restaurant in Soho</h2>
+      <h2 class="h2" id="intro-h">Delhi Brasserie Indian Restaurant in <em>Soho</em></h2>
       <p class="lead">With great ambience and sumptuous Indian cuisine, the Delhi Brasserie Indian Restaurant in Soho, London has been one of London&rsquo;s favourite dining destinations for forty years. We welcome both new diners and long-term patrons to try our different dishes and enjoy the real flavours of Indian food.</p>
-      <p>Over the years, many Indian eateries have been established and come &amp; gone. However, few provide the traditional dishes. Delhi Brasserie remains true to the roots serving authentic dishes, with new dishes introduced from different parts of India to satisfy the growing appetites of our clientele.</p>
-      <p>Our aim is to serve the finest traditional delicacies alongside some new dishes consciously developed to stimulate and satisfy the taste buds of discerning Londoners, visitors and tourists.</p>
-      <p>With tasteful decor, ambient dining space, beautifully laid out tables &amp; seating, and <strong>FULL AIR CONDITIONING</strong>, you will absolutely love your experience with us here at Delhi Brasserie!</p>
-      <p>We hope to see and serve you soon.</p>
+      <div class="intro-body">
+        <p>Over the years, many Indian eateries have been established and come &amp; gone. However, few provide the traditional dishes. Delhi Brasserie remains true to the roots serving authentic dishes, with new dishes introduced from different parts of India to satisfy the growing appetites of our clientele.</p>
+        <p>Our aim is to serve the finest traditional delicacies alongside some new dishes consciously developed to stimulate and satisfy the taste buds of discerning Londoners, visitors and tourists.</p>
+        <p>With tasteful decor, ambient dining space, beautifully laid out tables &amp; seating, and <strong>FULL AIR CONDITIONING</strong>, you will absolutely love your experience with us here at Delhi Brasserie!</p>
+        <p>We hope to see and serve you soon.</p>
+      </div>
       <div class="intro-actions">
         <a class="btn btn-red" href="/about-us/history/">Discover our story <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="ta-chip" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener">
@@ -522,75 +637,73 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
       </div>
     </div>
   </div>
-
-  <div class="wrap">
-    <div class="faq">
-      <details class="acc reveal" name="soho">
-        <summary>Best Indian Restaurant London Soho <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-        <div class="acc-body"><p>We have a huge list of recipes that you would love to try and you can pick them all right from the menu we have. We have a wide range of authentic Indian delicacies for you and this is what makes our menu the best and us, one of the best dine in restaurants in Soho.</p></div>
-      </details>
-      <details class="acc reveal" name="soho" style="--d:.06s">
-        <summary>Best Dessert Place In London Soho <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-        <div class="acc-body"><p>We also bring unique Indian <a href="/menus/main-menu/#desserts">desserts</a> made especially for you from the best of ingredients. You can find a variety of desserts on our menu for you to pick and devour. Our chefs are always waiting on you to make the best dessert for you as you would love at our Best restaurant in Soho London.</p></div>
-      </details>
-      <details class="acc reveal" name="soho">
-        <summary>Best Wine Restaurants In Soho London <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-        <div class="acc-body"><p>We bring you a wide range of white, rose, and red <a href="/menus/drinks-menu/#wine">wines</a> with diverse champagnes that you must taste at our restaurant in soho. Adding to the exotic menu of wines is the French house wine that we have. We are sure that you will be mind-blown at our wines in our restaurant.</p></div>
-      </details>
-      <details class="acc reveal" name="soho" style="--d:.06s">
-        <summary>Indian Restaurant With Drinks In Soho London <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-        <div class="acc-body"><p>Who does not want to have a few <a href="/menus/drinks-menu/">drinks</a> while having an Indian dinner at one of the finest Indian restaurants in London, right? That&rsquo;s why we bring you all types of drinks that you will love right at our restaurant in soho London. All you need to do is to pick your favorite drink and order them.</p></div>
-      </details>
-    </div>
-  </div>
 </section>
 
-<!-- takeaway / Deliveroo -->
-<section class="takeaway" aria-labelledby="takeaway-h">
-  <div class="wrap takeaway-in">
-    <div class="takeaway-copy">
-      <span class="bag" aria-hidden="true"><svg class="ic"><use href="#i-bag"/></svg></span>
-      <div>
-        <h2 id="takeaway-h">Takeaway available for collection or delivery</h2>
-        <p>For collection please check out our <a href="/menus/main-menu/"><strong>Restaurant Menu here</strong></a> and then call us on <a href="tel:+442074378261">020 7437 8261</a>, or for delivery via Deliveroo please <a href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener"><strong>click here</strong></a> to place your order.</p>
+<!-- ======================= 4. FOUR SOHO ACCORDIONS + TAKEAWAY ======================= -->
+<div class="soho">
+  <section class="faq-sec" aria-label="Why Delhi Brasserie">
+    <div class="wrap">
+      <div class="rows faq reveal">
+        <details class="row" name="soho">
+          <summary>Best Indian Restaurant London Soho <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+          <div class="row-body"><p>We have a huge list of recipes that you would love to try and you can pick them all right from the menu we have. We have a wide range of authentic Indian delicacies for you and this is what makes our menu the best and us, one of the best dine in restaurants in Soho.</p></div>
+        </details>
+        <details class="row" name="soho">
+          <summary>Best Dessert Place In London Soho <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+          <div class="row-body"><p>We also bring unique Indian <a href="/menus/main-menu/#desserts">desserts</a> made especially for you from the best of ingredients. You can find a variety of desserts on our menu for you to pick and devour. Our chefs are always waiting on you to make the best dessert for you as you would love at our Best restaurant in Soho London.</p></div>
+        </details>
+        <details class="row" name="soho">
+          <summary>Best Wine Restaurants In Soho London <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+          <div class="row-body"><p>We bring you a wide range of white, rose, and red <a href="/menus/drinks-menu/#wine">wines</a> with diverse champagnes that you must taste at our restaurant in soho. Adding to the exotic menu of wines is the French house wine that we have. We are sure that you will be mind-blown at our wines in our restaurant.</p></div>
+        </details>
+        <details class="row" name="soho">
+          <summary>Indian Restaurant With Drinks In Soho London <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+          <div class="row-body"><p>Who does not want to have a few <a href="/menus/drinks-menu/">drinks</a> while having an Indian dinner at one of the finest Indian restaurants in London, right? That&rsquo;s why we bring you all types of drinks that you will love right at our restaurant in soho London. All you need to do is to pick your favorite drink and order them.</p></div>
+        </details>
       </div>
     </div>
-    <div class="takeaway-actions">
-      <a class="btn btn-sand" href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener">Order on Deliveroo <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ======================= 4. SAMPLE MENUS / REVIEWS / PRIVATE PARTY ROOMS ======================= -->
+  <section class="takeaway" aria-labelledby="takeaway-h">
+    <div class="wrap">
+      <div class="takeaway-card reveal">
+        <span class="bag" aria-hidden="true"><svg class="ic"><use href="#i-bag"/></svg></span>
+        <div class="takeaway-copy">
+          <h2 id="takeaway-h">Takeaway available for collection or delivery</h2>
+          <p>For collection please check out our <a href="/menus/main-menu/"><strong>Restaurant Menu here</strong></a> and then call us on <a href="tel:+442074378261">020 7437 8261</a>, or for delivery via Deliveroo please <a href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener"><strong>click here</strong></a> to place your order.</p>
+        </div>
+        <a class="btn btn-light" href="https://deliveroo.co.uk/menu/london/soho/the-delhi-brasserie-1" target="_blank" rel="noopener">Order on Deliveroo <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= 5. SAMPLE MENUS / REVIEWS / PRIVATE PARTY ROOMS ======================= -->
 <section class="trio" aria-label="Sample menus, reviews and private party rooms">
   <div class="wrap trio-grid">
-    <article class="card reveal">
-      <img src="images/restaurant/table-1.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table set with white linen, a bottle of red wine and roses">
-      <div class="card-body">
-        <h2>Sample Menus</h2>
-        <p>Chef&rsquo;s Recommendation, Three Course Set Menu. Minimum 2 persons.</p>
-        <p class="menu-line">Menu 1</p>
-        <p>Fish of the day, Nan Bread, Lamb Pasanda, Chicken Korai, Vegetables, Pilau Rice &amp; Sweets</p>
-        <p class="menu-line">Menu 2</p>
-        <p>Tandoori Quail, Nan Bread, Lamb Kata Masala, Chicken Korma, Vegetables, Pilau Rice &amp; Sweets</p>
-        <a class="text-link" href="/menus/main-menu/">See the full menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
+    <article class="t-card t-menu reveal">
+      <svg class="peacock" aria-hidden="true"><use href="#i-peacock"/></svg>
+      <h2>Sample Menus</h2>
+      <p>Chef&rsquo;s Recommendation, Three Course Set Menu. Minimum 2 persons.</p>
+      <p class="menu-line">Menu 1</p>
+      <p class="dish">Fish of the day, Nan Bread, Lamb Pasanda, Chicken Korai, Vegetables, Pilau Rice &amp; Sweets</p>
+      <p class="menu-line">Menu 2</p>
+      <p class="dish">Tandoori Quail, Nan Bread, Lamb Kata Masala, Chicken Korma, Vegetables, Pilau Rice &amp; Sweets</p>
+      <a class="text-link" href="/menus/main-menu/">See the full menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
 
-    <article class="card card-quotes reveal" style="--d:.08s">
-      <div class="card-body">
-        <svg class="ic ic-quote" aria-hidden="true"><use href="#i-quotes"/></svg>
-        <h2>Reviews</h2>
-        <blockquote><p>Good quality ingredients are cooked with great care and experience and there are interesting and original touches.</p><cite>Egon Ronay</cite></blockquote>
-        <blockquote><p>Enjoy an Indian treat in the heart of Soho. The service is attentive without becoming affusive.</p><cite>What&rsquo;s on in London</cite></blockquote>
-        <blockquote><p>Delicious food, excellent service and pleasant surrounds - all in the traditional Indian style.</p><cite>Asian Times</cite></blockquote>
-        <a class="text-link" href="/reviews/">Read more reviews <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
+    <article class="t-card t-quotes reveal" style="--d:.08s">
+      <svg class="ic ic-quote" aria-hidden="true"><use href="#i-quotes"/></svg>
+      <h2>Reviews</h2>
+      <blockquote><p>Good quality ingredients are cooked with great care and experience and there are interesting and original touches.</p><cite>Egon Ronay</cite></blockquote>
+      <blockquote><p>Enjoy an Indian treat in the heart of Soho. The service is attentive without becoming affusive.</p><cite>What&rsquo;s on in London</cite></blockquote>
+      <blockquote><p>Delicious food, excellent service and pleasant surrounds - all in the traditional Indian style.</p><cite>Asian Times</cite></blockquote>
+      <a class="text-link" href="/reviews/">Read more reviews <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </article>
 
-    <article class="card reveal" style="--d:.16s">
+    <article class="t-card t-party reveal" style="--d:.16s">
       <img src="images/restaurant/room-2.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="A private dining area with tables set for a group">
-      <div class="card-body">
+      <div class="party-copy">
         <h2>Private Party Rooms</h2>
         <p>Whatever the time of year there&rsquo;s always a reason to get together with family &amp; friends and the Delhi Brasserie Soho offers the perfect place &amp; space.</p>
         <p>Did you know that we have three separate dining areas, suitable for &lsquo;Private Parties&rsquo; for up to 30 people. And they&rsquo;re proving particularly popular right now due to the benefits of better social distancing.</p>
@@ -601,11 +714,11 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
   </div>
 </section>
 
-<!-- ======================= 5. THE BEST INDIAN RESTAURANT ======================= -->
+<!-- ======================= 6. THE BEST INDIAN RESTAURANT ======================= -->
 <section class="best" aria-labelledby="best-h">
   <div class="best-grid">
     <div class="best-text reveal">
-      <h2 class="h2" id="best-h">The Best Indian Restaurant London Soho</h2>
+      <h2 class="h2" id="best-h">The Best Indian Restaurant <em>London Soho</em></h2>
       <p class="lead">The Delhi Brasserie is one of the best restaurants in Soho that brings you authentic Indian cuisine with a unique touch of original recipes and delicacies that you will love.</p>
       <div class="cols">
         <p>As one of the much sought-after restaurants near Soho where you can experience the genuine flavours of Indian cuisine, Delhi Brasserie is committed to offering you one of the best dining experiences in London not just in terms of taste and varieties of delicacies but also of impeccable service and ambience.</p>
@@ -613,17 +726,17 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
         <p>Just as much as our impeccable cuisines and delicacies, our guests appreciate the way we treat them, take care of them, and offer them the best service.</p>
       </div>
     </div>
-    <figure class="best-photo"><img src="images/restaurant/hall-2.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The dining hall with tables laid for dinner under decorative lanterns"></figure>
+    <figure class="best-photo reveal-mask"><img src="images/restaurant/hall-2.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The dining hall with tables laid for dinner under decorative lanterns"></figure>
   </div>
 </section>
 
-<!-- ======================= 6. PRE & POST DINING ======================= -->
+<!-- ======================= 7. PRE & POST DINING ======================= -->
 <section class="prepost" aria-labelledby="prepost-h">
-  <img src="images/restaurant/hall-4.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="">
-  <div class="wrap">
-    <div class="prepost-copy reveal">
+  <div class="prepost-card">
+    <img src="images/restaurant/hall-4.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="">
+    <div class="prepost-copy glass reveal">
       <p class="label">Pre &amp; Post- Dining</p>
-      <h2 class="h2" id="prepost-h">Make Your Soho Evening Complete</h2>
+      <h2 class="h2" id="prepost-h">Make Your Soho <em>Evening Complete</em></h2>
       <p>Enjoy authentic Indian cuisine before the show or settle in for dinner after the curtain falls. Our location in Soho makes Delhi Brasserie a convenient choice for your West End evening.</p>
       <div class="prepost-ctas">
         <a class="btn btn-red" href="/reservations/">Book a table <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -633,70 +746,72 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
   </div>
 </section>
 
-<!-- ======================= 7. WHY OUR GUESTS LOVE ======================= -->
+<!-- ======================= 8. WHY OUR GUESTS LOVE ======================= -->
 <section class="why" aria-labelledby="why-h">
-  <div class="wrap">
-    <h2 class="h2 why-title reveal" id="why-h">Why Our Guests Love Our Authentic Indian Restaurant in Soho London</h2>
-    <div class="why-cols reveal">
-      <p>For all of us, dining is more than just eating out, and Delhi Brasserie understands that. That&rsquo;s the reason we take care of a range of elements to ensure that you always have the best experience with us, the best Indian restaurant London Soho.</p>
-      <p>The attention to detail that we afford with the ambience and setting of the restaurant also plays a huge role in making us the best Indian restaurant in London Soho. We never compromise on anything from taste, variety, quality, and prices of the delicacies as we work hard to make them all the best.</p>
-      <p>Everything that we do is focused on ensuring that our guests are always happy and delighted with their experience in Delhi Brasserie. No matter what their requirements are, we guarantee that you will have a great time to cherish.</p>
-    </div>
-
-    <div class="why-body">
-      <figure class="why-photo reveal"><img src="images/restaurant/hall-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The main dining hall with carved mirrors and lanterns"></figure>
-      <div class="why-list reveal" style="--d:.1s">
-        <details class="why-item" name="why">
-          <summary>Authentic Indian Cuisine <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc-body"><p>As a genuine Best Indian restaurant London Soho, we are deeply committed to bring you the best and authentic Indian delicacies. And we work extremely hard every day for that. In our efforts to deliver the best exotic Indian food in Soho London, we have a team of Indian chefs that make it happen every day. We also prepare the food from original and genuine Indian recipes using only the best ingredients.</p></div>
-        </details>
-        <details class="why-item" name="why">
-          <summary>Unique Ambience <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc-body"><p>Along with delivering the best Indian foods in London, we are also keen on creating the best dining experience for all our guests. Therefore, we always work hard to create a unique ambience that you all will love. The radiant ambience of the place is designed to ensure that you are relaxed when you are having a great time with your loved ones.</p></div>
-        </details>
-        <details class="why-item" name="why">
-          <summary>Experienced Team <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc-body"><p>A great part of what makes us the best Indian restaurant in Soho, London is the team that we have. Along with an experienced chef with exemplary culinary skills, we have a great team that serves our guests just as they like. These teams are constantly trained in customer service and support to always make the guests feel good and delighted in our restaurant.</p></div>
-        </details>
-        <details class="why-item" name="why">
-          <summary>Impeccable Service &amp; Support <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc-body"><p>As much as the exotic Indian delicacies and food that we offer, we also work hard to offer the best service and support to our guests. We know that our guests come to us to have a great and unforgettable time at best Indian restaurant in London Soho and it is our responsibility to make sure that they do indeed have the best time. Therefore, we always offer the best of services to all our guests.</p></div>
-        </details>
-        <details class="why-item" name="why">
-          <summary>Best Prices for Indian Food <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc-body"><p>Although there are many Indian best restaurants in Soho London, what makes us one of the best is the rates of the food that we offer. Despite having impeccable quality and service standards, we always keep the price economic. We know that price is a key part of what makes our services so unique and we always work on the same to ensure that our guests always are in a treat with us the best Indian restaurant London Soho.</p></div>
-        </details>
-        <details class="why-item" name="why">
-          <summary>Diverse Recipes You Will Love <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-          <div class="acc-body"><p>When we say that you are welcome to experience our extensive range of Indian recipes at Delhi Brasserie Best Indian restaurant London, we are not exaggerating, not at all. We have numerous recipes and dishes that you can enjoy at our restaurant and we are sure that you will love them all. As one of the best Indian restaurant London, we ensure that we have got everything that our guests would love, and more.</p></div>
-        </details>
+  <div class="wrap why-grid">
+    <figure class="why-photo reveal-mask"><img src="images/restaurant/hall-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The main dining hall with carved mirrors and lanterns"></figure>
+    <div class="why-main">
+      <h2 class="h2 why-title reveal" id="why-h">Why Our Guests Love Our <em>Authentic Indian Restaurant</em> in Soho London</h2>
+      <div class="why-split">
+        <div class="why-cols reveal">
+          <p>For all of us, dining is more than just eating out, and Delhi Brasserie understands that. That&rsquo;s the reason we take care of a range of elements to ensure that you always have the best experience with us, the best Indian restaurant London Soho.</p>
+          <p>The attention to detail that we afford with the ambience and setting of the restaurant also plays a huge role in making us the best Indian restaurant in London Soho. We never compromise on anything from taste, variety, quality, and prices of the delicacies as we work hard to make them all the best.</p>
+          <p>Everything that we do is focused on ensuring that our guests are always happy and delighted with their experience in Delhi Brasserie. No matter what their requirements are, we guarantee that you will have a great time to cherish.</p>
+        </div>
+        <div class="rows why-list reveal" style="--d:.1s">
+          <details class="row" name="why">
+            <summary>Authentic Indian Cuisine <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+            <div class="row-body"><p>As a genuine Best Indian restaurant London Soho, we are deeply committed to bring you the best and authentic Indian delicacies. And we work extremely hard every day for that. In our efforts to deliver the best exotic Indian food in Soho London, we have a team of Indian chefs that make it happen every day. We also prepare the food from original and genuine Indian recipes using only the best ingredients.</p></div>
+          </details>
+          <details class="row" name="why">
+            <summary>Unique Ambience <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+            <div class="row-body"><p>Along with delivering the best Indian foods in London, we are also keen on creating the best dining experience for all our guests. Therefore, we always work hard to create a unique ambience that you all will love. The radiant ambience of the place is designed to ensure that you are relaxed when you are having a great time with your loved ones.</p></div>
+          </details>
+          <details class="row" name="why">
+            <summary>Experienced Team <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+            <div class="row-body"><p>A great part of what makes us the best Indian restaurant in Soho, London is the team that we have. Along with an experienced chef with exemplary culinary skills, we have a great team that serves our guests just as they like. These teams are constantly trained in customer service and support to always make the guests feel good and delighted in our restaurant.</p></div>
+          </details>
+          <details class="row" name="why">
+            <summary>Impeccable Service &amp; Support <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+            <div class="row-body"><p>As much as the exotic Indian delicacies and food that we offer, we also work hard to offer the best service and support to our guests. We know that our guests come to us to have a great and unforgettable time at best Indian restaurant in London Soho and it is our responsibility to make sure that they do indeed have the best time. Therefore, we always offer the best of services to all our guests.</p></div>
+          </details>
+          <details class="row" name="why">
+            <summary>Best Prices for Indian Food <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+            <div class="row-body"><p>Although there are many Indian best restaurants in Soho London, what makes us one of the best is the rates of the food that we offer. Despite having impeccable quality and service standards, we always keep the price economic. We know that price is a key part of what makes our services so unique and we always work on the same to ensure that our guests always are in a treat with us the best Indian restaurant London Soho.</p></div>
+          </details>
+          <details class="row" name="why">
+            <summary>Diverse Recipes You Will Love <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
+            <div class="row-body"><p>When we say that you are welcome to experience our extensive range of Indian recipes at Delhi Brasserie Best Indian restaurant London, we are not exaggerating, not at all. We have numerous recipes and dishes that you can enjoy at our restaurant and we are sure that you will love them all. As one of the best Indian restaurant London, we ensure that we have got everything that our guests would love, and more.</p></div>
+          </details>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= 8. EXPERIENCE + FOOD / DRINKS MENU TILES ======================= -->
+<!-- ======================= 9. EXPERIENCE + FOOD / DRINKS MENU TILES ======================= -->
 <section class="exp" aria-labelledby="exp-h">
-  <div class="wrap">
+  <div class="wrap exp-grid">
     <div class="exp-head reveal">
-      <h2 class="h2" id="exp-h">Experience the Best of Indian Cuisines Here at Delhi Brasserie</h2>
+      <h2 class="h2" id="exp-h">Experience the Best of <em>Indian Cuisines</em> Here at Delhi Brasserie</h2>
       <p>We know that you love Indian cuisine and recipes, and if you are wondering about the best dine-in restaurant near me, undoubtedly it is us. We have diverse Indian recipes and delicacies that you and your loved ones will love. Our ambience is magical and serene, the best one you would love to have a great dining time at.</p>
       <p>You can also check our menu on our website and prepare yourself for a great gastronomical experience that you might not have had in a long time in an best Indian restaurant London Soho. But it is time that you have to check best Indian restaurant London. Check our <a href="/menus/main-menu/"><strong>menus</strong></a> right here!!!</p>
     </div>
     <div class="tiles">
-      <a class="tile reveal" href="/menus/main-menu/">
-        <img src="images/restaurant/room-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="">
-        <span class="tile-label"><h3>Food Menu</h3><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
+      <a class="tile reveal-mask" href="/menus/main-menu/">
+        <img src="images/restaurant/table-3.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A long table laid for dinner with white linen, wine and a rose">
+        <span class="tile-chip glass"><span>Food Menu</span><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
-      <a class="tile reveal" href="/menus/drinks-menu/" style="--d:.1s">
-        <img src="images/restaurant/table-4.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="">
-        <span class="tile-label"><h3>Drinks Menu</h3><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
+      <a class="tile reveal-mask" href="/menus/drinks-menu/" style="--d:.12s">
+        <img src="images/restaurant/table-4.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of wine and glasses">
+        <span class="tile-chip glass"><span>Drinks Menu</span><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
     </div>
   </div>
 </section>
 
 </main>
+
 
 <!-- ======================= LOCATION ======================= -->
 <section class="location" aria-labelledby="loc-h">
@@ -777,6 +892,7 @@ details.why-item[open]>summary{color:var(--color-primary-dark);}
       <a class="ta-link" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>Find us on Tripadvisor</a>
     </div>
   </div>
+  <p class="footer-word" aria-hidden="true"><span>Delhi Brasserie</span></p>
   <div class="footer-bottom">
     <div class="wrap footer-bottom-in">
       <div class="bl"><img src="images/logo.svg" width="38" height="38" loading="lazy" alt=""><span>&copy; 2013-26 Delhi Brasserie</span></div>

@@ -48,7 +48,7 @@
     openBtn.setAttribute('aria-expanded', 'true');
     drawer.removeAttribute('inert');
     /* wait a tick: the drawer is visibility:hidden until its transition starts */
-    setTimeout(function () { closeBtn.focus(); }, 60);
+    setTimeout(function () { closeBtn.focus(); }, 140);
   }
   function closeDrawer() {
     drawer.classList.remove('open');
@@ -80,7 +80,7 @@
   }
 
   /* ---------- reveal on scroll ---------- */
-  var reveals = doc.querySelectorAll('.reveal');
+  var reveals = doc.querySelectorAll('.reveal, .reveal-mask');
   if (reveals.length) {
     if ('IntersectionObserver' in window && !reduceMotion) {
       var io = new IntersectionObserver(function (entries) {
@@ -164,6 +164,35 @@
       btn.setAttribute('aria-label', on ? 'Play notice' : 'Pause notice');
     });
   });
+
+
+  /* ---------- live opening status (London time) ---------- */
+  (function () {
+    var status = doc.querySelector('[data-open-status]');
+    var hoursEl = doc.querySelector('[data-open-hours]');
+    if (!status || !hoursEl) return;
+    var open = { Mon: [17, 0, 23, 30], Tue: [17, 0, 23, 30], Wed: [17, 0, 23, 30], Thu: [17, 0, 23, 30],
+                 Fri: [17, 0, 24, 0], Sat: [17, 0, 24, 0], Sun: [17, 0, 23, 30] };
+    function label(mins) {
+      if (mins >= 24 * 60) return 'midnight';
+      var h = Math.floor(mins / 60), m = mins % 60;
+      return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    }
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23'
+      }).formatToParts(new Date());
+      var get = function (t) { for (var i = 0; i < parts.length; i++) if (parts[i].type === t) return parts[i].value; return ''; };
+      var day = get('weekday').slice(0, 3);
+      var now = parseInt(get('hour'), 10) * 60 + parseInt(get('minute'), 10);
+      var d = open[day];
+      if (!d) return;
+      var from = d[0] * 60 + d[1], to = d[2] * 60 + d[3];
+      if (now >= from && now < to) { status.textContent = 'Open now'; hoursEl.textContent = 'Until ' + label(to); }
+      else if (now < from) { status.textContent = 'Open tonight'; hoursEl.textContent = 'From ' + label(from); }
+      else { status.textContent = 'Open tomorrow'; hoursEl.textContent = 'From 17:00'; }
+    } catch (e) { /* keep the static text */ }
+  })();
 
   /* ---------- hide a section when its content is empty ---------- */
   doc.querySelectorAll('[data-hide-if-empty]').forEach(function (sec) {

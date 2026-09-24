@@ -1,19 +1,41 @@
 /* ==========================================================================
    THEME - Delhi Brasserie. Change these values to re-brand the whole site.
    Loaded before components.css / delhi.css and each page's inline styles.
-   One accent (the logo red) on warm-neutral paper and ink.
+
+   Two groups:
+   1. Site tokens used by the Delhi Brasserie pages: ivory paper, deep ink,
+      the logo red for actions, and a muted antique gold for fine detail.
+   2. Legacy tokens (--color-*) still used by the original template pages.
    ========================================================================== */
 :root {
-  --color-primary: #D61820;       /* logo red: buttons, links, highlights */
-  --color-primary-dark: #A5121A;  /* deeper red: hover, red text on light */
-  --color-deep: #5C0C12;          /* deepest red: top bar, footer, dark bands */
-  --color-accent: #E6DAC2;        /* sand: fine detail on dark backgrounds */
-  --color-accent-dark: #A5121A;   /* accent text on light backgrounds */
-  --color-sand: #E6DAC2;          /* alias of --color-accent */
-  --color-ink: #1D1B18;           /* headings and body text */
-  --color-muted: #5E5A52;         /* secondary text */
-  --color-cream: #EEEBE4;         /* tinted section background */
-  --color-paper: #F7F5F1;         /* page background */
-  --color-line: #D9D5CC;          /* hairlines on light backgrounds */
-  --radius: 2px;                  /* one corner radius across the site */
+  /* --- Delhi Brasserie --- */
+  --paper: #FBF7EE;          /* page background: ivory */
+  --paper-2: #F2EADA;        /* tinted bands */
+  --ink: #241B18;            /* headings and text: warm near-black */
+  --muted: #6A5F57;          /* secondary text */
+  --line: rgba(36, 27, 24, .14);
+  --red: #D61820;            /* logo red: booking actions, highlights */
+  --red-hover: #B5131B;
+  --red-dark: #A5121A;       /* red text on ivory, italic emphasis */
+  --red-band: #8E1119;       /* red section band */
+  --deep: #4E0A10;           /* top bar, footer, darkest red */
+  --gold: #B8935A;           /* antique gold: hairlines and ornaments only */
+  --sand: #E9DCC0;           /* light detail on dark backgrounds */
+  --r: 24px;                 /* cards and photographs */
+  --r-lg: 32px;              /* large panels */
+  --r-btn: 999px;            /* page buttons (pills) */
+  --radius: 2px;             /* corner radius for buttons and cards */
+
+  /* --- legacy template tokens --- */
+  --color-primary: #D61820;
+  --color-primary-dark: #A5121A;
+  --color-deep: #4E0A10;
+  --color-accent: #E9DCC0;
+  --color-accent-dark: #A5121A;
+  --color-sand: #E9DCC0;
+  --color-ink: #241B18;
+  --color-muted: #6A5F57;
+  --color-cream: #F2EADA;
+  --color-paper: #FBF7EE;
+  --color-line: #D9CFBD;
 }
