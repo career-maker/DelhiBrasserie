@@ -1,0 +1,54 @@
+// Flip link
+// Menu hover from Pandhal: the label slides up and the coloured copy slides in.
+
+.fliplink {
+  .Link {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    line-height: 1.25;
+    transition: transform .5s;
+
+    // second copy of the label, waiting below the visible line
+    &::after {
+      content: attr(data-after);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: inherit;
+    }
+
+    > span {
+      display: inline-block;
+      transform: translateY(0);
+      transition: inherit;
+    }
+  }
+
+  &:hover,
+  &:focus-visible,
+  &.active {
+    color: var(--brand);
+
+    .Link {
+      &::after {
+        color: var(--brand);
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      > span { transform: translateY(-100%); }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fliplink .Link,
+  .fliplink .Link::after,
+  .fliplink .Link > span { transition: none; }
+}

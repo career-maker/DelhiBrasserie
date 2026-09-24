@@ -1,0 +1,18 @@
+// Home: experience and menu tiles
+
+/* ---------- 9. EXPERIENCE + MENU TILES ---------- */
+.exp{padding:var(--sec-y) 0;background:var(--cream-2);}
+.exp-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);}
+.exp-head .h2{font-size:calc(var(--t-h2) * .84);}
+.exp-head p{margin-top:var(--sp-2);font-size:var(--t-body);line-height:1.6;}
+.exp-head a{color:var(--brand-dark);text-underline-offset:3px;}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);}
+.tile{position:relative;display:block;min-height:clamp(260px,50vh,540px);overflow:hidden;color:#fff;text-decoration:none;background:#1a120e;}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease);}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.05);}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,13,16,.86) 0,rgba(4,13,16,.1) 58%);}
+.tile-label{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:var(--sp-3);}
+.tile-label h3{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.1;color:#fff;margin:0;}
+.tile .go{display:inline-flex;align-items:center;justify-content:center;width:clamp(38px,calc(var(--u) * 3.4),50px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold-soft);color:var(--gold-soft);transition:background-color .3s,color .3s;}
+.tile:hover .go{background:var(--gold-soft);color:var(--ink);}
+.tile .go .ic{width:48%;height:48%;}

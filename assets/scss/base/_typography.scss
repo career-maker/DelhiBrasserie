@@ -1,0 +1,11 @@
+// Icons and type helpers
+
+/* icons: Phosphor Icons (MIT), inlined as a sprite in each page */
+.ic{width:1.2em;height:1.2em;flex:none;fill:currentColor;}
+
+/* type */
+.label{display:block;font-size:var(--t-eyebrow);line-height:1.2;text-transform:capitalize;color:var(--brand);margin-bottom:.45rem;}
+.h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.16;color:var(--ink);text-wrap:balance;}
+.h2 em{font-style:normal;color:var(--brand);}
+.lead{font-size:var(--t-lead);line-height:1.5;color:var(--ink);}
+.script{font-family:var(--script);font-weight:400;font-size:var(--t-script);line-height:1.05;color:var(--gold-soft);}

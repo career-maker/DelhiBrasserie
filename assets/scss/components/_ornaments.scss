@@ -1,0 +1,10 @@
+// Ornaments
+// Peacock and star-burst taken from the logo.
+
+/* peacock and gold divider (ornament taken from the logo) */
+.peacock{display:block;width:84px;height:50px;fill:currentColor;color:var(--gold);}
+.orn{display:flex;align-items:center;justify-content:center;gap:1.1rem;color:var(--gold);}
+.orn::before,.orn::after{content:"";flex:0 1 110px;height:1px;background:currentColor;opacity:.7;}
+.orn .peacock{margin:0;}
+/* gold asterisk, the Pandhal star-burst */
+.burst{width:1.6em;height:1.6em;color:var(--gold);fill:currentColor;flex:none;}

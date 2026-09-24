@@ -13,21 +13,20 @@
 <meta property="og:title" content="Best Indian Restaurant London Soho | Delhibrasserie">
 <meta property="og:description" content="Authentic Indian cuisine at 44 Frith Street, Soho. Open 7 days a week, 365 days a year.">
 <meta property="og:url" content="https://delhibrasserie.com/">
-<meta property="og:image" content="https://delhibrasserie.com/images/restaurant/storefront.jpg">
+<meta property="og:image" content="https://delhibrasserie.com/assets/images/restaurant/storefront.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="preload" as="image" href="images/restaurant/storefront.jpg" fetchpriority="high">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/images/restaurant/storefront.jpg" fetchpriority="high">
 
 <script>document.documentElement.classList.add('js','pre-on');</script>
-<link rel="preload" href="fonts/GalleryModernRegular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/ITCKabelStd-Book.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/BrittanySignatureRegular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/GalleryModernRegular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ITCKabelStd-Book.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/BrittanySignatureRegular.woff2" as="font" type="font/woff2" crossorigin>
 
-<link href="theme.css" rel="stylesheet">
-<link href="delhi.css" rel="stylesheet">
+<link href="assets/css/main.min.css" rel="stylesheet">
 
 <!-- Google Analytics (GA4): paste the existing measurement tag here (the live site already uses GA). -->
 <!-- Brevo newsletter: paste the existing Brevo subscription form / script here if it is kept. -->
@@ -38,8 +37,8 @@
   "@type": "Restaurant",
   "name": "The Delhi Brasserie",
   "url": "https://delhibrasserie.com/",
-  "image": "https://delhibrasserie.com/images/restaurant/storefront.jpg",
-  "logo": "https://delhibrasserie.com/images/logo.png",
+  "image": "https://delhibrasserie.com/assets/images/restaurant/storefront.jpg",
+  "logo": "https://delhibrasserie.com/assets/images/logo.png",
   "servesCuisine": "Indian",
   "foundingDate": "1985",
   "telephone": "+44 20 7437 8261",
@@ -68,292 +67,12 @@
 }
 </script>
 
-<style>
-[hidden]{display:none!important;}
-:root{--pre:0s;}
-.js.pre-on:not(.pre-done) .hero-copy>*,.js.pre-on:not(.pre-done) .hero-strip{animation:none;opacity:0;}
-
-/* glass strip (blur 25px on a 20% white, as on the Pandhal hero) */
-.glass{background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(25px);backdrop-filter:blur(25px);color:#fff;}
-@media (prefers-reduced-transparency:reduce){.glass{background:rgba(40,20,15,.9);-webkit-backdrop-filter:none;backdrop-filter:none;}}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(40,20,15,.78);}}
-
-/* ---------- 1. HERO: slides, centred script + headline, buttons, glass strip ---------- */
-.hero{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(560px,82svh,820px);color:#fff;background:#1a120e;overflow:hidden;}
-.hero-slides{position:absolute;inset:0;z-index:-2;}
-.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;}
-.hero-slide.is-active{opacity:1;}
-.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:50% 36%;}
-.hero-slide.is-active img{animation:heroZoom 9s ease-out both;}
-@keyframes heroZoom{from{transform:scale(1.07);}to{transform:scale(1);}}
-/* circular vignette: clear in the centre, dark toward the edges */
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle farthest-side at 50% 40%,rgba(4,13,16,0) 0,rgba(4,13,16,.16) 26%,rgba(4,13,16,.48) 48%,rgba(4,13,16,.76) 74%,rgba(4,13,16,.92) 100%);}
-.hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:var(--sp-4);padding-bottom:calc(var(--sp-3) + 2.4rem);}
-.hero-copy{width:100%;max-width:1114px;}
-.hero-copy .script{margin-bottom:.3rem;text-shadow:0 2px 14px rgba(0,0,0,.45);}
-.hero h1{font-family:var(--serif);font-weight:400;font-size:var(--t-hero);line-height:1.14;color:#fff;text-wrap:balance;text-shadow:0 2px 20px rgba(0,0,0,.55);margin-bottom:var(--sp-3);}
-.hero h1 em{font-style:normal;color:var(--gold-soft);}
-.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.7rem,1.4vw,1.6rem);margin-bottom:var(--sp-3);}
-.hero-ctas .btn{min-width:clamp(150px,calc(var(--u) * 13),240px);background-clip:padding-box;}
-.hero-ctas .btn-line{background:rgba(4,13,16,.42);}
-.hero-copy>*{animation:heroUp 1s var(--ease) both;}
-.hero-copy>.script{animation-delay:calc(var(--pre) + .05s);}
-.hero-copy>h1{animation-delay:calc(var(--pre) + .2s);}
-.hero-copy>.hero-ctas{animation-delay:calc(var(--pre) + .4s);}
-.hero-strip{animation:heroUp 1s var(--ease) both;animation-delay:calc(var(--pre) + .6s);}
-@keyframes heroUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
-.hero-strip{display:grid;grid-template-columns:1.1fr 1fr auto;align-items:center;gap:var(--sp-3);width:100%;max-width:1114px;padding:var(--sp-2) var(--sp-4);text-align:left;}
-.strip-l{padding-right:var(--sp-3);border-right:1px solid rgba(255,255,255,.4);}
-.strip-title{font-family:var(--serif);font-size:var(--t-h3);line-height:1.1;color:#fff;margin-bottom:.25rem;}
-.strip-txt{font-size:var(--t-sm);line-height:1.45;color:#fff;}
-.strip-m{display:grid;gap:.35rem;font-size:var(--t-body);}
-.strip-m a{display:inline-flex;align-items:center;gap:.6rem;color:#fff;text-decoration:none;transition:color .25s;}
-.strip-m a:hover{color:var(--gold-soft);}
-.strip-m .ic{color:var(--gold-soft);}
-.strip-m small{font-size:var(--t-2xs);opacity:.85;}
-.strip-badge{display:block;width:clamp(64px,calc(var(--u) * 6.4),92px);transition:transform .6s var(--ease);}
-.strip-badge:hover{transform:rotate(-5deg);}
-.hero-count{position:absolute;left:clamp(1rem,5vw,5.2rem);bottom:clamp(1rem,calc(var(--u) * 2),2.6rem);display:flex;align-items:baseline;gap:.5rem;font-family:var(--serif);color:var(--gold-soft);font-size:clamp(1.1rem,calc(var(--u) * 1.9),1.9rem);line-height:1;}
-.hero-count .tot{color:#fff;font-size:.8em;}
-.hero-arrows{position:absolute;right:clamp(1rem,5vw,5.2rem);bottom:clamp(1rem,calc(var(--u) * 2),2.6rem);display:flex;gap:1.4rem;}
-.hero-arrows button{background:none;border:0;padding:0;color:var(--gold-soft);display:grid;place-items:center;transition:transform .3s var(--ease),color .25s;}
-.hero-arrows button:hover{transform:scale(1.12);color:#fff;}
-.hero-arrows .ic{width:clamp(1.5rem,calc(var(--u) * 2.2),2.2rem);height:auto;aspect-ratio:1;}
-.hero-arrows .prev .ic{transform:scaleX(-1);}
-
-/* ---------- 2. SPECIAL OFFER (hide with the hidden attribute, or empty the heading) ---------- */
-.offer{padding:var(--sec-y) 0;background:var(--cream);}
-.offer-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:var(--sp-4) clamp(2rem,5vw,6rem);align-items:center;}
-.offer-copy .h2{margin:0 0 var(--sp-2);}
-.offer-copy .desc{max-width:52ch;font-size:var(--t-body);line-height:1.6;}
-.promo{margin-top:var(--sp-2);font-size:var(--t-body);}
-.promo b{margin:0 .2rem;padding:.2rem .8rem;border:1px dashed var(--brand);color:var(--brand-dark);font-weight:700;letter-spacing:.1em;}
-.when{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2) var(--sp-4);margin:var(--sp-3) 0;padding:var(--sp-2) 0;border-top:1px solid rgba(0,0,0,.14);border-bottom:1px solid rgba(0,0,0,.14);}
-.when dt{font-size:var(--t-2xs);letter-spacing:.06em;text-transform:uppercase;color:var(--text);}
-.when dd{margin-top:.2rem;font-family:var(--sans);font-size:var(--t-lead);line-height:1.25;color:var(--ink);}
-.offer-cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2) var(--sp-2);}
-.offer-note{margin-top:var(--sp-2);font-size:var(--t-sm);}
-.offer-note strong{color:var(--ink);font-weight:700;}
-.offer-media{position:relative;padding:0 0 var(--sp-3) var(--sp-3);}
-.offer-photo{position:relative;aspect-ratio:5/4;overflow:hidden;}
-.offer-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.offer-circle{position:absolute;left:0;bottom:0;width:clamp(120px,calc(var(--u) * 12.5),190px);aspect-ratio:1;border-radius:50%;background:var(--gold-soft);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
-.offer-circle .num{font-family:var(--serif);font-size:var(--t-num);line-height:1;color:var(--brand);}
-.offer-circle .num sup{font-size:.5em;vertical-align:.6em;}
-.offer-circle small{margin-top:.25rem;font-size:var(--t-2xs);line-height:1.25;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);}
-.offer-badge{position:absolute;right:calc(var(--sp-2) * -.4);top:calc(var(--sp-2) * -.5);width:clamp(74px,calc(var(--u) * 7.4),108px);transition:transform .6s var(--ease);}
-.offer-badge img{width:100%;background:var(--white);border-radius:50%;}
-.offer-badge:hover{transform:rotate(-5deg);}
-
-/* ---------- 3. INTRO ---------- */
-.intro{padding:var(--sec-y) 0 0;background:#fff;}
-.intro-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--sp-4) clamp(2rem,4.5vw,5rem);padding-left:var(--gutter);align-items:center;}
-.intro-text .h2{margin-bottom:var(--sp-2);font-size:calc(var(--t-h2) * .86);}
-.intro-text .lead{font-size:calc(var(--t-lead) * .96);line-height:1.5;}
-.intro-body p{margin-top:calc(var(--t-body) * .7);font-size:var(--t-body);line-height:1.6;}
-.intro-body strong{color:var(--ink);font-weight:700;}
-.intro-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-3);}
-.ta-chip{display:flex;align-items:center;gap:.9rem;text-decoration:none;font-size:var(--t-sm);line-height:1.4;}
-.ta-chip img{width:clamp(56px,calc(var(--u) * 5.4),80px);flex:none;transition:transform .6s var(--ease);}
-.ta-chip:hover img{transform:rotate(-5deg);}
-.ta-chip strong{display:block;color:var(--ink);font-weight:700;}
-.carousel{position:relative;min-width:0;--h:clamp(300px,58vw,460px);}
-.track{display:flex;align-items:flex-start;gap:clamp(10px,calc(var(--u) * 1.15),18px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;}
-.track::-webkit-scrollbar{display:none;}
-.track li{flex:none;height:var(--h);scroll-snap-align:start;overflow:hidden;}
-.track li:nth-child(even){height:calc(var(--h) * .84);margin-top:calc(var(--h) * .16);}
-.track img{height:100%;width:auto;max-width:none;object-fit:cover;}
-.carousel-ui{display:flex;align-items:center;gap:var(--sp-2);margin-top:var(--sp-2);}
-.carousel-script{position:absolute;left:clamp(.8rem,calc(var(--u) * 2),2.6rem);bottom:calc(var(--sp-4) * 1.5 + 2.2rem);z-index:2;color:var(--brand);font-size:calc(var(--t-script) * .95);text-shadow:0 0 14px #fff,0 0 4px #fff;pointer-events:none;}
-
-/* ---------- 4. ACCORDION ROWS (shared) + TAKEAWAY ---------- */
-.rows{border-top:1px solid var(--gold-soft);}
-details.row{border-bottom:1px solid var(--gold-soft);}
-details.row summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:var(--sp-2) 0;font-family:var(--sans);font-size:calc(var(--t-lead) * 1.08);line-height:1.25;cursor:pointer;list-style:none;color:var(--ink);transition:color .25s;}
-details.row summary::-webkit-details-marker{display:none;}
-details.row summary:hover,details.row[open]>summary{color:var(--brand);}
-.plus{flex:none;display:grid;place-items:center;width:clamp(32px,calc(var(--u) * 2.8),42px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold);background:transparent;color:inherit;transition:transform .4s var(--ease),background-color .25s,color .25s,border-color .25s;}
-.plus .ic{width:42%;height:42%;}
-details.row:hover .plus{background:var(--gold-soft);}
-details[open].row>summary .plus{transform:rotate(45deg);background:var(--brand);border-color:var(--brand);color:#fff;}
-.row-body{padding:0 clamp(0rem,4vw,4rem) var(--sp-3) 0;max-width:74ch;font-size:var(--t-body);line-height:1.65;}
-.row-body a{color:var(--brand-dark);text-underline-offset:3px;}
-details[open] .row-body{animation:accIn .5s var(--ease);}
-@keyframes accIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
-.faq-sec{padding:var(--sp-3) 0;background:#fff;}
-.faq-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);align-items:stretch;}
-.faq-photo{position:relative;overflow:hidden;min-height:220px;}
-.faq-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.takeaway{padding:0 0 var(--sec-y);background:#fff;}
-.takeaway-card{position:relative;display:flex;align-items:center;gap:var(--sp-3) var(--sp-4);flex-wrap:wrap;padding:var(--sp-3) var(--sp-4);background:var(--brand);color:#fff;}
-.takeaway .bag{flex:none;display:grid;place-items:center;width:clamp(50px,calc(var(--u) * 4.8),70px);aspect-ratio:1;border-radius:50%;background:var(--gold-soft);color:var(--brand-dark);}
-.takeaway .bag .ic{width:48%;height:48%;}
-.takeaway-copy{flex:1 1 420px;}
-.takeaway h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.15;}
-.takeaway p{margin-top:.5rem;color:rgba(255,255,255,.94);font-size:var(--t-body);line-height:1.55;}
-.takeaway p a{color:#fff;text-underline-offset:3px;}
-
-/* ---------- 5. THREE CARDS ---------- */
-.trio{padding:var(--sec-y) 0;background:var(--cream-2);}
-.trio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-2);align-items:stretch;}
-.t-card{position:relative;display:flex;flex-direction:column;padding:var(--sp-4);}
-.t-card h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.12;margin-bottom:var(--sp-1);}
-.t-card p{font-size:var(--t-body);line-height:1.55;}
-.t-card .text-link{margin-top:auto;align-self:flex-start;}
-.t-menu{background:#fff;border:1px solid var(--gold-soft);text-align:center;align-items:center;justify-content:center;gap:var(--sp-1);}
-.t-menu h2{color:var(--ink);}
-.t-menu .peacock{width:clamp(48px,calc(var(--u) * 4.6),68px);height:auto;aspect-ratio:84/50;margin-bottom:var(--sp-1);color:var(--gold);}
-.t-menu .menu-line{margin-top:var(--sp-3);font-size:var(--t-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--brand);}
-.t-menu .dish{margin-top:.25rem;color:var(--ink);font-family:var(--sans);font-size:calc(var(--t-lead) * .94);line-height:1.5;}
-.t-menu .text-link{margin-top:var(--sp-3);align-self:center;}
-.t-menu .lede{color:var(--text);}
-.t-quotes{background:var(--cream);}
-.t-quotes .quote-mark{flex:none;align-self:flex-start;width:clamp(42px,calc(var(--u) * 3.8),56px);height:clamp(42px,calc(var(--u) * 3.8),56px);border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;margin-bottom:var(--sp-2);}
-.t-quotes .quote-mark .ic{width:52%;height:52%;}
-.t-quotes h2{color:var(--ink);}
-.t-quotes blockquote{margin:0;}
-.t-quotes blockquote+blockquote{margin-top:var(--sp-2);padding-top:var(--sp-2);border-top:1px solid rgba(0,0,0,.14);}
-.t-quotes blockquote p{font-family:var(--sans);font-size:calc(var(--t-lead) * .86);line-height:1.5;color:var(--ink);}
-.t-quotes cite{display:block;margin-top:.5rem;font-size:var(--t-2xs);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);}
-.t-quotes .text-link{margin-top:var(--sp-3);}
-.t-party{padding:0;color:#fff;background:#1a120e;justify-content:flex-end;overflow:hidden;}
-.t-party>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease);}
-.t-party:hover>img{transform:scale(1.04);}
-.t-party::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(4,13,16,.94) 8%,rgba(4,13,16,.78) 44%,rgba(4,13,16,.1) 100%);}
-.party-copy{position:relative;z-index:2;padding:var(--sp-4);}
-.t-party h2{color:var(--gold-soft);}
-.party-copy p{color:rgba(255,255,255,.94);}
-.party-copy p+p{margin-top:.5rem;}
-.party-copy .text-link{color:#fff;border-color:var(--gold-soft);margin-top:var(--sp-2);}
-.party-copy .text-link:hover{color:var(--gold-soft);}
-
-/* ---------- 6. THE BEST INDIAN RESTAURANT ---------- */
-.best{padding:var(--sec-y) 0;background:var(--cream);}
-.best-grid{display:grid;grid-template-columns:minmax(0,6.4fr) minmax(0,5.6fr);gap:var(--sp-4) clamp(2rem,5vw,6rem);align-items:center;}
-.best .h2{margin-bottom:var(--sp-2);font-size:calc(var(--t-h2) * .9);}
-.best .lead{max-width:34em;font-size:calc(var(--t-lead) * .96);}
-.best .cols{margin-top:var(--sp-3);column-gap:var(--sp-4);font-size:var(--t-body);line-height:1.6;}
-.best .cols p{break-inside:avoid;margin-bottom:.9rem;}
-.mosaic{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:1fr 1fr;gap:var(--sp-1);min-height:clamp(320px,52vw,520px);}
-.mosaic figure{position:relative;overflow:hidden;background:#1a120e;}
-.mosaic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.mosaic .m1{grid-row:1/3;}
-
-/* ---------- 7. PRE & POST DINING ---------- */
-.prepost{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;min-height:clamp(480px,74vh,720px);padding:var(--sec-y) 0;color:#fff;text-align:center;background:#1a0e0b;overflow:hidden;}
-.prepost>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 40%;}
-.prepost::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle farthest-side at 50% 50%,rgba(4,13,16,.42) 0,rgba(4,13,16,.62) 55%,rgba(4,13,16,.86) 100%);}
-.prepost-copy{max-width:clamp(320px,calc(var(--u) * 62),880px);margin:0 auto;}
-.prepost-copy .script{margin-bottom:.2rem;text-shadow:0 2px 14px rgba(0,0,0,.5);}
-.prepost-copy .h2{text-shadow:0 2px 20px rgba(0,0,0,.5);}
-.prepost-copy .h2{color:#fff;margin-bottom:var(--sp-2);font-size:calc(var(--t-h2) * .96);}
-.prepost-copy .h2 em{color:var(--gold-soft);}
-.prepost-copy p:not(.script){color:rgba(255,255,255,.94);font-size:var(--t-body);line-height:1.6;max-width:56ch;margin-left:auto;margin-right:auto;}
-.prepost-ctas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--sp-2);margin-top:var(--sp-3);}
-
-/* ---------- 8. WHY OUR GUESTS LOVE ---------- */
-.why{padding:var(--sec-y) 0;background:#fff;}
-.why-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-3) var(--sp-4);align-items:start;}
-.why-main,.why-split{display:contents;}
-.why-title{order:1;max-width:18em;font-size:calc(var(--t-h2) * .84);}
-.why-photo{order:2;position:relative;overflow:hidden;aspect-ratio:21/9;}
-@media (max-width:640px){.why-photo{aspect-ratio:16/10;}}
-.why-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;}
-.why-cols{order:3;}
-.why-list{order:4;}
-.why-cols p{margin-bottom:.8rem;font-size:var(--t-body);line-height:1.6;}
-.why-list details.row summary{font-size:calc(var(--t-lead) * .96);padding:var(--sp-1) 0;}
-.why-list .row-body{padding-right:1rem;}
-
-/* ---------- 9. EXPERIENCE + MENU TILES ---------- */
-.exp{padding:var(--sec-y) 0;background:var(--cream-2);}
-.exp-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);}
-.exp-head .h2{font-size:calc(var(--t-h2) * .84);}
-.exp-head p{margin-top:var(--sp-2);font-size:var(--t-body);line-height:1.6;}
-.exp-head a{color:var(--brand-dark);text-underline-offset:3px;}
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);}
-.tile{position:relative;display:block;min-height:clamp(260px,50vh,540px);overflow:hidden;color:#fff;text-decoration:none;background:#1a120e;}
-.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease);}
-.tile:hover img,.tile:focus-visible img{transform:scale(1.05);}
-.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,13,16,.86) 0,rgba(4,13,16,.1) 58%);}
-.tile-label{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:var(--sp-3);}
-.tile-label h3{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.1;color:#fff;margin:0;}
-.tile .go{display:inline-flex;align-items:center;justify-content:center;width:clamp(38px,calc(var(--u) * 3.4),50px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold-soft);color:var(--gold-soft);transition:background-color .3s,color .3s;}
-.tile:hover .go{background:var(--gold-soft);color:var(--ink);}
-.tile .go .ic{width:48%;height:48%;}
-
-/* ---------- stacked layouts (tablet and phone) ---------- */
-@media (max-width:1100px){
-  .hero-strip{grid-template-columns:1fr;text-align:center;}
-  .strip-l{padding-right:0;border-right:0;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:var(--sp-2);}
-  .strip-m{justify-items:center;}
-  .strip-badge{justify-self:center;}
-  .offer-grid{grid-template-columns:1fr;}
-  .intro-grid{grid-template-columns:1fr;padding-right:0;}
-  .intro-text{padding-right:var(--gutter-r);}
-  .trio-grid{grid-template-columns:1fr;max-width:640px;margin:0 auto;}
-  .t-party{min-height:520px;}
-  .best-grid{grid-template-columns:1fr;}
-  .best .cols{columns:1;}
-}
-@media (max-width:767px){
-  .hero-strip .strip-badge{display:none;}
-  .hero-count{display:none;}
-  .hero-arrows{display:none;}
-}
-@media (max-width:640px){
-  .hero-inner{padding-top:var(--sp-3);}
-  .when{grid-template-columns:1fr;}
-  .tiles{grid-template-columns:1fr;}
-  .hero-ctas .btn{flex:1 1 auto;}
-  .row-body{padding-right:0;}
-  .offer-media{padding-left:0;padding-bottom:0;}
-  .offer-circle{position:relative;margin:calc(var(--sp-4) * -1) 0 0 var(--sp-2);}
-}
-
-/* ==========================================================================
-   FIT TO SCREEN (desktop, at least 1101px wide and 600px tall).
-   Each section is at least one screen tall and vertically centred. Text,
-   spacing and photographs all scale with --u, so they shrink together on short
-   laptop screens. If a section still needs more room it grows; it never clips.
-   ========================================================================== */
-@media (min-width:1101px) and (min-height:600px){
-  html{scroll-snap-type:y proximity;}
-  .hero,.offer,.intro,.trio,.best,.prepost,.why,.exp,.location{scroll-snap-align:start;}
-
-  .hero{min-height:max(500px,calc(100svh - var(--topbar-h) - var(--nav-h) - var(--marq-h)));}
-  .hero-inner{justify-content:flex-end;flex:1;}
-
-  .offer,.intro,.trio,.best,.why,.exp{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--nav-h) + var(--sec-y));padding-bottom:var(--sec-y);}
-  .intro{padding-bottom:0;}
-  .soho .faq-sec{padding-top:var(--sp-3);padding-bottom:var(--sp-3);}
-  .soho .takeaway{padding:0 0 var(--sec-y);}
-  .faq-grid{grid-template-columns:minmax(0,3.2fr) minmax(0,8.8fr);gap:clamp(1.5rem,3.5vw,4rem);}
-  .faq-photo{min-height:0;}
-
-  .carousel{--h:calc(var(--u) * 44);}
-  .trio-grid{grid-template-columns:1fr 1fr 1.25fr;min-height:calc(var(--u) * 41);}
-  .best .cols{columns:2;}
-  .mosaic{min-height:calc(var(--u) * 40);}
-
-  .prepost{min-height:100svh;padding-top:calc(var(--nav-h) + var(--sec-y));}
-
-  .why-grid{grid-template-columns:minmax(0,3fr) minmax(0,4.7fr) minmax(0,4.3fr);grid-template-areas:"title title title" "photo cols list";column-gap:clamp(1.5rem,3vw,3.5rem);row-gap:var(--sp-3);align-items:start;}
-  .why-title{grid-area:title;max-width:none;order:0;}
-  .why-photo{grid-area:photo;order:0;aspect-ratio:auto;align-self:stretch;min-height:calc(var(--u) * 30);}
-  .why-cols{grid-area:cols;order:0;}
-  .why-list{grid-area:list;order:0;}
-
-  .exp-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,4vw,5rem);align-items:center;}
-  .tile{min-height:calc(var(--u) * 40);}
-}
-</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- preloader: same sequence as the Pandhal site (gold circle + logo, swells away once the page has loaded). Uses the footer logo. -->
-<div class="preloader" id="preloader" aria-hidden="true"><div class="circle"></div><img class="logo" src="images/logo.svg" width="140" height="140" alt=""></div>
+<div class="preloader" id="preloader" aria-hidden="true"><div class="circle"></div><img class="logo" src="assets/images/logo.svg" width="140" height="140" alt=""></div>
 
 <!-- icon sprite: Phosphor Icons (MIT) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -414,30 +133,30 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
         <ul>
           <li><a href="/" aria-label="Home" aria-current="page"><svg class="ic home-ic" aria-hidden="true"><use href="#i-home"/></svg></a></li>
           <li class="has-sub">
-            <a href="/about-us/">About <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
+            <a class="fliplink" href="/about-us/"><span class="Link" data-after="About"><span>About</span></span> <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
             <ul class="sub"><li><a href="/about-us/history/">History</a></li></ul>
           </li>
           <li class="has-sub">
-            <a href="/menus/">Menu <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
+            <a class="fliplink" href="/menus/"><span class="Link" data-after="Menu"><span>Menu</span></span> <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
             <ul class="sub">
               <li><a href="/menus/main-menu/">Food Menu</a></li>
               <li><a href="/menus/drinks-menu/">Drinks Menu</a></li>
             </ul>
           </li>
-          <li><a href="/pre-post-theatre-dining/">Pre- and Post-Dining</a></li>
+          <li><a class="fliplink" href="/pre-post-theatre-dining/"><span class="Link" data-after="Pre- and Post-Dining"><span>Pre- and Post-Dining</span></span></a></li>
         </ul>
       </nav>
 
       <a class="brand" href="/" aria-label="The Delhi Brasserie, Soho. Since 1985. Home">
-        <img src="images/logo-header.svg" width="1371" height="1024" alt="The Delhi Brasserie, Soho. Since 1985">
+        <img src="assets/images/logo-header.svg" width="1371" height="1024" alt="The Delhi Brasserie, Soho. Since 1985">
       </a>
 
       <nav class="nav nav-right" aria-label="More pages">
         <ul>
-          <li><a href="/about-us/gallery/">Gallery</a></li>
-          <li><a href="/new-blog/">Blog</a></li>
-          <li><a href="/reviews/">Review</a></li>
-          <li><a href="/influencer-videos/">Influencer videos</a></li>
+          <li><a class="fliplink" href="/about-us/gallery/"><span class="Link" data-after="Gallery"><span>Gallery</span></span></a></li>
+          <li><a class="fliplink" href="/new-blog/"><span class="Link" data-after="Blog"><span>Blog</span></span></a></li>
+          <li><a class="fliplink" href="/reviews/"><span class="Link" data-after="Review"><span>Review</span></span></a></li>
+          <li><a class="fliplink" href="/influencer-videos/"><span class="Link" data-after="Influencer videos"><span>Influencer videos</span></span></a></li>
         </ul>
       </nav>
 
@@ -451,7 +170,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
 <aside class="drawer" id="drawer" aria-label="Menu">
   <div class="drawer-top">
-    <img src="images/logo.svg" width="64" height="64" alt="The Delhi Brasserie">
+    <img src="assets/images/logo.svg" width="64" height="64" alt="The Delhi Brasserie">
     <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
   </div>
   <nav class="drawer-main" aria-label="Site pages">
@@ -495,9 +214,9 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 <!-- ======================= 1. HERO ======================= -->
 <section class="hero" id="top" aria-label="Welcome to The Delhi Brasserie" data-hero>
   <div class="hero-slides" aria-hidden="true">
-    <div class="hero-slide is-active"><img src="images/restaurant/storefront.jpg" width="2400" height="1814" alt="" fetchpriority="high"></div>
-    <div class="hero-slide"><img src="images/restaurant/hall-1.jpg" width="2000" height="1333" alt="" loading="lazy" decoding="async"></div>
-    <div class="hero-slide"><img src="images/restaurant/room-3.jpg" width="2000" height="1333" alt="" loading="lazy" decoding="async"></div>
+    <div class="hero-slide is-active"><img src="assets/images/restaurant/storefront.jpg" width="2400" height="1814" alt="" fetchpriority="high"></div>
+    <div class="hero-slide"><img src="assets/images/restaurant/hall-1.jpg" width="2000" height="1333" alt="" loading="lazy" decoding="async"></div>
+    <div class="hero-slide"><img src="assets/images/restaurant/room-3.jpg" width="2000" height="1333" alt="" loading="lazy" decoding="async"></div>
   </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
@@ -517,7 +236,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
         <a href="tel:+442074378261"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span>020 7437 8261 <small>after 4 PM</small></span></a>
         <a href="https://wa.me/447562600591" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>07562 600591 <small>WhatsApp, any time</small></span></a>
       </div>
-      <a class="strip-badge" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Winner 2024 and 2025 (opens Tripadvisor)"><img src="images/badge-winner-light.svg" width="200" height="200" alt="Tripadvisor Winner 2024 and 2025"></a>
+      <a class="ta-badges ta-badges--light" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Travellers' Choice Awards 2024 and 2025 (opens Tripadvisor)"><img src="assets/images/tripadvisor/travellers-choice-2024.png" width="200" height="220" alt="Tripadvisor Travellers' Choice Awards 2024"><img src="assets/images/tripadvisor/travellers-choice-2025.png" width="200" height="220" alt="Tripadvisor Travellers' Choice Awards 2025"></a>
     </div>
   </div>
   <p class="hero-count" aria-hidden="true"><span class="cur" data-count-cur>01</span><span>/</span><span class="tot" data-count-tot>03</span></p>
@@ -566,9 +285,9 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
       <p class="offer-note"><strong>Blue Badge holders</strong> receive 10% off.</p>
     </div>
     <div class="offer-media reveal" style="--d:.12s">
-      <figure class="offer-photo reveal-mask"><img src="images/restaurant/detail-table.jpg" width="1500" height="1076" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of red wine and fresh roses"></figure>
+      <figure class="offer-photo reveal-mask"><img src="assets/images/restaurant/detail-table.jpg" width="1500" height="1076" loading="lazy" decoding="async" alt="A table laid with white linen, a bottle of red wine and fresh roses"></figure>
       <div class="offer-circle" aria-hidden="true"><span class="num">10<sup>%</sup></span><small>off your<br>total bill</small></div>
-      <a class="offer-badge" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Winner 2024 and 2025 (opens Tripadvisor)"><img src="images/badge-winner-dark.svg" width="200" height="200" loading="lazy" alt="Tripadvisor Winner 2024 and 2025"></a>
+      <a class="offer-badge ta-badges" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Travellers' Choice Awards 2024 and 2025 (opens Tripadvisor)"><img src="assets/images/tripadvisor/travellers-choice-2024.png" width="200" height="220" loading="lazy" decoding="async" alt="Tripadvisor Travellers' Choice Awards 2024"><img src="assets/images/tripadvisor/travellers-choice-2025.png" width="200" height="220" loading="lazy" decoding="async" alt="Tripadvisor Travellers' Choice Awards 2025"></a>
     </div>
   </div>
 </section>
@@ -588,7 +307,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
       <div class="intro-actions">
         <a class="btn btn-gold" href="/about-us/history/">Discover our story <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="ta-chip" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener">
-          <img src="images/badge-winner-dark.svg" width="200" height="200" loading="lazy" alt="">
+          <span class="ta-badges"><img src="assets/images/tripadvisor/travellers-choice-2024.png" width="200" height="220" loading="lazy" decoding="async" alt="Tripadvisor Travellers' Choice Awards 2024"><img src="assets/images/tripadvisor/travellers-choice-2025.png" width="200" height="220" loading="lazy" decoding="async" alt="Tripadvisor Travellers' Choice Awards 2025"></span>
           <span><strong>Tripadvisor Winner 2024 and 2025</strong>Read what guests say</span>
         </a>
       </div>
@@ -596,12 +315,12 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 
     <div class="carousel reveal" data-carousel data-interval="5500" role="group" aria-roledescription="carousel" aria-label="Photos of the restaurant" style="--d:.1s">
       <ul class="track" data-track tabindex="0" aria-label="Restaurant photos. Scroll sideways to see more.">
-        <li><img src="images/restaurant/hall-1.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="Long dining room with white tablecloths, patterned mirrors and hanging lanterns"></li>
-        <li><img src="images/restaurant/table-1.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table set with white linen, a bottle of red wine and roses"></li>
-        <li><img src="images/restaurant/detail-fish.jpg" width="1800" height="952" loading="lazy" decoding="async" alt="Fish mural and an arched niche on a dining room wall"></li>
-        <li><img src="images/restaurant/sign-1.jpg" width="1259" height="1600" loading="lazy" decoding="async" alt="The hanging Delhi Brasserie Indian Cuisine sign above the restaurant window"></li>
-        <li><img src="images/restaurant/room-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="Dining room with a chandelier and tables laid for dinner"></li>
-        <li><img src="images/restaurant/hall-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The main dining hall lit by lanterns, with carved wall panels"></li>
+        <li><img src="assets/images/restaurant/hall-1.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="Long dining room with white tablecloths, patterned mirrors and hanging lanterns"></li>
+        <li><img src="assets/images/restaurant/table-1.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="A table set with white linen, a bottle of red wine and roses"></li>
+        <li><img src="assets/images/restaurant/detail-fish.jpg" width="1800" height="952" loading="lazy" decoding="async" alt="Fish mural and an arched niche on a dining room wall"></li>
+        <li><img src="assets/images/restaurant/sign-1.jpg" width="1259" height="1600" loading="lazy" decoding="async" alt="The hanging Delhi Brasserie Indian Cuisine sign above the restaurant window"></li>
+        <li><img src="assets/images/restaurant/room-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="Dining room with a chandelier and tables laid for dinner"></li>
+        <li><img src="assets/images/restaurant/hall-3.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="The main dining hall lit by lanterns, with carved wall panels"></li>
       </ul>
       <p class="carousel-script script" aria-hidden="true">Since 1985</p>
       <div class="carousel-ui">
@@ -617,7 +336,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 <div class="soho">
   <section class="faq-sec" aria-label="Why Delhi Brasserie">
     <div class="wrap faq-grid">
-      <figure class="faq-photo reveal-mask"><img src="images/restaurant/detail-mirrors.jpg" width="1523" height="1600" loading="lazy" decoding="async" alt="Jewel-coloured mirrors and carved panels on the dining room wall"></figure>
+      <figure class="faq-photo reveal-mask"><img src="assets/images/restaurant/detail-mirrors.jpg" width="1523" height="1600" loading="lazy" decoding="async" alt="Jewel-coloured mirrors and carved panels on the dining room wall"></figure>
       <div class="rows faq reveal">
         <details class="row" name="soho">
           <summary>Best Indian Restaurant London Soho <span class="plus"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
@@ -677,7 +396,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
     </article>
 
     <article class="t-card t-party reveal" style="--d:.16s">
-      <img src="images/restaurant/room-2.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="A private dining area with tables set for a group">
+      <img src="assets/images/restaurant/room-2.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="A private dining area with tables set for a group">
       <div class="party-copy">
         <h2>Private Party Rooms</h2>
         <p>Whatever the time of year there&rsquo;s always a reason to get together with family &amp; friends and the Delhi Brasserie Soho offers the perfect place &amp; space.</p>
@@ -702,9 +421,9 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
       </div>
     </div>
     <div class="mosaic reveal" style="--d:.12s">
-      <figure class="m1"><img src="images/restaurant/detail-lanterns.jpg" width="1800" height="1463" loading="lazy" decoding="async" alt="Jewel-coloured lanterns and a flower arrangement in the dining room"></figure>
-      <figure><img src="images/restaurant/detail-fish.jpg" width="1800" height="952" loading="lazy" decoding="async" alt="Fish mural and an arched niche on a dining room wall"></figure>
-      <figure><img src="images/restaurant/detail-elephant.jpg" width="1500" height="1118" loading="lazy" decoding="async" alt="A white elephant statue beside tables laid for dinner"></figure>
+      <figure class="m1"><img src="assets/images/restaurant/detail-lanterns.jpg" width="1800" height="1463" loading="lazy" decoding="async" alt="Jewel-coloured lanterns and a flower arrangement in the dining room"></figure>
+      <figure><img src="assets/images/restaurant/detail-fish.jpg" width="1800" height="952" loading="lazy" decoding="async" alt="Fish mural and an arched niche on a dining room wall"></figure>
+      <figure><img src="assets/images/restaurant/detail-elephant.jpg" width="1500" height="1118" loading="lazy" decoding="async" alt="A white elephant statue beside tables laid for dinner"></figure>
     </div>
     
   </div>
@@ -712,7 +431,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 
 <!-- ======================= 7. PRE & POST DINING ======================= -->
 <section class="prepost" aria-labelledby="prepost-h">
-  <img src="images/restaurant/hall-4.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="">
+  <img src="assets/images/restaurant/hall-4.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="">
   <div class="wrap">
     <div class="prepost-copy reveal">
       <p class="script">Pre &amp; Post- Dining</p>
@@ -729,7 +448,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 <!-- ======================= 8. WHY OUR GUESTS LOVE ======================= -->
 <section class="why" aria-labelledby="why-h">
   <div class="wrap why-grid">
-    <figure class="why-photo reveal-mask"><img src="images/restaurant/sign-2.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="The hanging Delhi Brasserie Indian Cuisine sign above the entrance"></figure>
+    <figure class="why-photo reveal-mask"><img src="assets/images/restaurant/sign-2.jpg" width="1067" height="1600" loading="lazy" decoding="async" alt="The hanging Delhi Brasserie Indian Cuisine sign above the entrance"></figure>
     <div class="why-main">
       <h2 class="h2 why-title reveal" id="why-h">Why Our Guests Love Our <em>Authentic Indian Restaurant</em> in Soho London</h2>
       <div class="why-split">
@@ -779,11 +498,11 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
     </div>
     <div class="tiles">
       <a class="tile reveal-mask" href="/menus/main-menu/">
-        <img src="images/restaurant/detail-rose.jpg" width="1358" height="1500" loading="lazy" decoding="async" alt="A place setting with white linen, a bottle of red wine and roses">
+        <img src="assets/images/restaurant/detail-rose.jpg" width="1358" height="1500" loading="lazy" decoding="async" alt="A place setting with white linen, a bottle of red wine and roses">
         <span class="tile-label"><h3>Food Menu</h3><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
       <a class="tile reveal-mask" href="/menus/drinks-menu/" style="--d:.12s">
-        <img src="images/restaurant/detail-glass.jpg" width="1500" height="1400" loading="lazy" decoding="async" alt="Wine glasses, a bottle and a candle on a table laid for dinner">
+        <img src="assets/images/restaurant/detail-glass.jpg" width="1500" height="1400" loading="lazy" decoding="async" alt="Wine glasses, a bottle and a candle on a table laid for dinner">
         <span class="tile-label"><h3>Drinks Menu</h3><span class="go" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span></span>
       </a>
     </div>
@@ -844,7 +563,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
 <footer class="site-footer">
   <div class="wrap footer-top">
     <div class="footer-brand">
-      <img src="images/logo.svg" width="112" height="112" loading="lazy" alt="The Delhi Brasserie, Soho">
+      <img src="assets/images/logo.svg" width="112" height="112" loading="lazy" alt="The Delhi Brasserie, Soho">
       <p>Authentic Indian cuisine in the heart of Soho, London.</p>
       <p class="estd">Estd 1985</p>
     </div>
@@ -884,7 +603,7 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
   <p class="footer-word" aria-hidden="true"><span>Delhi Brasserie</span></p>
   <div class="footer-bottom">
     <div class="wrap footer-bottom-in">
-      <div class="bl"><img src="images/logo.svg" width="38" height="38" loading="lazy" alt=""><span>&copy; 2013-26 Delhi Brasserie</span></div>
+      <div class="bl"><img src="assets/images/logo.svg" width="38" height="38" loading="lazy" alt=""><span>&copy; 2013-26 Delhi Brasserie</span></div>
       <ul>
         <li><a href="/privacy-policy/">Privacy Policy</a></li>
         <li><a href="/cookie-policy/">Cookie Policy</a></li>
@@ -895,6 +614,6 @@ details[open] .row-body{animation:accIn .5s var(--ease);}
   </div>
 </footer>
 
-<script src="delhi.js" defer></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

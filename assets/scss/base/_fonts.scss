@@ -1,0 +1,7 @@
+// Fonts
+// Self-hosted. Gallery Modern is for titles only; ITC Kabel is body text; Brittany Signature is the script accent.
+
+@font-face{font-family:'ITC Kabel Std';src:url('../fonts/ITCKabelStd-Book.woff2') format('woff2'),url('../fonts/ITCKabelStd-Book.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'ITC Kabel Std';src:url('../fonts/ITCKabelStd-Demi.woff2') format('woff2'),url('../fonts/ITCKabelStd-Demi.woff') format('woff');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Gallery Modern';src:url('../fonts/GalleryModernRegular.woff2') format('woff2'),url('../fonts/GalleryModernRegular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Brittany Signature';src:url('../fonts/BrittanySignatureRegular.woff2') format('woff2'),url('../fonts/BrittanySignatureRegular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}

@@ -1,0 +1,22 @@
+// Home: intro and photo carousel
+
+/* ---------- 3. INTRO ---------- */
+.intro{padding:var(--sec-y) 0 0;background:#fff;}
+.intro-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--sp-4) clamp(2rem,4.5vw,5rem);padding-left:var(--gutter);align-items:center;}
+.intro-text .h2{margin-bottom:var(--sp-2);font-size:calc(var(--t-h2) * .86);}
+.intro-text .lead{font-size:calc(var(--t-lead) * .96);line-height:1.5;}
+.intro-body p{margin-top:calc(var(--t-body) * .7);font-size:var(--t-body);line-height:1.6;}
+.intro-body strong{color:var(--ink);font-weight:700;}
+.intro-actions{display:flex;flex-wrap:nowrap;align-items:center;gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-3);}
+.ta-chip{display:flex;align-items:center;gap:.9rem;text-decoration:none;font-size:var(--t-sm);line-height:1.4;}
+.ta-chip strong{display:block;color:var(--ink);font-weight:700;}
+.carousel{position:relative;min-width:0;--h:clamp(300px,58vw,460px);}
+.track{display:flex;align-items:flex-start;gap:clamp(10px,calc(var(--u) * 1.15),18px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;}
+.track::-webkit-scrollbar{display:none;}
+.track li{flex:none;height:var(--h);scroll-snap-align:start;overflow:hidden;}
+.track li:nth-child(even){height:calc(var(--h) * .84);margin-top:calc(var(--h) * .16);}
+.track img{height:100%;width:auto;max-width:none;object-fit:cover;}
+.carousel-ui{display:flex;align-items:center;gap:var(--sp-2);margin-top:var(--sp-2);}
+.carousel-script{position:absolute;left:clamp(.8rem,calc(var(--u) * 2),2.6rem);bottom:calc(var(--sp-4) * 1.5 + 2.2rem);z-index:2;color:var(--brand);font-size:calc(var(--t-script) * .95);text-shadow:0 0 14px #fff,0 0 4px #fff;pointer-events:none;}
+.ta-chip .ta-badges{flex:none;}
+.ta-chip:hover .ta-badges{transform:translateY(-3px);}

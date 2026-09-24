@@ -1,0 +1,7 @@
+// Glass strip
+// Blur 25px on 20% white, as on the Pandhal hero.
+
+/* glass strip (blur 25px on a 20% white, as on the Pandhal hero) */
+.glass{background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(25px);backdrop-filter:blur(25px);color:#fff;}
+@media (prefers-reduced-transparency:reduce){.glass{background:rgba(40,20,15,.9);-webkit-backdrop-filter:none;backdrop-filter:none;}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(40,20,15,.78);}}

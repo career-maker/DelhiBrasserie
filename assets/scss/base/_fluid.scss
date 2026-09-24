@@ -1,0 +1,52 @@
+// Fluid type and spacing scale
+// Every text size is a clamp() built on --u. Change the scale here, not per section.
+
+@use '../abstracts/mixins' as *;
+
+/* ==========================================================================
+   FLUID SCALE. Every text size is a clamp(): a minimum that stays readable,
+   a preferred size that follows the screen (--u), and a maximum.
+   --u is the fluid unit. Stacked layouts (phones, tablets) follow the width.
+   Fit-to-screen desktops follow whichever is smaller, width or height, so type,
+   spacing and photographs shrink together on short laptop screens.
+   ========================================================================== */
+:root{
+  --u:1vw;
+  --m-eyebrow:1rem;--m-2xs:.8rem;--m-xs:.86rem;--m-sm:.96rem;--m-body:1.02rem;--m-lead:1.15rem;--m-h3:1.55rem;--m-h2:1.9rem;--m-hero:2.15rem;--m-script:1.9rem;--m-num:2.6rem;
+  --t-eyebrow:clamp(var(--m-eyebrow),calc(var(--u) * 1.3),1.35rem);
+  --t-2xs:clamp(var(--m-2xs),calc(var(--u) * .9),.9rem);
+  --t-xs:clamp(var(--m-xs),calc(var(--u) * 1.08),1.1rem);
+  --t-sm:clamp(var(--m-sm),calc(var(--u) * 1.12),1.15rem);
+  --t-body:clamp(var(--m-body),calc(var(--u) * 1.26),1.42rem);
+  --t-lead:clamp(var(--m-lead),calc(var(--u) * 1.55),1.75rem);
+  --t-h3:clamp(var(--m-h3),calc(var(--u) * 2.15),2.4rem);
+  --t-h2:clamp(var(--m-h2),calc(var(--u) * 3.35),4rem);
+  --t-hero:clamp(var(--m-hero),calc(var(--u) * 4.05),4.4rem);
+  --t-script:clamp(var(--m-script),calc(var(--u) * 3.6),4.2rem);
+  --t-num:clamp(var(--m-num),calc(var(--u) * 3.7),4.4rem);
+  /* header text */
+  --t-top:clamp(.74rem,.46rem + .42vw,.95rem);
+  --t-nav:clamp(.8rem,.5rem + .55vw,1.06rem);
+  /* spacing that scales with the same unit */
+  --sp-1:clamp(.5rem,calc(var(--u) * .6),.85rem);
+  --sp-2:clamp(.85rem,calc(var(--u) * 1.1),1.4rem);
+  --sp-3:clamp(1.2rem,calc(var(--u) * 1.8),2.2rem);
+  --sp-4:clamp(1.7rem,calc(var(--u) * 2.8),3.4rem);
+  --sec-y:clamp(3.5rem,calc(var(--u) * 7),7.5rem);
+  --gutter-r:var(--gutter);
+  --btn-h:clamp(46px,calc(var(--u) * 3.5),58px);
+}
+@include bp-fit{
+  :root{
+    --u:min(1vw,1.55vh);
+    --m-eyebrow:.86rem;--m-2xs:.7rem;--m-xs:.76rem;--m-sm:.8rem;--m-body:.84rem;--m-lead:.98rem;--m-h3:1.2rem;--m-h2:1.7rem;--m-hero:2rem;--m-script:1.7rem;--m-num:2.2rem;
+    --sp-1:clamp(.3rem,calc(var(--u) * .6),.85rem);
+    --sp-2:clamp(.5rem,calc(var(--u) * 1.1),1.4rem);
+    --sp-3:clamp(.7rem,calc(var(--u) * 1.8),2.2rem);
+    --sp-4:clamp(1rem,calc(var(--u) * 2.8),3.4rem);
+    --sec-y:clamp(1rem,calc(var(--u) * 2.3),3rem);
+    --btn-h:clamp(38px,calc(var(--u) * 3.3),56px);
+  }
+}
+@include bp-phone{:root{--topbar-h:34px;--nav-h:72px;--marq-h:46px;}}
+@include bp-tablet-up{:root{--gutter-r:max(var(--gutter),calc(var(--rail-w) + 1.4rem));}}

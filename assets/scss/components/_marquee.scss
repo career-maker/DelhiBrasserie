@@ -1,0 +1,29 @@
+// Booking notice marquee
+// The one moving strip on the page. Pauses on hover, focus and with the button.
+
+/* ==========================================================================
+   BOOKING MARQUEE (the one moving strip on the page)
+   ========================================================================== */
+.marquee{position:relative;overflow:hidden;background:var(--brand);color:#fff;min-height:var(--marq-h);display:flex;align-items:center;}
+.marquee-track{display:flex;width:max-content;animation:marquee 44s linear infinite;}
+.marquee:hover .marquee-track,.marquee:focus-within .marquee-track,.marquee.is-paused .marquee-track{animation-play-state:paused;}
+.marquee-group{display:flex;flex:none;align-items:center;}
+.marquee-item{display:flex;align-items:center;gap:1.4rem;padding:.7rem 1.4rem .7rem 0;font-size:var(--t-sm);letter-spacing:.02em;white-space:nowrap;}
+.marquee-item strong{font-weight:700;}
+.marquee-item .ic{width:1.3rem;height:1.3rem;color:var(--gold-soft);}
+.marquee-item a{text-decoration:underline;text-underline-offset:4px;}
+.marquee-item a:hover{color:var(--gold-soft);}
+@keyframes marquee{to{transform:translateX(-50%);}}
+.marquee-pause{position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;width:58px;padding:0;border:0;background:linear-gradient(90deg,transparent,var(--brand) 45%);color:#fff;}
+.marquee-pause .ic{width:1.15rem;height:1.15rem;}
+.marquee-pause .i-play{display:none;}
+.marquee.is-paused .marquee-pause .i-play{display:block;}
+.marquee.is-paused .marquee-pause .i-pause{display:none;}
+@media (prefers-reduced-motion:reduce){
+  .marquee-track{animation:none;width:auto;}
+  .marquee-group[aria-hidden="true"],.marquee-pause{display:none;}
+  .marquee-group{flex-wrap:wrap;justify-content:center;width:100%;}
+  .marquee-item{white-space:normal;text-align:center;padding:.9rem var(--gutter);}
+  .marquee-item .ic{display:none;}
+  .marquee-item:not(:first-child){display:none;}
+}

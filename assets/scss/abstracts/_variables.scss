@@ -1,0 +1,11 @@
+// Breakpoints
+// Everything below the stack width stacks; from the fit width up, desktop sections fit one screen.
+
+$bp-nav: 1200px;          // full navigation replaces the menu button
+$bp-stack: 1100px;        // at or below: sections stack (tablet and phone)
+$bp-fit-min-height: 600px; // desktop sections only fit-to-screen when the window is at least this tall
+$bp-tablet: 768px;
+$bp-mobile: 767.98px;
+$bp-small: 640px;
+$bp-narrow: 600px;
+$bp-phone: 575.98px;

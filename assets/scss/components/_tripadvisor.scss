@@ -1,0 +1,21 @@
+// Tripadvisor Travellers' Choice badges
+// Two supplied PNGs (2024, 2025), made transparent. Use --light on dark backgrounds.
+
+.ta-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(.15rem, .5vw, .5rem);
+  text-decoration: none;
+  transition: transform .5s var(--ease);
+
+  img {
+    display: block;
+    width: clamp(52px, calc(var(--u) * 5.2), 80px);
+    height: auto;
+  }
+
+  &:hover { transform: translateY(-3px); }
+
+  // black artwork turned white for dark photos and the glass strip
+  &--light img { filter: brightness(0) invert(1); }
+}

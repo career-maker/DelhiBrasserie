@@ -1,0 +1,16 @@
+// Accordion rows
+// Used by the Soho FAQ and the Why-guests-love list.
+
+.rows{border-top:1px solid var(--gold-soft);}
+details.row{border-bottom:1px solid var(--gold-soft);}
+details.row summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:var(--sp-2) 0;font-family:var(--sans);font-size:calc(var(--t-lead) * 1.08);line-height:1.25;cursor:pointer;list-style:none;color:var(--ink);transition:color .25s;}
+details.row summary::-webkit-details-marker{display:none;}
+details.row summary:hover,details.row[open]>summary{color:var(--brand);}
+.plus{flex:none;display:grid;place-items:center;width:clamp(32px,calc(var(--u) * 2.8),42px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold);background:transparent;color:inherit;transition:transform .4s var(--ease),background-color .25s,color .25s,border-color .25s;}
+.plus .ic{width:42%;height:42%;}
+details.row:hover .plus{background:var(--gold-soft);}
+details[open].row>summary .plus{transform:rotate(45deg);background:var(--brand);border-color:var(--brand);color:#fff;}
+.row-body{padding:0 clamp(0rem,4vw,4rem) var(--sp-3) 0;max-width:74ch;font-size:var(--t-body);line-height:1.65;}
+.row-body a{color:var(--brand-dark);text-underline-offset:3px;}
+details[open] .row-body{animation:accIn .5s var(--ease);}
+@keyframes accIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}

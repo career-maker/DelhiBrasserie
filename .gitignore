@@ -4,3 +4,6 @@ Thumbs.db
 
 # client documents (contain credentials) - never commit
 docs/
+
+# dependencies and build cache
+node_modules/

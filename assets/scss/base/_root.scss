@@ -1,0 +1,14 @@
+// Layout custom properties
+
+*,*::before,*::after{box-sizing:border-box;}
+:root{
+  --gutter:clamp(1.25rem,6vw,7rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --serif:'Gallery Modern',Georgia,'Times New Roman',serif;
+  --sans:'ITC Kabel Std','Trebuchet MS',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --script:'Brittany Signature','Segoe Script','Brush Script MT',cursive;
+  --rail-w:44px;
+  --topbar-h:40px;
+  --nav-h:88px;
+  --marq-h:52px;
+}

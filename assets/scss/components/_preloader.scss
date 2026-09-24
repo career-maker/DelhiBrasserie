@@ -1,0 +1,12 @@
+// Preloader
+// Same sequence as Pandhal. See assets/js/main.js.
+
+/* ==========================================================================
+   PRELOADER: same behaviour as the Pandhal site. A gold circle with the logo
+   sits on a light screen; once the page has loaded the circle swells to fill
+   the screen while the preloader fades out. Runs on every page load.
+   ========================================================================== */
+.preloader{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:var(--grey);transition:opacity .4s ease;}
+.preloader .circle{position:absolute;width:200px;height:200px;border-radius:50%;background:var(--gold-soft);box-shadow:0 0 0 100vw #fff;}
+.preloader .logo{position:relative;z-index:1;width:140px;height:auto;aspect-ratio:1;}
+html:not(.js) .preloader{display:none;}

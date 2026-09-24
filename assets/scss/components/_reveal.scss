@@ -1,0 +1,15 @@
+// Scroll reveal
+// Only active when JS is present; switched off for reduced motion.
+
+/* scroll reveal: only hidden when JS is present */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s);}
+.js .reveal.in-view{opacity:1;transform:none;}
+/* photographs reveal with a slow curtain wipe (applied to the image, so the wrapper stays observable) */
+.js .reveal-mask>img{clip-path:inset(0 0 100% 0);scale:1.1;transition:clip-path 1.4s var(--ease),scale 2.2s var(--ease),transform 1.4s var(--ease);transition-delay:var(--d,0s),var(--d,0s),0s;}
+.js .reveal-mask.in-view>img{clip-path:inset(0 0 0 0);scale:1;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .js .reveal{opacity:1;transform:none;transition:none;}
+  .js .reveal-mask>img{clip-path:none;scale:1;transition:none;}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+}

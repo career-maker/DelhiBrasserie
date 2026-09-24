@@ -1,0 +1,12 @@
+// Carousel controls
+// Thin gold circular arrows and dots.
+
+/* circular gold arrows and dots (carousel controls) */
+.circ{display:inline-flex;align-items:center;justify-content:center;width:clamp(40px,calc(var(--u) * 3.2),50px);aspect-ratio:1;border-radius:50%;background:transparent;border:1px solid var(--gold-soft);color:var(--ink);transition:background-color .25s,color .25s,opacity .25s;}
+.circ .ic{width:46%;height:46%;}
+.circ:hover:not(:disabled){background:var(--gold-soft);}
+.circ:disabled{opacity:.35;cursor:default;}
+.circ.prev .ic{transform:scaleX(-1);}
+.dots{display:flex;align-items:center;gap:.55rem;}
+.dots button{width:12px;height:12px;padding:0;border:1px solid var(--gold);border-radius:50%;background:transparent;transition:background-color .3s;}
+.dots button.on{background:var(--brand);border-color:var(--brand);}
