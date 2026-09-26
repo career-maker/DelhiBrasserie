@@ -46,7 +46,7 @@
   .hero-inner{justify-content:flex-end;flex:1;}
 
   .offer,.trio,.best,.why,.exp{display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--nav-h) + var(--sec-y));padding-bottom:var(--sec-y);}
-  .intro{display:flex;flex-direction:column;justify-content:center;padding-top:max(calc(var(--nav-h) + var(--sec-y)), 32vw);padding-bottom:0;}
+  .intro{display:flex;flex-direction:column;justify-content:center;padding-top:max(calc(var(--nav-h) + var(--sec-y)), clamp(120px, 20vw, 240px));padding-bottom:0;}
   .soho .faq-sec{padding-top:var(--sp-3);padding-bottom:var(--sp-3);}
   .soho .takeaway{padding:0 0 var(--sec-y);}
   .faq-grid{grid-template-columns:3.2fr 8.8fr;gap:clamp(1.5rem,3.5vw,4rem);}
