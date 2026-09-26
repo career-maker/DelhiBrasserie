@@ -85,6 +85,10 @@
       color: #fff;
     }
 
+    .nav .sub a {
+      color: var(--text-2);
+    }
+
     .nav a:hover,
     .nav a[aria-current="page"],
     .nav a:hover .ic {
