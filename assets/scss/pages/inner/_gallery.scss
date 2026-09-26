@@ -2,8 +2,9 @@
 
 @use '../../abstracts/mixins' as *;
 
-.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));gap:clamp(.6rem,calc(var(--u) * 1),1.2rem);}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));grid-auto-flow:dense;gap:clamp(.6rem,calc(var(--u) * 1),1.2rem);}
 .g-item{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--cream-2);cursor:zoom-in;}
+.g-item:nth-child(6n+1){grid-column:span 2;grid-row:span 2;}
 .g-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease);}
 .g-item::after{content:"";position:absolute;inset:0;background:rgba(214,24,32,0);transition:background-color .35s;}
 .g-item:hover img,.g-item:focus-visible img{transform:scale(1.06);}
