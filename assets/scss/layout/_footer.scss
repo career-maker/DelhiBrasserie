@@ -57,6 +57,7 @@
 .input-group .ic{color:var(--text);flex:none;margin-right:0.5rem;}
 .input-group input{flex:1;border:none;background:transparent;outline:none;font-size:var(--t-body);color:var(--ink);}
 .btn-solid-red{background:var(--brand);color:#fff;border:none;border-radius:2rem;padding:0.8rem 1.6rem;font-weight:500;font-size:var(--t-sm);display:flex;align-items:center;gap:0.5rem;cursor:pointer;transition:background 0.2s;}
+.btn-solid-red .ic{color:#fff;}
 .btn-solid-red:hover{background:var(--brand-dark);}
 
 /* Bottom bar */
