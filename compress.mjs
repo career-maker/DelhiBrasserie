@@ -21,12 +21,11 @@ async function compressImages(dir) {
             const ext = path.extname(fullPath).toLowerCase();
             if (ext === '.jpg' || ext === '.jpeg' || ext === '.png') {
                 const webpPath = fullPath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-                if (!fs.existsSync(webpPath)) {
-                    await sharp(fullPath)
-                        .webp({ quality: 80 })
-                        .toFile(webpPath);
-                    console.log(`Converted to webp: ${webpPath}`);
-                }
+                await sharp(fullPath)
+                    .resize({ width: 1400, withoutEnlargement: true })
+                    .webp({ quality: 65 })
+                    .toFile(webpPath);
+                console.log(`Converted to webp: ${webpPath}`);
             }
         }
     }
