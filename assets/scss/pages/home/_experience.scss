@@ -1,7 +1,7 @@
 // Home: experience and menu tiles
 
 /* ---------- 9. EXPERIENCE + MENU TILES ---------- */
-.exp{padding:calc(var(--sec-y) * 0.4) 0 var(--sec-y);background:var(--cream-2);}
+.exp{padding:calc(var(--sec-y) * 0.65) 0 var(--sec-y);background:var(--cream-2);}
 .exp-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);}
 .exp-head .h2{font-size:calc(var(--t-h2) * .84);}
 .exp-head p{margin-top:var(--sp-2);font-size:var(--t-body);line-height:1.6;}

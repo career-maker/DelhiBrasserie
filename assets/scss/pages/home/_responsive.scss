@@ -45,7 +45,7 @@
   .hero{min-height:max(500px,calc(100svh - var(--topbar-h) - var(--nav-h) - var(--marq-h)));}
   .hero-inner{justify-content:flex-end;flex:1;}
 
-  .offer,.trio,.best,.why,.exp{display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--sec-y) * 0.35);padding-bottom:var(--sec-y);}
+  .offer,.trio,.best,.why,.exp{display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--sec-y) * 0.65);padding-bottom:var(--sec-y);}
   .intro{display:flex;flex-direction:column;justify-content:center;padding-top:clamp(20px, 3vw, 50px);padding-bottom:0;}
   .soho .faq-sec{padding-top:var(--sp-3);padding-bottom:var(--sp-3);}
   .soho .takeaway{padding:0 0 var(--sec-y);}
@@ -57,7 +57,7 @@
   .best .cols{columns:2;}
   .mosaic{min-height:calc(var(--u) * 40);}
 
-  .prepost{padding-top:calc(var(--sec-y) * 0.35);}
+  .prepost{padding-top:calc(var(--sec-y) * 0.65);}
 
   .why-grid{grid-template-columns:3fr 4.7fr 4.3fr;grid-template-areas:"title title title" "photo cols list";column-gap:clamp(1.5rem,3vw,3.5rem);row-gap:var(--sp-3);align-items:start;}
   .why-title{grid-area:title;max-width:none;order:0;}
