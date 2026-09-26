@@ -2,7 +2,7 @@
 // Hidden with the hidden attribute, or when the heading is empty.
 
 /* ---------- 2. SPECIAL OFFER (hide with the hidden attribute, or empty the heading) ---------- */
-.offer{position:relative;padding:calc(var(--sec-y) * 0.65) 0 var(--sec-y);background:var(--cream);}
+.offer{position:relative;padding:clamp(20px, 3vw, 40px) 0 var(--sec-y);background:var(--cream);}
 .offer-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:var(--sp-4) clamp(2rem,5vw,6rem);align-items:center;}
 .offer-copy .h2{margin:0 0 var(--sp-2);}
 .offer-copy .desc{max-width:52ch;font-size:var(--t-body);line-height:1.6;}

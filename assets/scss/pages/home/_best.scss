@@ -1,7 +1,7 @@
 // Home: the best Indian restaurant
 
 /* ---------- 6. THE BEST INDIAN RESTAURANT ---------- */
-.best{padding:calc(var(--sec-y) * 0.65) 0 var(--sec-y);background:var(--cream);}
+.best{padding:clamp(20px, 3vw, 40px) 0 var(--sec-y);background:var(--cream);}
 .best-grid{display:grid;grid-template-columns:minmax(0,6.4fr) minmax(0,5.6fr);gap:var(--sp-4) clamp(2rem,5vw,6rem);align-items:center;}
 .best .h2{margin-bottom:var(--sp-2);font-size:calc(var(--t-h2) * .9);}
 .best .lead{max-width:34em;font-size:calc(var(--t-lead) * .96);}
