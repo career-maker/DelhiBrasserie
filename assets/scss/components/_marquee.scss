@@ -5,7 +5,7 @@
    BOOKING MARQUEE (the one moving strip on the page)
    ========================================================================== */
 .marquee{position:relative;overflow:hidden;background:var(--brand);color:#fff;min-height:var(--marq-h);display:flex;align-items:center;}
-.marquee--alt {background:var(--night); margin-top: calc(-1 * var(--sec-y)); z-index:2;}
+.marquee--alt {background:var(--night); margin-top: calc(-1 * var(--sec-y) + 1.5rem); z-index:2;}
 .marquee-track{display:flex;width:max-content;animation:marquee 44s linear infinite;}
 .marquee:hover .marquee-track,.marquee:focus-within .marquee-track,.marquee.is-paused .marquee-track{animation-play-state:paused;}
 .marquee-group{display:flex;flex:none;align-items:center;}
