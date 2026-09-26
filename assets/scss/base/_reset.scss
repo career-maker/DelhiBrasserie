@@ -1,6 +1,6 @@
 // Reset, page defaults, accessibility helpers
 
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--white);scroll-padding-top:var(--nav-h);}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--white);scroll-padding-top:var(--nav-h);overflow-x:hidden;}
 body{margin:0;padding-top:calc(var(--topbar-h) + var(--nav-h));font-family:var(--sans);font-size:var(--t-body);line-height:1.6;font-weight:400;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 ::selection{background:var(--gold);color:var(--ink);}
 img,svg{max-width:100%;}
