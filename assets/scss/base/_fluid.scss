@@ -36,18 +36,6 @@
   --gutter-r:var(--gutter);
   --btn-h:clamp(46px,calc(var(--u) * 3.5),58px);
 }
-/* the fit-to-screen scale is for the home page only; inner pages keep the readable width-based scale */
-@include bp-fit{
-  :root.is-home{
-    --u:min(1vw,1.55vh);
-    --m-eyebrow:.86rem;--m-2xs:.7rem;--m-xs:.76rem;--m-sm:.8rem;--m-body:.84rem;--m-lead:.98rem;--m-h3:1.2rem;--m-h2:1.7rem;--m-hero:2rem;--m-script:1.7rem;--m-num:2.2rem;
-    --sp-1:clamp(.3rem,calc(var(--u) * .6),.85rem);
-    --sp-2:clamp(.5rem,calc(var(--u) * 1.1),1.4rem);
-    --sp-3:clamp(.7rem,calc(var(--u) * 1.8),2.2rem);
-    --sp-4:clamp(1rem,calc(var(--u) * 2.8),3.4rem);
-    --sec-y:clamp(1rem,calc(var(--u) * 2.3),3rem);
-    --btn-h:clamp(38px,calc(var(--u) * 3.3),56px);
-  }
-}
+
 @include bp-phone{:root{--topbar-h:34px;--nav-h:86px;--marq-h:46px;}}
 @include bp-tablet-up{:root{--gutter-r:max(var(--gutter),calc(var(--rail-w) + 1.4rem));}}
