@@ -20,8 +20,10 @@
       header.classList.toggle('is-stuck', y > 40);
       if (y > lastY && y > 150) {
         header.classList.add('is-hidden');
+        doc.body.classList.add('header-hidden');
       } else if (y < lastY) {
         header.classList.remove('is-hidden');
+        doc.body.classList.remove('header-hidden');
       }
     }
     lastY = Math.max(0, y);

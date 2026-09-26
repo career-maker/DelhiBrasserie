@@ -3,7 +3,8 @@
 
 @use '../../abstracts/mixins' as *;
 
-.menu-nav{position:sticky;top:calc(var(--nav-h) - 1px);z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.menu-nav{position:sticky;top:calc(var(--nav-h) - 1px);z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:top .4s var(--ease);}
+body.header-hidden .menu-nav{top:0;}
 .menu-nav-in{display:flex;gap:.4rem var(--sp-2);overflow-x:auto;padding:.85rem 0;scrollbar-width:none;}
 .menu-nav-in::-webkit-scrollbar{display:none;}
 .menu-nav-in a{flex:none;padding:.35rem .1rem;font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;color:var(--text-2);border-bottom:2px solid transparent;transition:color .25s,border-color .25s;}
