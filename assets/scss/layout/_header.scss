@@ -6,7 +6,8 @@
 /* ==========================================================================
    HEADER: grey utility bar, white bar with the logo in the centre
    ========================================================================== */
-.site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:#fff;box-shadow:0 3px 40px rgba(0,0,0,.1);transition:box-shadow .4s;}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:#fff;box-shadow:0 3px 40px rgba(0,0,0,.1);transition:background .4s, box-shadow .4s, transform .4s var(--ease);}
+.site-header.is-hidden{transform:translateY(-100%);}
 .topbar{height:var(--topbar-h);overflow:hidden;background:var(--grey-bar);color:var(--text-2);font-size:var(--t-top);line-height:1;transition:height .4s var(--ease);}
 .topbar-in{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
 .topbar ul{display:flex;align-items:center;gap:clamp(1rem,2.4vw,2.2rem);}
@@ -55,3 +56,49 @@
   .drawer-main{display:none;}
 }
 @include bp-phone{.topbar .hide-sm{display:none;}.topbar-social{display:none;}.topbar ul{width:100%;justify-content:center;}}
+
+/* Home Page Transparent Header */
+.is-home {
+  body {
+    padding-top: 0;
+  }
+  
+  .hero-inner {
+    padding-top: calc(var(--topbar-h) + var(--nav-h) + var(--sp-4));
+  }
+
+  .site-header:not(.is-stuck) {
+    background: transparent;
+    box-shadow: none;
+
+    .topbar {
+      background: transparent;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      a { color: #fff; }
+      a:hover { color: var(--brand); }
+      .ic { color: #fff; }
+    }
+
+    .nav a,
+    .nav-call {
+      color: #fff;
+    }
+
+    .nav a:hover,
+    .nav a[aria-current="page"],
+    .nav a:hover .ic {
+      color: var(--brand);
+    }
+
+    .menu-btn {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #fff;
+    }
+  }
+}

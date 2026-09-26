@@ -49,5 +49,5 @@
     --btn-h:clamp(38px,calc(var(--u) * 3.3),56px);
   }
 }
-@include bp-phone{:root{--topbar-h:34px;--nav-h:72px;--marq-h:46px;}}
+@include bp-phone{:root{--topbar-h:34px;--nav-h:86px;--marq-h:46px;}}
 @include bp-tablet-up{:root{--gutter-r:max(var(--gutter),calc(var(--rail-w) + 1.4rem));}}

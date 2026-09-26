@@ -4,6 +4,7 @@
 .faq-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);align-items:stretch;}
 .faq-photo{position:relative;overflow:hidden;min-height:220px;}
 .faq-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.faq-photo:hover img{transform:scale(1.05);}
 .takeaway{padding:0 0 var(--sec-y);background:#fff;}
 .takeaway-card{position:relative;display:flex;align-items:center;gap:var(--sp-3) var(--sp-4);flex-wrap:wrap;padding:var(--sp-3) var(--sp-4);background:var(--brand);color:#fff;}
 .takeaway .bag{flex:none;display:grid;place-items:center;width:clamp(50px,calc(var(--u) * 4.8),70px);aspect-ratio:1;border-radius:50%;background:var(--gold-soft);color:var(--brand-dark);}

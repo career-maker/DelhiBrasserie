@@ -12,10 +12,19 @@
   var topbar = doc.querySelector('.topbar');
   var toTop = doc.querySelector('.to-top');
   var ticking = false;
+  var lastY = window.pageYOffset || doc.documentElement.scrollTop;
 
   function onScroll() {
     var y = window.pageYOffset || doc.documentElement.scrollTop;
-    if (header) header.classList.toggle('is-stuck', y > 40);
+    if (header) {
+      header.classList.toggle('is-stuck', y > 40);
+      if (y > lastY && y > 150) {
+        header.classList.add('is-hidden');
+      } else if (y < lastY) {
+        header.classList.remove('is-hidden');
+      }
+    }
+    lastY = Math.max(0, y);
     if (toTop) toTop.classList.toggle('show', y > 700);
     ticking = false;
   }
@@ -173,17 +182,6 @@
       play();
     }
     sync();
-  });
-
-  /* ---------- marquee pause button ---------- */
-  doc.querySelectorAll('.marquee').forEach(function (m) {
-    var btn = m.querySelector('.marquee-pause');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var on = m.classList.toggle('is-paused');
-      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      btn.setAttribute('aria-label', on ? 'Play notice' : 'Pause notice');
-    });
   });
 
 

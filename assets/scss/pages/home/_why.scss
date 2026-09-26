@@ -10,6 +10,7 @@
 .why-photo{order:2;position:relative;overflow:hidden;aspect-ratio:21/9;}
 @include bp-small{.why-photo{aspect-ratio:16/10;}}
 .why-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;}
+.why-photo:hover img{transform:scale(1.05);}
 .why-cols{order:3;}
 .why-list{order:4;}
 .why-cols p{margin-bottom:.8rem;font-size:var(--t-body);line-height:1.6;}

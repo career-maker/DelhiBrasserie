@@ -5,7 +5,7 @@
 
 @mixin bp-nav       { @media (min-width: $bp-nav) { @content; } }
 @mixin bp-stack     { @media (max-width: $bp-stack) { @content; } }
-@mixin bp-fit       { @media (min-width: $bp-stack + 1) and (min-height: $bp-fit-min-height) { @content; } }
+@mixin bp-fit       { @media (min-width: $bp-stack + 1) { @content; } }
 @mixin bp-tablet-up { @media (min-width: $bp-tablet) { @content; } }
 @mixin bp-mobile    { @media (max-width: $bp-mobile) { @content; } }
 @mixin bp-small     { @media (max-width: $bp-small) { @content; } }

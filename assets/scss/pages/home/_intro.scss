@@ -1,7 +1,8 @@
 // Home: intro and photo carousel
 
 /* ---------- 3. INTRO ---------- */
-.intro{padding:var(--sec-y) 0 0;background:#fff;}
+.intro{position:relative;padding:var(--sec-y) 0 0;background:#fff;}
+.intro::before{content:"";position:absolute;top:0;left:10%;width:80%;height:calc(var(--sec-y) * 0.95);background:url(../images/home-watermark.png) no-repeat center bottom;background-size:contain;opacity:0.1;pointer-events:none;}
 .intro-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--sp-4) clamp(2rem,4.5vw,5rem);padding-left:var(--gutter);align-items:center;}
 .intro-text .h2{margin-bottom:var(--sp-2);font-size:calc(var(--t-h2) * .86);}
 .intro-text .lead{font-size:calc(var(--t-lead) * .96);line-height:1.5;}
