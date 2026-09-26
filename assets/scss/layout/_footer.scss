@@ -22,7 +22,7 @@
 .footer-links a:hover::after{color:var(--brand);}
 
 .footer-contact{display:grid;gap:0.9rem;font-size:var(--t-sm);font-style:normal;}
-.contact-item{display:flex;gap:1rem;align-items:flex-start;}
+.contact-item{display:flex;gap:1rem;align-items:center;}
 .contact-item .icon-circle{flex:none;width:36px;height:36px;border-radius:50%;background:rgba(215,35,35,0.08);display:flex;align-items:center;justify-content:center;color:var(--brand);}
 .contact-item .ic{width:16px;height:16px;}
 .contact-item a,.contact-item span{color:var(--text-2);text-decoration:none;line-height:1.5;transition:color 0.2s;}

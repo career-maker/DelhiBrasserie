@@ -18,7 +18,7 @@
 .split--form{align-items:start;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);}
 @include bp-stack{
   .split,.split--rev,.split--form{grid-template-columns:minmax(0,1fr);}
-  .split--rev .split-media{order:2;}
+  .split--rev .split-media,.split--rev .split-media-container{order:2;}
   .split-media img{aspect-ratio:16/11;}
 }
 
@@ -73,7 +73,7 @@
 
 /* photo stays in view beside long text */
 @media (min-width:1101px){
-  .split--sticky>.split-media,.split--form>.split-text{align-self:start;position:sticky;top:calc(var(--nav-h) + var(--sp-3));}
+  .split--sticky>.split-media,.split--sticky>.split-media-container,.split--form>.split-text{align-self:start;position:sticky;top:calc(var(--nav-h) + var(--sp-3));}
 }
 .split--form .split-text{display:grid;gap:var(--sp-3);}
 .split--form .split-media img{aspect-ratio:16/10;}
