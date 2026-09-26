@@ -34,7 +34,12 @@
     entries.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
     var first = heads.filter(function (h) { return seen[h.id]; })[0];
     if (!first) return;
-    links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + first.id); });
+    var activeHref = '#' + first.id;
+    links.forEach(function (a) {
+      var isOn = a.getAttribute('href') === activeHref;
+      a.classList.toggle('on', isOn);
+      if (isOn) a.scrollIntoView({ block: 'nearest' });
+    });
   }, { rootMargin: '-15% 0px -70% 0px' });
   heads.forEach(function (h) { io.observe(h); });
 })();

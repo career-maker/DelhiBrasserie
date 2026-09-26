@@ -82,9 +82,12 @@
 .doc{display:grid;grid-template-columns:minmax(13rem,17rem) minmax(0,54rem);justify-content:center;align-items:start;gap:var(--sp-4) clamp(2rem,5vw,6rem);}
 .doc--flat{grid-template-columns:minmax(0,54rem);}
 .doc--post{grid-template-columns:minmax(0,52rem) minmax(15rem,19rem);}
-.doc-toc,.doc-side{position:sticky;top:calc(var(--nav-h) + var(--sp-3));}
-.doc-side{display:grid;gap:var(--sp-3);}
-.doc-toc{max-height:calc(100svh - var(--nav-h) - var(--sp-4));overflow:auto;scrollbar-width:thin;}
+/* legal pages: a bare contents list, sticky and self-contained */
+.doc>.doc-toc{position:sticky;top:calc(var(--nav-h) + var(--sp-3));max-height:calc(100svh - var(--nav-h) - var(--sp-4));overflow:auto;scrollbar-width:thin;}
+/* articles: contents + booking card share one sticky column that never exceeds the viewport */
+.doc-side{position:sticky;top:calc(var(--nav-h) + var(--sp-3));display:flex;flex-direction:column;gap:var(--sp-3);max-height:calc(100svh - var(--nav-h) - var(--sp-3) * 2);}
+.doc-side .doc-toc{flex:1 1 auto;min-height:0;overflow:auto;scrollbar-width:thin;}
+.side-book{flex:none;}
 .doc-toc-h{margin-bottom:var(--sp-1);font-size:var(--t-2xs);letter-spacing:.09em;text-transform:uppercase;color:var(--brand);}
 .doc-toc ol{padding:0;margin:0;list-style:none;border-left:1px solid var(--line);}
 .doc-toc a{display:block;margin-left:-1px;padding:.42rem 0 .42rem 1rem;border-left:2px solid transparent;font-size:var(--t-sm);line-height:1.35;text-decoration:none;color:var(--text);transition:color .25s,border-color .25s;}
