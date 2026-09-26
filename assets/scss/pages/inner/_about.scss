@@ -22,6 +22,7 @@
 .about-badges .badge-square{max-width:100px;}
 
 /* perks: five icon rows, no photo, on the warm background */
+.about-perks{padding-bottom:clamp(1rem,3vw,2.2rem);}
 .about-perks .wrap{position:relative;z-index:1;}
 .perk-list{display:grid;gap:0;list-style:none;margin:0;padding:0;}
 .perk{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:1px solid rgba(0,0,0,.09);}
@@ -33,6 +34,7 @@
 .perk-text p{margin:0;font-size:var(--t-body);line-height:1.6;color:var(--text);}
 
 /* rooms: four alternating photo/text rows */
+.about-rooms{padding-top:clamp(1rem,3vw,2.2rem);}
 .about-rooms .wrap{position:relative;z-index:1;}
 
 @include bp-phone{
