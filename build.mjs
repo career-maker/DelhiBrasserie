@@ -183,7 +183,7 @@ pages.forEach(({ meta, body }) => {
     canonical: meta.url,
     og_type: meta.og_type || 'website',
     og_description: esc(meta.og_description || meta.description || ''),
-    og_image_abs: abs(meta.og_image || '/assets/images/restaurant/storefront.jpg'),
+    og_image_abs: abs(meta.og_image || '/assets/images/restaurant/storefront.webp'),
     preload: meta.preload_image ? `<link rel="preload" as="image" href="${meta.preload_image}" fetchpriority="high">` : (meta.banner && meta.banner !== 'none' ? `<link rel="preload" as="image" href="${meta.banner}" fetchpriority="high">` : ''),
     robots: meta.robots ? `<meta name="robots" content="${meta.robots}">` : '',
     version: VERSION,

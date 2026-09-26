@@ -19,20 +19,14 @@ async function compressImages(dir) {
             await compressImages(fullPath);
         } else {
             const ext = path.extname(fullPath).toLowerCase();
-            if (ext === '.jpg' || ext === '.jpeg') {
-                const tempPath = fullPath + '.tmp.jpg';
-                await sharp(fullPath)
-                    .jpeg({ quality: 80, mozjpeg: true })
-                    .toFile(tempPath);
-                fs.renameSync(tempPath, fullPath);
-                console.log(`Compressed: ${fullPath}`);
-            } else if (ext === '.png') {
-                const tempPath = fullPath + '.tmp.png';
-                await sharp(fullPath)
-                    .png({ quality: 80, compressionLevel: 9, palette: true })
-                    .toFile(tempPath);
-                fs.renameSync(tempPath, fullPath);
-                console.log(`Compressed: ${fullPath}`);
+            if (ext === '.jpg' || ext === '.jpeg' || ext === '.png') {
+                const webpPath = fullPath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+                if (!fs.existsSync(webpPath)) {
+                    await sharp(fullPath)
+                        .webp({ quality: 80 })
+                        .toFile(webpPath);
+                    console.log(`Converted to webp: ${webpPath}`);
+                }
             }
         }
     }
