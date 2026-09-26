@@ -89,6 +89,11 @@
   }
 
   /* ---------- reveal on scroll ---------- */
+  doc.querySelectorAll('section:not(#top), h1, h2, h3, h4, p').forEach(function(el) {
+    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-mask') && !el.closest('.hero-slides') && !el.closest('footer')) {
+      el.classList.add('reveal');
+    }
+  });
   var reveals = doc.querySelectorAll('.reveal, .reveal-mask');
   if (reveals.length) {
     if ('IntersectionObserver' in window && !reduceMotion) {
