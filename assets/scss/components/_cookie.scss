@@ -57,20 +57,22 @@
   font-family: var(--sans);
   font-size: var(--t-xs);
   letter-spacing: .04em;
+  font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink);
+  color: #000000 !important;
   background: none;
   border: 0;
-  border-bottom: 1px solid var(--gold);
+  border-bottom: 2px solid var(--gold) !important;
   border-radius: 0;
   cursor: pointer;
-  transition: color .25s, border-color .25s;
+  transition: color .25s, border-color .25s, opacity .25s;
 
   &:hover,
   &:focus-visible {
-    color: var(--brand);
-    border-color: var(--brand);
+    color: var(--brand) !important;
+    border-color: var(--brand) !important;
+    opacity: 0.8;
   }
 }
 
