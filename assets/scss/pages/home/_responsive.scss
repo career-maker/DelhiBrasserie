@@ -16,6 +16,13 @@
   .t-party{min-height:520px;}
   .best-grid{grid-template-columns:1fr;}
   .best .cols{columns:1;}
+
+  .offer, .trio, .best, .why, .exp, .intro, .prepost {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 @include bp-mobile{
   .hero-strip .ta-badges{display:none;}
