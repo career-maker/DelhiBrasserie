@@ -3,7 +3,8 @@
 @use '../../abstracts/mixins' as *;
 
 /* ---------- 8. WHY OUR GUESTS LOVE ---------- */
-.why{padding:clamp(20px, 3vw, 40px) 0 var(--sec-y);background:#fff;}
+.why{position:relative;overflow:hidden;padding:clamp(20px, 3vw, 40px) 0 var(--sec-y);background:#fff;z-index:1;}
+.why-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:100%;height:100%;object-fit:cover;opacity:0.1;z-index:-1;pointer-events:none;user-select:none;}
 .why-grid{display:grid;grid-template-columns:1fr;gap:var(--sp-3) var(--sp-4);align-items:start;}
 .why-main,.why-split{display:contents;}
 .why-title{order:1;max-width:18em;font-size:calc(var(--t-h2) * .84);}
