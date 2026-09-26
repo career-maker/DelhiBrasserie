@@ -13,6 +13,7 @@
 /* intro: photo sits in front of an offset cream panel */
 .about-photo-frame{position:relative;z-index:1;isolation:isolate;overflow:visible;}
 .about-photo-frame::before{content:"";position:absolute;z-index:-1;inset:18px -18px -18px 18px;background:var(--cream);}
+.about-rooms .about-photo-frame::before{background:#fff;}
 
 /* perks: five icon rows, no photo, on the warm background */
 .about-perks .wrap{position:relative;z-index:1;}
