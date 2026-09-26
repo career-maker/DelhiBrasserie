@@ -14,7 +14,7 @@
 .about-photo-frame{position:relative;z-index:1;isolation:isolate;overflow:visible;}
 .about-photo-frame::before{content:"";position:absolute;z-index:-1;inset:18px -18px -18px 18px;background:var(--cream);}
 .about-rooms .about-photo-frame::before{background:#fff;}
-.about-rooms .split-media img{aspect-ratio:16/10;}
+.about-rooms .split-media img{aspect-ratio:2/1;}
 
 /* tripadvisor badges */
 .about-badges{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:0.5rem;}
@@ -32,17 +32,10 @@
 .perk-text h3{margin-bottom:.35rem;font-family:var(--sans);font-weight:700;font-size:calc(var(--t-lead) * .95);line-height:1.3;color:var(--ink);}
 .perk-text p{margin:0;font-size:var(--t-body);line-height:1.6;color:var(--text);}
 
-/* rooms: main photo with a smaller accent photo peeking from behind */
+/* rooms: four alternating photo/text rows */
 .about-rooms .wrap{position:relative;z-index:1;}
-.about-photo-stack{position:relative;isolation:isolate;overflow:visible;}
-.about-photo-stack .about-photo-main{position:relative;z-index:2;display:block;width:100%;aspect-ratio:4/3.4;object-fit:cover;}
-.about-photo-stack .about-photo-accent{position:absolute;z-index:1;top:-8%;left:-8%;width:52%;aspect-ratio:1/1;object-fit:cover;border:6px solid #fff;}
 
-@include bp-stack{
-  .about-photo-stack .about-photo-accent{top:-6%;left:-6%;width:44%;}
-}
 @include bp-phone{
-  .about-photo-accent{display:none;}
   .about-photo-frame::before{inset:12px -12px -12px 12px;}
   .perk{gap:var(--sp-2);}
 }
