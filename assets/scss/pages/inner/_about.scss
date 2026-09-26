@@ -15,6 +15,12 @@
 .about-photo-frame::before{content:"";position:absolute;z-index:-1;inset:18px -18px -18px 18px;background:var(--cream);}
 .about-rooms .about-photo-frame::before{background:#fff;}
 
+/* tripadvisor badges */
+.about-badges{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:2rem;}
+.about-badges img{display:block;height:auto;}
+.about-badges .badge-long{max-width:200px;}
+.about-badges .badge-square{max-width:100px;}
+
 /* perks: five icon rows, no photo, on the warm background */
 .about-perks .wrap{position:relative;z-index:1;}
 .perk-list{display:grid;gap:0;list-style:none;margin:0;padding:0;}
