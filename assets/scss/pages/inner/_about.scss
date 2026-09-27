@@ -22,16 +22,16 @@
 .about-badges .badge-square{max-width:100px;}
 
 /* perks: five icon rows, no photo, on the warm background */
-.about-perks{padding-bottom:clamp(1rem,3vw,2.2rem);}
+.about-perks{padding:clamp(1rem,3vw,2.2rem) 0; background-color:var(--brand); color:#fff;}
 .about-perks .wrap{position:relative;z-index:1;}
 .perk-list{display:grid;gap:0;list-style:none;margin:0;padding:0;}
-.perk{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:1px solid rgba(0,0,0,.09);}
+.perk{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:1px solid rgba(255,255,255,.2);}
 .perk:first-child{padding-top:0;}
 .perk:last-child{padding-bottom:0;border-bottom:0;}
 .perk-icon{flex:none;display:grid;place-items:center;width:clamp(50px,calc(var(--u) * 4.4),66px);aspect-ratio:1;border-radius:50%;background:#fff;color:var(--brand);}
 .perk-icon .ic{width:44%;height:44%;}
-.perk-text h3{margin-bottom:.35rem;font-family:var(--sans);font-weight:700;font-size:calc(var(--t-lead) * .95);line-height:1.3;color:var(--ink);}
-.perk-text p{margin:0;font-size:var(--t-body);line-height:1.6;color:var(--text);}
+.perk-text h3{margin-bottom:.35rem;font-family:var(--sans);font-weight:700;font-size:calc(var(--t-lead) * .95);line-height:1.3;color:#fff;}
+.perk-text p{margin:0;font-size:var(--t-body);line-height:1.6;color:rgba(255,255,255,.94);}
 
 /* rooms: four alternating photo/text rows */
 .about-rooms{padding-top:clamp(1rem,3vw,2.2rem);}
