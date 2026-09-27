@@ -306,19 +306,20 @@
     }
     function all(v) { var c = {}; cats.forEach(function (k) { c[k] = v; }); return c; }
 
-    /* bar */
-    function measure() { html.style.setProperty('--cc-h', bar.classList.contains('is-open') ? bar.offsetHeight + 'px' : '0px'); }
+    /* bar: read the height before toggling classes, not after — visibility:hidden still
+       reports a real offsetHeight, so reading first avoids forcing a synchronous layout. */
+    function measure(open) { html.style.setProperty('--cc-h', open ? bar.offsetHeight + 'px' : '0px'); }
     function showBar() {
+      measure(true);
       bar.classList.add('is-open');
       html.classList.add('cc-open');
-      measure();
     }
     function hideBar() {
+      measure(false);
       bar.classList.remove('is-open');
       html.classList.remove('cc-open');
-      measure();
     }
-    window.addEventListener('resize', measure);
+    window.addEventListener('resize', function () { measure(bar.classList.contains('is-open')); });
 
     /* dialog */
     function focusables() { return modal.querySelectorAll('button:not([disabled]),input:not([disabled])'); }

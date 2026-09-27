@@ -15,11 +15,12 @@
   box-shadow: 0 -6px 30px rgba(0, 0, 0, .14);
   transform: translateY(105%);
   visibility: hidden;
-  transition: transform .6s var(--ease), visibility .6s;
+  transition: transform .6s var(--ease), visibility 0s .6s;
 
   &.is-open {
     transform: none;
     visibility: visible;
+    transition: transform .6s var(--ease), visibility 0s;
   }
 }
 
@@ -76,9 +77,8 @@
   }
 }
 
-// keep the floating icons clear of the bar while it is open
-.to-top { transition: opacity .3s, transform .3s var(--ease), visibility .3s, color .25s, bottom .4s var(--ease); }
-html.cc-open .to-top { bottom: calc(var(--cc-h, 0px) + 12px); }
+// keep the floating icons clear of the bar while it is open (shifted via transform, not bottom, so it stays composited)
+html.cc-open .to-top { --lift: calc(var(--cc-h, 0px) + 12px); }
 // the button in the footer links list that reopens the settings
 .footer-bottom .cookie-link {
   padding: 0;
@@ -97,7 +97,7 @@ html.cc-open .to-top { bottom: calc(var(--cc-h, 0px) + 12px); }
   .cookie-bar-in { flex-direction: column; align-items: stretch; }
   .cookie-text { flex: 0 0 auto; max-width: none; font-size: var(--t-2xs); }
   .cookie-actions { justify-content: space-between; }
-  html.cc-open .to-top { bottom: calc(var(--cc-h, 0px) + 52px + 12px); }
+  html.cc-open .to-top { --lift: calc(var(--cc-h, 0px) + 52px + 12px); }
 }
 
 // ---------- settings dialog ----------
@@ -111,11 +111,12 @@ html.cc-open .to-top { bottom: calc(var(--cc-h, 0px) + 12px); }
   background: rgba(0, 0, 0, .55);
   opacity: 0;
   visibility: hidden;
-  transition: opacity .3s ease, visibility .3s;
+  transition: opacity .3s ease, visibility 0s .3s;
 
   &.is-open {
     opacity: 1;
     visibility: visible;
+    transition: opacity .3s ease, visibility 0s;
   }
 }
 
