@@ -91,8 +91,8 @@
   }
 
   /* ---------- reveal on scroll ---------- */
-  doc.querySelectorAll('section:not(#top), h1, h2, h3, h4, p').forEach(function(el) {
-    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-mask') && !el.closest('.hero-slides') && !el.closest('footer') && !el.closest('.cookie-bar')) {
+  doc.querySelectorAll('h1, h2, h3, h4, p, img').forEach(function(el) {
+    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-mask') && !el.closest('.hero-slides') && !el.closest('footer') && !el.closest('.cookie-bar') && !el.closest('.logo')) {
       el.classList.add('reveal');
     }
   });
