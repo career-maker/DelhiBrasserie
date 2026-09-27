@@ -23,7 +23,7 @@ async function compressImages(dir) {
                 const webpPath = fullPath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
                 await sharp(fullPath)
                     .resize({ width: 1000, withoutEnlargement: true })
-                    .webp({ quality: 50 })
+                    .webp({ quality: 38, effort: 6 })
                     .toFile(webpPath);
                 console.log(`Converted to webp: ${webpPath}`);
             }
