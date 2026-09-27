@@ -19,13 +19,13 @@ body.header-hidden .menu-nav{top:0;}
 .takeaway-head h3{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.2;color:var(--ink);}
 .takeaway-head p{margin-top:.4rem;font-size:var(--t-body);line-height:1.6;color:var(--text);}
 .takeaway-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);}
-.takeaway-card{background:#fff;padding:var(--sp-3);border-top:3px solid var(--brand);}
+.tk-card{background:#fff;padding:var(--sp-3);border-top:3px solid var(--brand);}
 .takeaway-ic{display:grid;place-items:center;width:52px;aspect-ratio:1;margin-bottom:var(--sp-2);border-radius:50%;background:rgba(214,24,32,.08);color:var(--brand);}
 .takeaway-ic .ic{width:46%;height:46%;}
-.takeaway-card h4{margin-bottom:.5rem;font-family:var(--sans);font-weight:700;font-size:calc(var(--t-lead) * .95);line-height:1.3;color:var(--ink);}
-.takeaway-card p{font-size:var(--t-sm);line-height:1.6;color:var(--text);}
-.takeaway-card p a{color:var(--brand-dark);text-decoration-color:var(--gold);text-underline-offset:3px;transition:color .25s;}
-.takeaway-card p a:hover{color:var(--brand);}
+.tk-card h4{margin-bottom:.5rem;font-family:var(--sans);font-weight:700;font-size:calc(var(--t-lead) * .95);line-height:1.3;color:var(--ink);}
+.tk-card p{font-size:var(--t-sm);line-height:1.6;color:var(--text);}
+.tk-card p a{color:var(--brand-dark);text-decoration-color:var(--gold);text-underline-offset:3px;transition:color .25s;}
+.tk-card p a:hover{color:var(--brand);}
 .takeaway-note{margin-top:var(--sp-3);font-size:var(--t-sm);font-style:italic;color:var(--text-2);text-align:center;}
 .menu-part-head{padding-top:var(--sp-3);text-align:center;}
 .menu-part-head .h2{display:inline-block;padding-bottom:var(--sp-1);border-bottom:2px solid var(--gold);}
