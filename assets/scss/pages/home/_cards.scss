@@ -49,11 +49,5 @@
 .t-quotes cite{display:flex;align-items:center;justify-content:space-between;margin-top:.7rem;font-size:var(--t-2xs);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft);}
 .t-quotes cite::after { content: "★★★★★"; color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; }
 
-/* Buttons */
-.btn-card { display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; margin-top: auto; padding: 1rem 2rem; border-radius: 50px; background: #4a1212; color: #fff; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; width: 100%; border: 1px solid #4a1212; }
-.btn-card:hover { background: #320c0c; border-color: #320c0c; color: #fff; }
-.btn-card .ic { width: 16px; height: 16px; }
-.btn-card-outline { background: transparent; border: 1px solid var(--gold); color: #fff; }
-.btn-card-outline:hover { background: var(--gold); color: #1a0f0a; border-color: var(--gold); }
 .t-party p { font-size: calc(var(--t-body) * 0.9); margin-bottom: 1rem; }
 
