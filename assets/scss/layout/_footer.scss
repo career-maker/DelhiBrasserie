@@ -122,15 +122,14 @@
 }
 
 @media (min-width: 601px) {
+  /* opened via JS (main.js) since a closed <details> won't render content no matter what
+     display is set on its children; this just hides the now-inert toggle affordance */
   .footer-details > summary {
     pointer-events: none;
     cursor: default;
   }
   .footer-details > summary .plus {
     display: none;
-  }
-  .footer-details > :not(summary) {
-    display: block !important;
   }
 }
 

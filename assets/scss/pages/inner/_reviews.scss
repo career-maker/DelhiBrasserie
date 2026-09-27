@@ -44,7 +44,7 @@
 /* influencer videos: the video(s) on the left; the network cards stack on the right,
    sharing its exact height so there's never a gap, whether there's one video or many */
 .vgrid{display:grid;grid-template-columns:minmax(240px,360px) 1fr;gap:var(--sp-3);}
-.vgrid-videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--sp-3);}
+.vgrid-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-3);}
 .vgrid-channels{display:flex;flex-direction:column;height:100%;gap:var(--sp-3);}
 .vgrid-channels .vcard--channel{flex:1;min-height:14rem;}
 .vcard{display:flex;flex-direction:column;background:#fff;border-top:3px solid var(--brand);box-shadow:0 14px 40px rgba(0,0,0,.08);}

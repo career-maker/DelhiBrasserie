@@ -383,16 +383,24 @@
     if (!probe || !probe.textContent.trim()) sec.hidden = true;
   });
 
-  /* ---------- footer accordion exclusive logic ---------- */
+  /* ---------- footer accordion: click-to-expand only below 601px; always open above it ----------
+     A closed <details> renders no content regardless of CSS on its children, so above the
+     breakpoint we set the open attribute directly instead of fighting that with display rules. */
   var footerDetails = doc.querySelectorAll('.footer-details');
   if (footerDetails.length) {
+    var footerWide = window.matchMedia('(min-width: 601px)');
+    var syncFooterDetails = function () {
+      footerDetails.forEach(function (d) { d.open = footerWide.matches; });
+    };
+    syncFooterDetails();
+    if (footerWide.addEventListener) footerWide.addEventListener('change', syncFooterDetails);
+    else footerWide.addListener(syncFooterDetails);
     footerDetails.forEach(function (d) {
       d.addEventListener('toggle', function () {
-        if (d.open) {
-          footerDetails.forEach(function (other) {
-            if (other !== d) other.open = false;
-          });
-        }
+        if (footerWide.matches || !d.open) return;
+        footerDetails.forEach(function (other) {
+          if (other !== d) other.open = false;
+        });
       });
     });
   }
