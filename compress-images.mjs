@@ -18,17 +18,17 @@ const images = [
 async function processImages() {
     for (const img of images) {
         const filePath = path.resolve(img.file);
-        const tempPath = filePath + '.tmp.webp';
         
         if (fs.existsSync(filePath)) {
-            let s = sharp(filePath);
+            const buffer = fs.readFileSync(filePath);
+            let s = sharp(buffer);
             if (img.width) {
                 s = s.resize({ width: img.width, withoutEnlargement: true });
             }
             s = s.webp({ quality: 65, effort: 6 });
             
-            await s.toFile(tempPath);
-            fs.renameSync(tempPath, filePath);
+            const outBuffer = await s.toBuffer();
+            fs.writeFileSync(filePath, outBuffer);
             console.log(`Processed ${img.file}`);
         } else {
             console.log(`Not found ${img.file}`);
