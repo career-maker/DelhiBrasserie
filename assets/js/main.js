@@ -382,4 +382,18 @@
     var probe = sec.querySelector('[data-required]');
     if (!probe || !probe.textContent.trim()) sec.hidden = true;
   });
+
+  /* ---------- footer accordion exclusive logic ---------- */
+  var footerDetails = doc.querySelectorAll('.footer-details');
+  if (footerDetails.length) {
+    footerDetails.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open) {
+          footerDetails.forEach(function (other) {
+            if (other !== d) other.open = false;
+          });
+        }
+      });
+    });
+  }
 })();
