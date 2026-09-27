@@ -15,3 +15,19 @@ button{font:inherit;color:inherit;cursor:pointer;border-radius:0;}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 .wrap{width:100%;max-width:1520px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r);}
 [hidden]{display:none!important;}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7a0b12; /* a darker red shade for hover, or just var(--ink) */
+}
