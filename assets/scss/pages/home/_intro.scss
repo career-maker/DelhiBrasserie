@@ -8,7 +8,7 @@
 .intro-text .lead{font-size:calc(var(--t-lead) * .96);line-height:1.5;}
 .intro-body p{margin-top:calc(var(--t-body) * .7);font-size:var(--t-body);line-height:1.6;}
 .intro-body strong{color:var(--ink);font-weight:700;}
-.intro-actions{display:flex;flex-wrap:nowrap;align-items:center;gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-3);}
+.intro-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-3);}
 .ta-chip{display:flex;align-items:center;gap:.9rem;text-decoration:none;font-size:var(--t-sm);line-height:1.4;}
 .ta-chip strong{display:block;color:var(--ink);font-weight:700;}
 .carousel{position:relative;min-width:0;--h:clamp(300px,58vw,460px);}
