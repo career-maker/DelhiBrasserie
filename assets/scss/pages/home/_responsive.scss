@@ -5,10 +5,6 @@
 
 /* ---------- stacked layouts (tablet and phone) ---------- */
 @include bp-stack{
-  .hero-strip{grid-template-columns:1fr;text-align:center;}
-  .strip-l{padding-right:0;border-right:0;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:var(--sp-2);}
-  .strip-m{justify-items:center;}
-  .hero-strip .ta-badges{justify-self:center;}
   .offer-grid{grid-template-columns:1fr;}
   .intro-grid{grid-template-columns:1fr;padding-right:0;}
   .intro-text{padding-right:var(--gutter-r);}
@@ -25,7 +21,6 @@
   }
 }
 @include bp-mobile{
-  .hero-strip .ta-badges{display:none;}
   .hero-count{display:none;}
   .hero-arrows{display:none;}
 }
@@ -49,8 +44,8 @@
   html{scroll-snap-type:y proximity;}
   .hero,.offer,.intro,.trio,.best,.prepost,.why,.exp,.location{scroll-snap-align:start;}
 
-  .hero{min-height:max(500px,calc(100svh - var(--topbar-h) - var(--nav-h) - var(--marq-h)));}
-  .hero-inner{justify-content:flex-end;flex:1;}
+  .hero{min-height:100vh;min-height:100svh;}
+  .hero-inner{justify-content:center;flex:1;}
 
   .offer,.trio,.best,.why,.exp{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding-top:calc(var(--sec-y) * 0.65);padding-bottom:var(--sec-y);}
   .intro{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding-top:clamp(20px, 3vw, 50px);padding-bottom:0;}

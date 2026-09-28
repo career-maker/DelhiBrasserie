@@ -48,6 +48,7 @@
 .prose p>img:only-child{margin-block:.4em;}
 .prose--center{text-align:center;}
 .prose--center h2{margin-top:0;}
+.closing-note{font-family:var(--serif);font-size:calc(var(--t-body) * 1.2);font-style:italic;font-weight:500;color:var(--ink);line-height:1.45;letter-spacing:.01em;display:block;}
 .prose--legal h2{font-size:var(--t-h3);margin-top:1.8em;}
 .prose--legal h3{font-size:calc(var(--t-h3) * .8);}
 .prose--post{font-size:calc(var(--t-body) * 1.04);}

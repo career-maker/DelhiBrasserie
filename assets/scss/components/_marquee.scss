@@ -4,22 +4,32 @@
 /* ==========================================================================
    BOOKING MARQUEE (the one moving strip on the page)
    ========================================================================== */
-.marquee{position:relative;overflow:hidden;background:var(--brand);color:#fff;min-height:var(--marq-h);display:flex;align-items:center;}
+.marquee{position:relative;overflow:hidden;background:var(--brand);color:#fff;min-height:var(--marq-h);display:flex;align-items:center;contain:paint;}
 .marquee--alt {background:var(--night); margin-top: calc(-1 * var(--sec-y) + 1.5rem); z-index:2;}
-.marquee-track{display:flex;width:max-content;animation:marquee 44s linear infinite;}
+.marquee-track{display:flex;width:max-content;will-change:transform;transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:marquee 50s linear infinite;}
 .marquee:hover .marquee-track,.marquee:focus-within .marquee-track,.marquee.is-paused .marquee-track{animation-play-state:paused;}
 .marquee-group{display:flex;flex:none;align-items:center;}
-.marquee-item{display:flex;align-items:center;gap:1.4rem;padding:.7rem 1.4rem .7rem 0;font-size:var(--t-sm);letter-spacing:.02em;white-space:nowrap;}
+.marquee-item{display:flex;align-items:center;gap:1.4rem;padding:.75rem 1.5rem .75rem 0;font-size:var(--t-sm);letter-spacing:.02em;white-space:nowrap;flex-shrink:0;opacity:1!important;visibility:visible!important;transform:none!important;}
 .marquee-item strong{font-weight:700;}
-.marquee-item .ic{width:1.3rem;height:1.3rem;color:var(--gold-soft);}
+.marquee-item small{opacity:.88;font-size:.9em;}
+.marquee-item .ic{width:1.3rem;height:1.3rem;color:var(--gold-soft);flex-shrink:0;}
+.marquee-item .ic-inline{width:1.15rem;height:1.15rem;margin-right:.35rem;vertical-align:-.15rem;display:inline-block;}
 .marquee-item a{text-decoration:underline;text-underline-offset:4px;}
 .marquee-item a:hover{color:var(--gold-soft);}
-@keyframes marquee{to{transform:translateX(-50%);}}
+.marquee .reveal{opacity:1!important;visibility:visible!important;transform:none!important;transition:none!important;}
+
+.marquee-pause{display:none!important;}
+
+@keyframes marquee{
+  0%{transform:translate3d(0,0,0);}
+  100%{transform:translate3d(-50%,0,0);}
+}
 @media (prefers-reduced-motion:reduce){
-  .marquee-track{animation:none;width:auto;}
+  .marquee-track{animation:none;width:auto;transform:none;}
   .marquee-group[aria-hidden="true"]{display:none;}
   .marquee-group{flex-wrap:wrap;justify-content:center;width:100%;}
-  .marquee-item{white-space:normal;text-align:center;padding:.9rem var(--gutter);}
-  .marquee-item .ic{display:none;}
+  .marquee-item{white-space:normal;text-align:center;padding:.9rem var(--gutter);gap:.8rem;}
+  .marquee-item .ic:not(.ic-inline){display:none;}
   .marquee-item:not(:first-child){display:none;}
+  .marquee-pause{display:none;}
 }

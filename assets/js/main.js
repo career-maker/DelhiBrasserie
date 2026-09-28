@@ -92,7 +92,11 @@
 
   /* ---------- reveal on scroll ---------- */
   doc.querySelectorAll('h1, h2, h3, h4, p, img').forEach(function(el) {
-    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-mask') && !el.closest('.hero-slides') && !el.closest('footer') && !el.closest('.cookie-bar') && !el.closest('.logo')) {
+    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-mask') && 
+        !el.parentElement.closest('.reveal') && !el.parentElement.closest('.reveal-mask') && 
+        !el.closest('.hero-slides') && !el.closest('footer') && !el.closest('.cookie-bar') && 
+        !el.closest('.logo') && !el.closest('.marquee') && !el.closest('.takeaway') && 
+        !el.closest('.menu-sec')) {
       el.classList.add('reveal');
     }
   });
@@ -192,11 +196,22 @@
   });
 
 
+  /* ---------- booking marquee pause button ---------- */
+  doc.querySelectorAll('.marquee').forEach(function (m) {
+    var btn = m.querySelector('.marquee-pause');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var paused = m.classList.toggle('is-paused');
+      btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      btn.setAttribute('aria-label', paused ? 'Resume notice' : 'Pause notice');
+    });
+  });
+
   /* ---------- live opening status (London time) ---------- */
   (function () {
-    var status = doc.querySelector('[data-open-status]');
-    var hoursEl = doc.querySelector('[data-open-hours]');
-    if (!status || !hoursEl) return;
+    var statusEls = doc.querySelectorAll('[data-open-status]');
+    var hoursEls = doc.querySelectorAll('[data-open-hours]');
+    if (!statusEls.length || !hoursEls.length) return;
     var open = { Mon: [17, 0, 23, 30], Tue: [17, 0, 23, 30], Wed: [17, 0, 23, 30], Thu: [17, 0, 23, 30],
                  Fri: [17, 0, 24, 0], Sat: [17, 0, 24, 0], Sun: [17, 0, 23, 30] };
     function label(mins) {
@@ -214,9 +229,12 @@
       var d = open[day];
       if (!d) return;
       var from = d[0] * 60 + d[1], to = d[2] * 60 + d[3];
-      if (now >= from && now < to) { status.textContent = 'Open now'; hoursEl.textContent = 'Until ' + label(to); }
-      else if (now < from) { status.textContent = 'Open tonight'; hoursEl.textContent = 'From ' + label(from); }
-      else { status.textContent = 'Open tomorrow'; hoursEl.textContent = 'From 17:00'; }
+      var sTxt, hTxt;
+      if (now >= from && now < to) { sTxt = 'Open now'; hTxt = 'Until ' + label(to); }
+      else if (now < from) { sTxt = 'Open tonight'; hTxt = 'From ' + label(from); }
+      else { sTxt = 'Open tomorrow'; hTxt = 'From 17:00'; }
+      statusEls.forEach(function (el) { el.textContent = sTxt; });
+      hoursEls.forEach(function (el) { el.textContent = hTxt; });
     } catch (e) { /* keep the static text */ }
   })();
 

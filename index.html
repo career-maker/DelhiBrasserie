@@ -22,8 +22,8 @@
 <link rel="preload" as="image" href="assets/images/restaurant/storefront.webp" fetchpriority="high">
 <script>document.documentElement.classList.add('js','pre-on');</script>
 
-<link rel="preload" href="assets/css/main.min.css?v=9234fd35" as="style">
-<link href="assets/css/main.min.css?v=9234fd35" rel="stylesheet">
+<link rel="preload" href="assets/css/main.min.css?v=b3a260c3" as="style">
+<link href="assets/css/main.min.css?v=b3a260c3" rel="stylesheet">
 
 <!-- Google Analytics (GA4): paste the existing measurement tag here in consent-gated form:
      <script type="text/plain" data-cookie="analytics" src="..."></script> -->
@@ -222,23 +222,22 @@
   </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <p class="script">Estd 1985</p>
+      <div class="hero-overline">
+        <span class="orn-line" aria-hidden="true"></span>
+        <span class="script">Estd 1985</span>
+        <span class="orn-line" aria-hidden="true"></span>
+      </div>
       <h1>Authentic Indian Cuisine in the <em>Heart of Soho</em></h1>
-      <div class="hero-ctas">
-        <a class="btn btn-red" href="reservations.html">Book a table</a>
-        <a class="btn btn-line" href="main-menu.html">View menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="hero-actions">
+        <div class="hero-actions-l">
+          <a class="ta-badges ta-badges--light" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Travellers' Choice Awards 2024 and 2025 (opens Tripadvisor)"><img src="assets/images/tripadvisor/travellers-choice-2024.webp" width="200" height="220" alt="Tripadvisor Travellers' Choice Awards 2024"><img src="assets/images/tripadvisor/travellers-choice-2025.webp" width="200" height="220" alt="Tripadvisor Travellers' Choice Awards 2025"></a>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn btn-red" href="reservations.html">Book a table</a>
+          <a class="btn btn-line" href="main-menu.html">View menu <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="hero-actions-r" aria-hidden="true"></div>
       </div>
-    </div>
-    <div class="hero-strip glass" role="group" aria-label="Opening times and contact">
-      <div class="strip-l">
-        <p class="strip-title" data-open-hours>From 17:00</p>
-        <p class="strip-txt"><span data-open-status>Open 7 days a week</span>. 44 Frith Street, Soho, London W1D 4SB</p>
-      </div>
-      <div class="strip-m">
-        <a href="tel:+442074378261"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span>020 7437 8261 <small>after 4 PM</small></span></a>
-        <a href="https://wa.me/447562600591" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>07562 600591 <small>WhatsApp, any time</small></span></a>
-      </div>
-      <a class="ta-badges ta-badges--light" href="https://www.tripadvisor.co.uk/overview?locationId=718602" target="_blank" rel="noopener" aria-label="Tripadvisor Travellers' Choice Awards 2024 and 2025 (opens Tripadvisor)"><img src="assets/images/tripadvisor/travellers-choice-2024.webp" width="200" height="220" alt="Tripadvisor Travellers' Choice Awards 2024"><img src="assets/images/tripadvisor/travellers-choice-2025.webp" width="200" height="220" alt="Tripadvisor Travellers' Choice Awards 2025"></a>
     </div>
   </div>
   <p class="hero-count" aria-hidden="true"><span class="cur" data-count-cur>01</span><span>/</span><span class="tot" data-count-tot>03</span></p>
@@ -248,21 +247,22 @@
   </div>
 </section>
 
-<!-- booking notice: the one marquee on the page (pauses on hover, focus, or with the button) -->
-<section class="marquee" aria-label="Booking notice for large groups">
+<!-- booking notice & live hours: marquee strip (pauses on hover, focus, or with the button) -->
+<section class="marquee" aria-label="Restaurant information and booking notice">
   <div class="marquee-track">
     <div class="marquee-group">
-      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons. <a href="tel:+442074378261">020 7437 8261</a></span><svg class="ic" aria-hidden="true"><use href="#i-asterisk"/></svg></p>
-      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons. <a href="tel:+442074378261">020 7437 8261</a></span><svg class="ic" aria-hidden="true"><use href="#i-asterisk"/></svg></p>
-      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons. <a href="tel:+442074378261">020 7437 8261</a></span><svg class="ic" aria-hidden="true"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span><svg class="ic ic-inline" aria-hidden="true"><use href="#i-clock"/></svg><strong data-open-hours>From 17:00</strong> &bull; <span data-open-status>Open 7 days a week</span> &bull; 44 Frith Street, Soho, London W1D 4SB</span><svg class="ic" aria-hidden="true"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span><svg class="ic ic-inline" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+442074378261">020 7437 8261</a> <small>(after 4 PM)</small></span><svg class="ic" aria-hidden="true"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span><svg class="ic ic-inline" aria-hidden="true"><use href="#i-whatsapp"/></svg><a href="https://wa.me/447562600591" target="_blank" rel="noopener">07562 600591 WhatsApp, any time</a></span><svg class="ic" aria-hidden="true"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons: <a href="tel:+442074378261">020 7437 8261</a></span><svg class="ic" aria-hidden="true"><use href="#i-asterisk"/></svg></p>
     </div>
     <div class="marquee-group" aria-hidden="true">
-      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons. <a href="tel:+442074378261" tabindex="-1">020 7437 8261</a></span><svg class="ic"><use href="#i-asterisk"/></svg></p>
-      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons. <a href="tel:+442074378261" tabindex="-1">020 7437 8261</a></span><svg class="ic"><use href="#i-asterisk"/></svg></p>
-      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons. <a href="tel:+442074378261" tabindex="-1">020 7437 8261</a></span><svg class="ic"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span><svg class="ic ic-inline" aria-hidden="true"><use href="#i-clock"/></svg><strong data-open-hours>From 17:00</strong> &bull; <span data-open-status>Open 7 days a week</span> &bull; 44 Frith Street, Soho, London W1D 4SB</span><svg class="ic"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span><svg class="ic ic-inline" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+442074378261" tabindex="-1">020 7437 8261</a> <small>(after 4 PM)</small></span><svg class="ic"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span><svg class="ic ic-inline" aria-hidden="true"><use href="#i-whatsapp"/></svg><a href="https://wa.me/447562600591" target="_blank" rel="noopener" tabindex="-1">07562 600591 WhatsApp, any time</a></span><svg class="ic"><use href="#i-asterisk"/></svg></p>
+      <p class="marquee-item"><span>On <strong>Fridays &amp; Saturdays</strong>, please call the restaurant for bookings of more than 8 persons: <a href="tel:+442074378261" tabindex="-1">020 7437 8261</a></span><svg class="ic"><use href="#i-asterisk"/></svg></p>
     </div>
   </div>
-  <button class="marquee-pause" type="button" aria-label="Pause notice" aria-pressed="false"><svg class="ic i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="ic i-play" aria-hidden="true"><use href="#i-play"/></svg></button>
 </section>
 
 <!-- ======================= 2. SPECIAL OFFER =======================
@@ -714,7 +714,7 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=9234fd35" defer></script>
+<script src="assets/js/main.js?v=b3a260c3" defer></script>
 
 </body>
 </html>

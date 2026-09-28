@@ -26,15 +26,27 @@
     bar.textContent = (cur + 1) + ' / ' + items.length;
     var pre = new Image(); pre.src = items[(cur + 1) % items.length].href;
   }
-  function open(n) { opener = items[n]; show(n); if (!dlg.open) dlg.showModal(); }
+  function open(n) {
+    opener = items[n];
+    show(n);
+    if (!dlg.open) {
+      dlg.showModal();
+      document.documentElement.classList.add('lb-open');
+      document.body.classList.add('lb-open');
+    }
+  }
   function close() { dlg.close(); }
 
   items.forEach(function (a, n) { a.addEventListener('click', function (e) { e.preventDefault(); open(n); }); });
   dlg.querySelector('.lb-close').addEventListener('click', close);
-  dlg.querySelector('.lb-prev').addEventListener('click', function () { show(cur - 1); });
-  dlg.querySelector('.lb-next').addEventListener('click', function () { show(cur + 1); });
+  dlg.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(cur - 1); });
+  dlg.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(cur + 1); });
   dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.classList.contains('lb-stage')) close(); });
-  dlg.addEventListener('close', function () { if (opener) opener.focus(); });
+  dlg.addEventListener('close', function () {
+    document.documentElement.classList.remove('lb-open');
+    document.body.classList.remove('lb-open');
+    if (opener) opener.focus();
+  });
   dlg.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowLeft') show(cur - 1);
     if (e.key === 'ArrowRight') show(cur + 1);

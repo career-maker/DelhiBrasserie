@@ -144,6 +144,10 @@ const pages = walk(path.join(SRC, 'pages')).map((file) => {
   return { meta, body };
 });
 
+// Fallback aliases for legacy links
+pageMap['/about-us/gallery/'] = 'gallery.html';
+pageMap['/about-us/local-attractions/'] = 'local-attractions.html';
+
 // links to pages: /about-us/history/#x -> /history.html#x
 const mapPageLinks = (html) => html.replace(/(\shref)="(\/[^"?#]*)([?#][^"]*)?"/g, (all, k, p, rest) =>
   (p in pageMap ? `${k}="/${pageMap[p]}${rest || ''}"` : all));
@@ -188,7 +192,7 @@ pages.forEach(({ meta, body }) => {
     robots: meta.robots ? `<meta name="robots" content="${meta.robots}">` : '',
     version: VERSION,
     html_class: meta.layout === 'home' ? 'is-home' : 'is-inner',
-    body_class: meta.body_class || 'page-inner',
+    body_class: [meta.body_class || 'page-inner', (meta.banner && meta.banner !== 'none') ? 'has-banner' : ''].filter(Boolean).join(' '),
     banner: banner(meta),
     scripts: (meta.scripts || '').split(',').map((s) => s.trim()).filter(Boolean)
       .map((s) => `<script src="/assets/js/modules/${s}.js?v=${VERSION}" defer></script>`).join('\n'),

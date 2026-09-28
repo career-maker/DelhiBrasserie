@@ -57,15 +57,11 @@
 }
 @include bp-phone{.topbar .hide-sm{display:none;}.topbar-social{display:none;}.topbar ul{width:100%;justify-content:center;}}
 
-/* Home Page Transparent Header */
-.is-home {
-  body {
-    padding-top: 0;
-  }
-  
-  .hero-inner {
-    padding-top: calc(var(--topbar-h) + var(--nav-h) + var(--sp-4));
-  }
+/* Transparent Header on Home and Banner Inner Pages */
+.is-home body,
+body.has-banner,
+body:has(.page-banner) {
+  padding-top: 0;
 
   .site-header:not(.is-stuck) {
     background: transparent;
@@ -74,7 +70,7 @@
     .topbar {
       background: transparent;
       color: #fff;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      border-bottom: 1px solid rgba(255,255,255,0.18);
       a { color: #fff; }
       a:hover { color: var(--brand); }
       .ic { color: #fff; }
@@ -91,6 +87,7 @@
 
     .nav a:hover,
     .nav a[aria-current="page"],
+    .nav a.active,
     .nav a:hover .ic {
       color: var(--brand);
     }
@@ -105,4 +102,8 @@
       border-color: #fff;
     }
   }
+}
+
+.is-home .hero-inner {
+  padding-top: calc(var(--topbar-h) + var(--nav-h) + var(--sp-4));
 }
