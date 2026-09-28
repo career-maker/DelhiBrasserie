@@ -3,7 +3,7 @@
 
 @use '../../abstracts/mixins' as *;
 
-.page-banner{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(300px,calc(var(--u) * 30),470px);color:#fff;background:#1a120e;overflow:hidden;}
+.page-banner{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(560px,82svh,820px);color:#fff;background:#1a120e;overflow:hidden;}
 .page-banner-img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;animation:heroZoom 9s ease-out both;}
 .page-banner::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle farthest-side at 50% 42%,rgba(4,13,16,.06) 0,rgba(4,13,16,.22) 28%,rgba(4,13,16,.52) 50%,rgba(4,13,16,.78) 76%,rgba(4,13,16,.92) 100%);}
 .page-banner-in{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:var(--sp-4);padding-bottom:var(--sp-4);}
@@ -23,11 +23,13 @@
 .crumbs [aria-current]{color:var(--gold-soft);}
 
 /* long titles (articles) and legal pages get a lower banner and a smaller title */
-.page-banner--compact{min-height:clamp(240px,calc(var(--u) * 22),340px);}
 .page-banner--compact h1{max-width:34ch;font-size:var(--t-h2);}
 
 @include bp-phone{
-  .page-banner{min-height:260px;}
   .page-banner h1{font-size:clamp(1.7rem,7.2vw,2.15rem);}
   .page-banner--compact h1{font-size:clamp(1.4rem,6vw,1.75rem);}
+}
+
+@include bp-fit{
+  .page-banner{min-height:max(500px,calc(100svh - var(--topbar-h) - var(--nav-h) - var(--marq-h)));}
 }
