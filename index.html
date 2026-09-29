@@ -22,8 +22,8 @@
 <link rel="preload" as="image" href="assets/images/restaurant/storefront.webp" fetchpriority="high">
 <script>document.documentElement.classList.add('js','pre-on');</script>
 
-<link rel="preload" href="assets/css/main.min.css?v=1336ff00" as="style">
-<link href="assets/css/main.min.css?v=1336ff00" rel="stylesheet">
+<link rel="preload" href="assets/css/main.min.css?v=1d1dfcc2" as="style">
+<link href="assets/css/main.min.css?v=1d1dfcc2" rel="stylesheet">
 
 <!-- Google Analytics (GA4): paste the existing measurement tag here in consent-gated form:
      <script type="text/plain" data-cookie="analytics" src="..."></script> -->
@@ -307,7 +307,11 @@
         <a class="btn btn-red" href="reservations.html">Book a table</a>
         <a class="btn btn-gold" href="special-offers.html">View special offer <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
-      <p class="offer-note"><span class="bb-tag">Blue Badge</span><span><strong>Blue Badge holders</strong> receive 10% off.</span></p>
+      <div class="offer-note bb-card">
+        <img class="bb-img" src="assets/images/blue-badge.webp" width="640" height="328" loading="lazy" decoding="async" alt="Blue Badge">
+        <p class="bb-text"><span class="bb-kicker">Blue Badge holders</span><strong class="bb-title">Receive 10% off</strong></p>
+        <svg class="bb-leaf" viewBox="0 0 48 32" aria-hidden="true"><path d="M3 29C14 26 30 16 44 3 41 15 30 27 12 28M3 29C16 22 28 14 44 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
     </div>
     <div class="offer-media reveal" style="--d:.12s">
       <figure class="offer-photo reveal-mask"><img src="assets/images/restaurant/detail-table.webp" width="1500" height="1076" loading="eager" decoding="async" alt="A table laid with white linen, a bottle of red wine and fresh roses"></figure>
@@ -737,7 +741,7 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=1336ff00" defer></script>
+<script src="assets/js/main.js?v=1d1dfcc2" defer></script>
 
 </body>
 </html>
