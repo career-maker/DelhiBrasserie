@@ -49,12 +49,16 @@
   var lastFocus = null;
 
   function focusables() {
-    return drawer.querySelectorAll('a[href],button:not([disabled])');
+    var all = drawer.querySelectorAll('a[href],button:not([disabled])');
+    return Array.prototype.filter.call(all, function (el) {
+      return el.offsetParent !== null && window.getComputedStyle(el).visibility !== 'hidden';
+    });
   }
   function openDrawer() {
     lastFocus = doc.activeElement;
     drawer.classList.add('open');
     backdrop.classList.add('open');
+    doc.documentElement.classList.add('no-scroll');
     doc.body.classList.add('no-scroll');
     openBtn.setAttribute('aria-expanded', 'true');
     drawer.removeAttribute('inert');
@@ -64,6 +68,7 @@
   function closeDrawer() {
     drawer.classList.remove('open');
     backdrop.classList.remove('open');
+    doc.documentElement.classList.remove('no-scroll');
     doc.body.classList.remove('no-scroll');
     openBtn.setAttribute('aria-expanded', 'false');
     drawer.setAttribute('inert', '');
@@ -87,6 +92,32 @@
         if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
         else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
       }
+    });
+
+    /* ---------- drawer dropdowns ---------- */
+    var dropdowns = drawer.querySelectorAll('.drawer-dropdown');
+    dropdowns.forEach(function (dd) {
+      var toggleBtn = dd.querySelector('.drawer-dropdown-toggle');
+      if (!toggleBtn) return;
+
+      // Expand dropdown initially if it contains the active page link
+      if (dd.querySelector('.drawer-dropdown-inner a.active, .drawer-dropdown-inner a[aria-current="page"]')) {
+        dd.classList.add('open');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      toggleBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var isOpen = dd.classList.contains('open');
+        if (isOpen) {
+          dd.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          dd.classList.add('open');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+      });
     });
   }
 

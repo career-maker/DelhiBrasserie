@@ -22,8 +22,8 @@
 <link rel="preload" as="image" href="assets/images/restaurant/hall-4.webp" fetchpriority="high">
 <script>document.documentElement.classList.add('js','pre-on');</script>
 
-<link rel="preload" href="assets/css/main.min.css?v=b3a260c3" as="style">
-<link href="assets/css/main.min.css?v=b3a260c3" rel="stylesheet">
+<link rel="preload" href="assets/css/main.min.css?v=0e474cd8" as="style">
+<link href="assets/css/main.min.css?v=0e474cd8" rel="stylesheet">
 
 <!-- Google Analytics (GA4): paste the existing measurement tag here in consent-gated form:
      <script type="text/plain" data-cookie="analytics" src="..."></script> -->
@@ -34,7 +34,7 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- preloader: same sequence as the Pandhal site (gold circle + logo, swells away once the page has loaded). Uses the footer logo. -->
-<div class="preloader" id="preloader" aria-hidden="true"><div class="circle"></div><img class="logo" src="assets/images/logo.svg" width="140" height="140" alt=""></div>
+<div class="preloader" id="preloader" aria-hidden="true"><div class="circle"></div><img class="logo" src="assets/images/logo.png" width="140" height="140" alt="Delhi Brasserie"></div>
 
 <!-- icon sprite: Phosphor Icons (MIT) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -114,7 +114,7 @@
       </nav>
 
       <a class="brand" href="index.html" aria-label="The Delhi Brasserie, Soho. Since 1985. Home">
-        <img src="assets/images/logo-header.svg" width="1371" height="1024" alt="The Delhi Brasserie, Soho. Since 1985">
+        <img src="assets/images/logo.png" width="92" height="92" alt="The Delhi Brasserie, Soho. Since 1985">
       </a>
 
       <nav class="nav nav-right" aria-label="More pages">
@@ -136,15 +136,38 @@
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
 <aside class="drawer" id="drawer" aria-label="Menu">
   <div class="drawer-top">
-    <img src="assets/images/logo.svg" width="64" height="64" alt="The Delhi Brasserie">
+    <img src="assets/images/logo.png" width="64" height="64" alt="The Delhi Brasserie">
     <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
   </div>
   <nav class="drawer-main" aria-label="Site pages">
     <a href="index.html">Home</a>
-    <a href="about-us.html">About Us</a>
-    <div class="sub-l"><a href="history.html">History</a></div>
-    <a href="menus.html">Menu</a>
-    <div class="sub-l"><a href="main-menu.html">Food Menu</a><a href="drinks-menu.html">Drinks Menu</a></div>
+    <div class="drawer-dropdown">
+      <div class="drawer-dropdown-head">
+        <a href="about-us.html">About Us</a>
+        <button class="drawer-dropdown-toggle" type="button" aria-expanded="false" aria-controls="drawer-sub-about" aria-label="Toggle About Us submenu">
+          <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>
+        </button>
+      </div>
+      <div class="drawer-dropdown-menu" id="drawer-sub-about">
+        <div class="drawer-dropdown-inner">
+          <a href="history.html">History</a>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-dropdown">
+      <div class="drawer-dropdown-head">
+        <a href="menus.html">Menu</a>
+        <button class="drawer-dropdown-toggle" type="button" aria-expanded="false" aria-controls="drawer-sub-menus" aria-label="Toggle Menu submenu">
+          <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>
+        </button>
+      </div>
+      <div class="drawer-dropdown-menu" id="drawer-sub-menus">
+        <div class="drawer-dropdown-inner">
+          <a href="main-menu.html">Food Menu</a>
+          <a href="drinks-menu.html">Drinks Menu</a>
+        </div>
+      </div>
+    </div>
     <a href="pre-post-theatre-dining.html">Pre- and Post-Dining</a>
     <a href="gallery.html">Gallery</a>
     <a href="new-blog.html">Blog</a>
@@ -193,7 +216,7 @@
     <img src="assets/images/footer-watermark.webp" alt="" class="footer-bg-left" aria-hidden="true" loading="eager">
     <div class="wrap footer-top">
       <div class="footer-col col-brand">
-        <img src="assets/images/logo.svg" width="160" height="160" loading="eager" alt="The Delhi Brasserie, Soho">
+        <img src="assets/images/logo.png" width="160" height="160" loading="eager" alt="The Delhi Brasserie, Soho">
         <p>Authentic Indian cuisine in the<br>heart of Soho, London.</p>
         <p class="estd">Estd 1985</p>
         <hr class="red-line">
@@ -282,7 +305,7 @@
   <div class="footer-bottom">
     <div class="wrap footer-bottom-in">
       <div class="bl">
-        <img src="assets/images/logo.svg" width="44" height="44" loading="eager" alt="Delhi Brasserie">
+        <img src="assets/images/logo.png" width="44" height="44" loading="eager" alt="Delhi Brasserie">
         <p>&copy; 2013-26 Delhi Brasserie.<br>All rights reserved.</p>
       </div>
       <ul class="bottom-links">
@@ -339,7 +362,7 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=b3a260c3" defer></script>
-<script src="assets/js/modules/toc.js?v=b3a260c3" defer></script>
+<script src="assets/js/main.js?v=0e474cd8" defer></script>
+<script src="assets/js/modules/toc.js?v=0e474cd8" defer></script>
 </body>
 </html>

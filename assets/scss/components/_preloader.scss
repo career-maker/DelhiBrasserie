@@ -8,5 +8,5 @@
    ========================================================================== */
 .preloader{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:var(--grey);transition:opacity .4s ease;}
 .preloader .circle{position:absolute;width:200px;height:200px;border-radius:50%;background:var(--gold-soft);box-shadow:0 0 0 100vw #fff;}
-.preloader .logo{position:relative;z-index:1;width:140px;height:auto;aspect-ratio:1;}
+.preloader .logo{position:relative;z-index:1;width:140px;height:auto;aspect-ratio:1;object-fit:contain;}
 html:not(.js) .preloader{display:none;}
