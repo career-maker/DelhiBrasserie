@@ -14,6 +14,9 @@ import crypto from 'node:crypto';
 const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'src');
 const SITE = 'https://delhibrasserie.com';
+// Beta: every page is noindex/nofollow/noarchive. Set to false at launch (and update robots.txt).
+const BETA = true;
+const BETA_ROBOTS = 'noindex, nofollow, noarchive';
 
 const read = (p) => fs.readFileSync(p, 'utf8');
 const write = (p, s) => {
@@ -171,7 +174,7 @@ pages.forEach(({ meta, body }) => {
     const to = (pageMap[m[1]] || 'index.html') + (m[2] || '');
     const html = `<!DOCTYPE html>
 <html lang="en-GB"><head><meta charset="UTF-8"><title>${esc(meta.title || 'Redirecting')}</title>
-<meta name="robots" content="noindex"><link rel="canonical" href="${urlFor(pageMap[m[1]] || 'index.html')}">
+<meta name="robots" content="${BETA ? BETA_ROBOTS : 'noindex'}"><link rel="canonical" href="${urlFor(pageMap[m[1]] || 'index.html')}">
 <meta http-equiv="refresh" content="0; url=${to}"><script>location.replace(${JSON.stringify(to)});</script></head>
 <body><p>This page has moved to <a href="${to}">${to.replace(/#.*/, '')}</a>.</p></body></html>
 `;
@@ -189,7 +192,7 @@ pages.forEach(({ meta, body }) => {
     og_description: esc(meta.og_description || meta.description || ''),
     og_image_abs: abs(meta.og_image || '/assets/images/restaurant/storefront.webp'),
     preload: meta.preload_image ? `<link rel="preload" as="image" href="${meta.preload_image}" fetchpriority="high">` : (meta.banner && meta.banner !== 'none' ? `<link rel="preload" as="image" href="${meta.banner}" fetchpriority="high">` : ''),
-    robots: meta.robots ? `<meta name="robots" content="${meta.robots}">` : '',
+    robots: BETA ? `<meta name="robots" content="${BETA_ROBOTS}">` : meta.robots ? `<meta name="robots" content="${meta.robots}">` : '',
     version: VERSION,
     html_class: meta.layout === 'home' ? 'is-home' : 'is-inner',
     body_class: [meta.body_class || 'page-inner', (meta.banner && meta.banner !== 'none') ? 'has-banner' : ''].filter(Boolean).join(' '),
