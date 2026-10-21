@@ -157,7 +157,19 @@ const mapPageLinks = (html) => html.replace(/(\shref)="(\/[^"?#]*)([?#][^"]*)?"/
 const rootRel = (u) => (u.startsWith('/') && !u.startsWith('//') ? u.slice(1) : u);
 const relativize = (html) => html
   .replace(/(\s(?:href|src|poster))="([^"]*)"/g, (all, k, v) => `${k}="${rootRel(v)}"`)
+  .replace(/(\ssrcset)="([^"]*)"/g, (all, k, v) => `${k}="${v.split(', ').map((x) => rootRel(x)).join(', ')}"`)
   .replace(/url\((['"]?)(\/[^)'"]+)\1\)/g, (all, q, u) => `url(${q}${rootRel(u)}${q})`);
+
+// srcset for photos that have name-480/800/1200.webp copies (npm run images)
+const srcsetCache = {};
+const withSrcset = (html) => html.replace(/<img ([^>]*?)src="(\/?)(assets\/images\/(?:restaurant|live)\/[^"/]+)\.webp"([^>]*)>/g, (all, pre, slash, base, post) => {
+  const sizes = (srcsetCache[base] ??= [480, 800, 1200].filter((w) => fs.existsSync(path.join(ROOT, `${base}-${w}.webp`))));
+  if (!sizes.length || /srcset=/.test(all)) return all;
+  const full = (all.match(/width="(\d+)"/) || [])[1];
+  const list = sizes.map((w) => `${slash}${base}-${w}.webp ${w}w`).concat(`${slash}${base}.webp ${Math.max(1000, full ? Math.min(+full, 1000) : 1000)}w`).join(', ');
+  const hero = /fetchpriority="high"/.test(all) ? '100vw' : '(max-width:1100px) 100vw, 50vw';
+  return `<img ${pre}src="${slash}${base}.webp" srcset="${list}" sizes="${hero}"${post}>`;
+});
 
 // ---------- build ----------
 const layout = read(path.join(SRC, 'layouts', 'base.html'));
@@ -209,6 +221,7 @@ pages.forEach(({ meta, body }) => {
   html = html.replace(/\{\{(\w+)\}\}/g, (all, k) => (k in vars ? vars[k] : all));
   html = markActive(html, pagePath);
   html = mapPageLinks(html);
+  html = withSrcset(html);
   if (!is404) html = relativize(html);
   html = html.replace(/\n{3,}/g, '\n\n');          // tidy blank runs
 

@@ -9,7 +9,8 @@
   .intro-grid{grid-template-columns:1fr;padding-right:0;}
   .intro-text{padding-right:var(--gutter-r);}
   .trio-grid{grid-template-columns:1fr;max-width:640px;margin:0 auto;}
-  .t-party{min-height:520px;}
+  .t-menu>img,.t-party>img{height:auto;min-height:0;aspect-ratio:16/9;}
+  .t-menu .t-copy,.t-party .t-copy{flex:none;}
   .best-grid{grid-template-columns:1fr;}
   .best .cols{columns:1;}
 }
@@ -60,3 +61,6 @@
   .exp-grid{grid-template-columns:5fr 7fr;gap:clamp(2rem,4vw,5rem);align-items:center;}
   .tile{min-height:calc(var(--u) * 40);}
 }
+
+/* below-the-fold sections: skip layout/paint work until they near the viewport */
+.offer,.intro,.trio,.best,.why,.exp,.prepost{content-visibility:auto;contain-intrinsic-size:auto 900px;}
