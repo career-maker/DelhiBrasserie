@@ -12,7 +12,7 @@
 .topbar-in{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
 .topbar ul{display:flex;align-items:center;gap:clamp(1rem,2.4vw,2.2rem);}
 .topbar a{display:inline-flex;align-items:center;gap:.5rem;text-transform:uppercase;text-decoration:none;color:inherit;transition:color .25s;white-space:nowrap;}
-.topbar a:hover{color:var(--brand);}
+.topbar a:hover{color:var(--gold-deep);}
 .topbar .ic{width:1.05rem;height:1.05rem;color:var(--brand);}
 .topbar small{font-size:inherit;opacity:.65;text-transform:none;}
 .topbar-social{display:flex;gap:1rem;}
@@ -28,7 +28,8 @@
 .nav-left ul{justify-content:flex-end;}
 .nav-right ul{justify-content:flex-start;}
 .nav a{position:relative;display:inline-flex;align-items:center;gap:.35rem;padding:.6rem 0;font-size:var(--t-nav);line-height:1;text-transform:uppercase;text-decoration:none;color:var(--text-2);white-space:nowrap;transition:color .3s;}
-.nav a:hover,.nav a[aria-current="page"]{color:var(--brand);}
+.nav a[aria-current="page"]{color:var(--brand);}
+.nav a:hover{color:var(--gold-deep);}
 .nav .ic{width:1rem;height:1rem;}
 .nav .home-ic{width:1.3rem;height:1.3rem;}
 .has-sub{position:relative;}
@@ -72,7 +73,7 @@ body:has(.page-banner) {
       color: #fff;
       border-bottom: 1px solid rgba(255,255,255,0.18);
       a { color: #fff; }
-      a:hover { color: var(--brand); }
+      a:hover { color: var(--gold); }
       .ic { color: #fff; }
     }
 
@@ -85,11 +86,14 @@ body:has(.page-banner) {
       color: var(--text-2);
     }
 
-    .nav a:hover,
     .nav a[aria-current="page"],
-    .nav a.active,
-    .nav a:hover .ic {
+    .nav a.active {
       color: var(--brand);
+    }
+
+    .nav a:hover,
+    .nav a:hover .ic {
+      color: var(--gold);
     }
 
     .menu-btn {
