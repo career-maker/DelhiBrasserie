@@ -12,13 +12,6 @@
   .t-party{min-height:520px;}
   .best-grid{grid-template-columns:1fr;}
   .best .cols{columns:1;}
-
-  .offer, .trio, .best, .why, .exp, .intro, .prepost {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
 }
 @include bp-mobile{
   .hero-count{display:none;}
@@ -36,19 +29,17 @@
 
 /* ==========================================================================
    FIT TO SCREEN (desktop, at least 1101px wide and 600px tall).
-   Each section is at least one screen tall and vertically centred. Text,
-   spacing and photographs all scale with --u, so they shrink together on short
-   laptop screens. If a section still needs more room it grows; it never clips.
+   Sections size to their content (no min-height:100vh, so zooming out never
+   leaves gaps above or below). Only the hero is full-screen. Text, spacing and
+   photographs scale with --u, so they shrink together on short laptop screens.
    ========================================================================== */
 @include bp-fit{
-  html{scroll-snap-type:y proximity;}
-  .hero,.offer,.intro,.trio,.best,.prepost,.why,.exp,.location{scroll-snap-align:start;}
 
   .hero{min-height:100vh;min-height:100svh;}
   .hero-inner{justify-content:center;flex:1;}
 
-  .offer,.trio,.best,.why,.exp{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding-top:calc(var(--sec-y) * 0.65);padding-bottom:var(--sec-y);}
-  .intro{display:flex;flex-direction:column;justify-content:center;min-height:100vh;padding-top:clamp(20px, 3vw, 50px);padding-bottom:0;}
+  .offer,.trio,.best,.why,.exp{padding-top:calc(var(--sec-y) * 0.65);padding-bottom:var(--sec-y);}
+  .intro{padding-top:clamp(20px, 3vw, 50px);padding-bottom:0;}
   .soho .faq-sec{padding-top:var(--sp-3);padding-bottom:var(--sp-3);}
   .faq-grid{grid-template-columns:3.2fr 8.8fr;gap:clamp(1.5rem,3.5vw,4rem);}
   .faq-photo{min-height:0;height:100%;}
