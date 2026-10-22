@@ -14,6 +14,16 @@
   .best-grid{grid-template-columns:1fr;}
   .best .cols{columns:1;}
 }
+/* tablet: menus and reviews side by side, private party rooms as a full-width row below */
+@media (min-width:768px) and (max-width:1100px){
+  .trio-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none;}
+  .t-quotes{min-height:100%;}
+  .t-party{grid-column:1 / -1;flex-direction:row;}
+  .t-party>img{width:45%;height:auto;aspect-ratio:auto;min-height:100%;flex:none;}
+  .t-party .t-copy{margin-top:0;justify-content:center;flex:1 1 0;min-width:0;padding-inline:var(--sp-3);}
+  .t-party .t-copy>*{max-width:100%;}
+  .t-party .t-copy::before{display:none;}
+}
 @include bp-mobile{
   .hero-count{display:none;}
   .hero-arrows{display:none;}
