@@ -12,4 +12,5 @@
 .takeaway-card h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.15;}
 .takeaway-card p{margin-top:.5rem;color:rgba(255,255,255,.94);font-size:var(--t-body);line-height:1.55;}
 .takeaway-card p a{color:#fff;text-underline-offset:3px;}
-.takeaway .btn-light{background:#FFF5E5;}
+.takeaway .btn-light{background:var(--gold);color:var(--ink);--sweep:#FFF5E5;}
+.takeaway .btn-light:hover,.takeaway .btn-light:focus-visible{color:var(--brand-dark);}
