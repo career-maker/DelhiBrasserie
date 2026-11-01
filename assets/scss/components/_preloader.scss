@@ -18,4 +18,4 @@ html:not(.js) .preloader{display:none;}
 @keyframes pre-draw{to{stroke-dashoffset:0;}}
 @keyframes pre-fill{to{fill:rgba(255,210,141,.28);}}
 @keyframes pre-eye{from{opacity:0;transform:scale(0);}to{opacity:1;transform:scale(1);}}
-@keyframes pre-logo{from{opacity:0;transform:translate(-50%,-50%) scale(.7);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+@keyframes pre-logo{from{transform:translate(-50%,-50%) scale(.8);}to{transform:translate(-50%,-50%) scale(1);}}

@@ -10,6 +10,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 
 const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'src');
@@ -32,6 +33,10 @@ const hashOf = (files) => {
 };
 const jsFiles = ['main.js', ...fs.readdirSync(path.join(ROOT, 'assets/js/modules')).map((f) => 'modules/' + f)];
 const VERSION = hashOf([path.join(ROOT, 'assets/css/main.min.css'), ...jsFiles.map((f) => path.join(ROOT, 'assets/js', f))]);
+
+// ---------- preloader CSS, inlined in <head> so the preloader looks right before main.min.css arrives ----------
+const PRELOADER_CSS = execFileSync(process.execPath, [path.join(ROOT, 'node_modules/sass/sass.js'), path.join(ROOT, 'assets/scss/components/_preloader.scss'), '--style=compressed', '--no-charset', '--no-source-map'], { encoding: 'utf8' })
+  .replace(/var\(--gold\)/g, '#FFC66F').replace(/var\(--brand\)/g, '#D61820').trim();
 
 // ---------- partials ----------
 const partialCache = {};
@@ -206,6 +211,7 @@ pages.forEach(({ meta, body }) => {
     preload: meta.preload_image ? `<link rel="preload" as="image" href="${meta.preload_image}" fetchpriority="high">` : (meta.banner && meta.banner !== 'none' ? `<link rel="preload" as="image" href="${meta.banner}" fetchpriority="high">` : ''),
     robots: BETA ? `<meta name="robots" content="${BETA_ROBOTS}">` : meta.robots ? `<meta name="robots" content="${meta.robots}">` : '',
     version: VERSION,
+    preloader_css: PRELOADER_CSS,
     html_class: meta.layout === 'home' ? 'is-home' : 'is-inner',
     body_class: [meta.body_class || 'page-inner', (meta.banner && meta.banner !== 'none') ? 'has-banner' : ''].filter(Boolean).join(' '),
     banner: banner(meta),
