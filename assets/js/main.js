@@ -12,7 +12,7 @@
   var topbar = doc.querySelector('.topbar');
   var toTop = doc.querySelector('.to-top');
   var ticking = false;
-  var lastY = window.pageYOffset || doc.documentElement.scrollTop;
+  var lastY = 0;
 
   function onScroll() {
     var y = window.pageYOffset || doc.documentElement.scrollTop;
@@ -33,7 +33,7 @@
   window.addEventListener('scroll', function () {
     if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
   }, { passive: true });
-  onScroll();
+  window.requestAnimationFrame(onScroll);
 
   if (toTop) {
     toTop.addEventListener('click', function () {
@@ -286,12 +286,12 @@
       setTimeout(function () { pre.style.display = 'none'; }, 1100);
     }
     if (reduceMotion) { pre.style.display = 'none'; html.classList.add('pre-done'); doc.dispatchEvent(new Event('db:ready')); return; }
-    /* hold the loader ~1.7s so the feather animation can play, even on fast loads */
-    var t0 = Date.now();
-    function whenLoaded() { setTimeout(finish, Math.max(0, 1700 - (Date.now() - t0))); }
-    if (doc.readyState === 'complete') whenLoaded();
-    else window.addEventListener('load', whenLoaded);
-    setTimeout(finish, 6000); /* never leave visitors on the loader */
+    /* hold the loader ~1.1s so the feather animation can play, then lift once the first hero/banner image is in */
+    function go() { setTimeout(finish, Math.max(0, 800 - performance.now())); }
+    var lead = doc.querySelector('.hero-slide.is-active img, .page-banner-img');
+    if (lead && !lead.complete) { lead.addEventListener('load', go, { once: true }); lead.addEventListener('error', go, { once: true }); }
+    else go();
+    setTimeout(finish, 3500); /* never leave visitors on the loader */
   })();
 
   /* ---------- hero slides: fade, counter, arrows, slow autoplay ---------- */

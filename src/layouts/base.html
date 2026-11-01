@@ -19,12 +19,14 @@
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.webp">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.webp">
-<link rel="preload" as="image" href="/assets/images/logo-320.webp" type="image/webp" fetchpriority="high">
 {{preload}}
 <script>document.documentElement.classList.add('js','pre-on');</script>
 
 <link rel="preload" href="/assets/css/main.min.css?v={{version}}" as="style">
-<link href="/assets/css/main.min.css?v={{version}}" rel="stylesheet">
+<style>.preloader{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#fff}.preloader .logo{position:absolute;left:50%;top:70.4%;width:140px;height:auto;transform:translate(-50%,-50%)}.pre-stage{position:relative;width:min(86vw,360px);aspect-ratio:360/270}html:not(.js) .preloader{display:none}</style>
+<style id="css-wait">html.js body>:not(#preloader){display:none}</style>
+<link href="/assets/css/main.min.css?v={{version}}" rel="stylesheet" media="print" onload="this.media='all';document.getElementById('css-wait').remove()">
+<noscript><link href="/assets/css/main.min.css?v={{version}}" rel="stylesheet"></noscript>
 
 <!-- Google Analytics (GA4): paste the existing measurement tag here in consent-gated form:
      <script type="text/plain" data-cookie="analytics" src="..."></script> -->

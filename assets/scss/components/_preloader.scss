@@ -2,15 +2,15 @@
 // Gold feathers draw outward in a fan behind the logo; once the page has loaded (and the
 // animation has had ~1.7s to play) the whole stage lifts away. See assets/js/main.js.
 
-.preloader{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#fff;transition:opacity .7s ease .15s;}
-.pre-stage{position:relative;width:min(86vw,360px);aspect-ratio:360/270;transition:transform .9s cubic-bezier(.2,.7,.2,1);}
-.preloader .logo{position:absolute;left:50%;top:70.4%;width:140px;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%);animation:pre-logo .9s cubic-bezier(.2,.7,.2,1) .15s both;}
+.preloader{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#fff;transition:opacity .35s ease;}
+.pre-stage{position:relative;width:min(86vw,360px);aspect-ratio:360/270;transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+.preloader .logo{position:absolute;left:50%;top:70.4%;width:140px;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%);animation:pre-logo .4s cubic-bezier(.2,.7,.2,1) .05s both;}
 .pf{position:absolute;inset:0 0 auto 0;width:100%;height:auto;overflow:visible;transform:translateY(24%);}
 .pf g[style]{transform:rotate(var(--a));}
 .pf path{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:round;
-  animation:pre-draw .8s ease-out calc(.25s + var(--i) * .06s) forwards, pre-fill .6s ease calc(.9s + var(--i) * .03s) forwards;}
+  animation:pre-draw .4s ease-out calc(.05s + var(--i) * .018s) forwards, pre-fill .3s ease calc(.35s + var(--i) * .015s) forwards;}
 .pf-front path{stroke:var(--brand);}
-.pf circle{fill:var(--brand);opacity:0;transform-box:fill-box;transform-origin:center;animation:pre-eye .5s ease calc(.7s + var(--i) * .05s) forwards;}
+.pf circle{fill:var(--brand);opacity:0;transform-box:fill-box;transform-origin:center;animation:pre-eye .5s ease calc(.25s + var(--i) * .02s) forwards;}
 .pf-back circle{fill:var(--gold);}
 html.pre-done .pre-stage{transform:scale(1.12);}
 html:not(.js) .preloader{display:none;}

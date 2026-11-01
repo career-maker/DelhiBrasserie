@@ -9,12 +9,12 @@ const dirs = ['assets/images/restaurant', 'assets/images/live'];
 
 for (const dir of dirs) {
   for (const f of fs.readdirSync(dir)) {
-    if (!/^[^.]+\.webp$/.test(f) || /-\d+\.webp$/.test(f)) continue;
+    if (!/^[^.]+\.webp$/.test(f) || /-(480|800|1200)\.webp$/.test(f)) continue;
     const src = path.join(dir, f);
     const { width } = await sharp(src).metadata();
     for (const w of WIDTHS) {
       if (w >= width) continue;
-      await sharp(src).resize({ width: w }).webp({ quality: 66, effort: 5 }).toFile(path.join(dir, f.replace('.webp', `-${w}.webp`)));
+      await sharp(src).resize({ width: w }).webp({ quality: 58, effort: 5 }).toFile(path.join(dir, f.replace('.webp', `-${w}.webp`)));
     }
   }
 }
