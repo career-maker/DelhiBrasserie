@@ -11,7 +11,7 @@
 .marquee-group{display:flex;flex:none;align-items:center;}
 .marquee-item{display:flex;align-items:center;gap:1.4rem;padding:.75rem 1.5rem .75rem 0;font-size:var(--t-sm);letter-spacing:.02em;white-space:nowrap;flex-shrink:0;opacity:1!important;visibility:visible!important;transform:none!important;}
 .marquee-item strong{font-weight:700;}
-.marquee-item small{opacity:.88;font-size:.9em;}
+.marquee-item small{font-size:.9em;}
 .marquee-item .ic{width:1.3rem;height:1.3rem;color:var(--gold-soft);flex-shrink:0;}
 .marquee-item .ic-inline{width:1.15rem;height:1.15rem;margin-right:.35rem;vertical-align:-.15rem;display:inline-block;}
 .marquee-item a{text-decoration:underline;text-underline-offset:4px;}

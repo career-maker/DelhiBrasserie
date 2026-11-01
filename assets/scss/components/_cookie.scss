@@ -81,6 +81,7 @@
 html.cc-open .to-top { --lift: calc(var(--cc-h, 0px) + 12px); }
 // the button in the footer links list that reopens the settings
 .footer-bottom .cookie-link {
+  color: #a0a0a0 !important;
   padding: 0;
   font-size: inherit;
   letter-spacing: 0;
@@ -88,7 +89,7 @@ html.cc-open .to-top { --lift: calc(var(--cc-h, 0px) + 12px); }
   color: inherit;
   border: 0;
 
-  &:hover { color: var(--brand); }
+  &:hover { color: var(--gold) !important; }
 }
 
 @include bp-mobile {
