@@ -1,12 +1,21 @@
-// Preloader
-// Same sequence as Pandhal. See assets/js/main.js.
+// Preloader: Peacock Unfurl
+// Gold feathers draw outward in a fan behind the logo; once the page has loaded (and the
+// animation has had ~1.7s to play) the whole stage lifts away. See assets/js/main.js.
 
-/* ==========================================================================
-   PRELOADER: same behaviour as the Pandhal site. A gold circle with the logo
-   sits on a light screen; once the page has loaded the circle swells to fill
-   the screen while the preloader fades out. Runs on every page load.
-   ========================================================================== */
-.preloader{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:var(--grey);transition:opacity .4s ease;}
-.preloader .circle{position:absolute;width:200px;height:200px;border-radius:50%;background:var(--gold-soft);box-shadow:0 0 0 100vw #fff;}
-.preloader .logo{position:relative;z-index:1;width:140px;height:auto;aspect-ratio:1;object-fit:contain;}
+.preloader{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#fff;transition:opacity .7s ease .15s;}
+.pre-stage{position:relative;width:min(86vw,360px);aspect-ratio:360/270;transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+.preloader .logo{position:absolute;left:50%;top:70.4%;width:140px;height:auto;aspect-ratio:1;object-fit:contain;transform:translate(-50%,-50%);animation:pre-logo .9s cubic-bezier(.2,.7,.2,1) .15s both;}
+.pf{position:absolute;inset:0 0 auto 0;width:100%;height:auto;overflow:visible;transform:translateY(24%);}
+.pf g[style]{transform:rotate(var(--a));}
+.pf path{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:round;
+  animation:pre-draw .8s ease-out calc(.25s + var(--i) * .06s) forwards, pre-fill .6s ease calc(.9s + var(--i) * .03s) forwards;}
+.pf-front path{stroke:var(--brand);}
+.pf circle{fill:var(--brand);opacity:0;transform-box:fill-box;transform-origin:center;animation:pre-eye .5s ease calc(.7s + var(--i) * .05s) forwards;}
+.pf-back circle{fill:var(--gold);}
+html.pre-done .pre-stage{transform:scale(1.12);}
 html:not(.js) .preloader{display:none;}
+
+@keyframes pre-draw{to{stroke-dashoffset:0;}}
+@keyframes pre-fill{to{fill:rgba(255,210,141,.28);}}
+@keyframes pre-eye{from{opacity:0;transform:scale(0);}to{opacity:1;transform:scale(1);}}
+@keyframes pre-logo{from{opacity:0;transform:translate(-50%,-50%) scale(.7);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}

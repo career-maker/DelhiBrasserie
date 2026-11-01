@@ -276,20 +276,21 @@
     var pre = doc.getElementById('preloader');
     var html = doc.documentElement;
     if (!pre) { html.classList.add('pre-done'); doc.dispatchEvent(new Event('db:ready')); return; }
-    var circle = pre.querySelector('.circle');
     var done = false;
     function finish() {
       if (done) return;
       done = true;
-      if (circle) { circle.style.transition = 'transform 1.6s'; circle.style.transform = 'scale(16)'; }
       pre.style.opacity = '0';
       html.classList.add('pre-done');
       doc.dispatchEvent(new Event('db:ready'));
-      setTimeout(function () { pre.style.display = 'none'; }, 1000);
+      setTimeout(function () { pre.style.display = 'none'; }, 1100);
     }
     if (reduceMotion) { pre.style.display = 'none'; html.classList.add('pre-done'); doc.dispatchEvent(new Event('db:ready')); return; }
-    if (doc.readyState === 'complete') finish();
-    else window.addEventListener('load', finish);
+    /* hold the loader ~1.7s so the feather animation can play, even on fast loads */
+    var t0 = Date.now();
+    function whenLoaded() { setTimeout(finish, Math.max(0, 1700 - (Date.now() - t0))); }
+    if (doc.readyState === 'complete') whenLoaded();
+    else window.addEventListener('load', whenLoaded);
     setTimeout(finish, 6000); /* never leave visitors on the loader */
   })();
 
@@ -422,7 +423,7 @@
     /* first visit: show the bar once the preloader has finished. Returning visitor: apply the stored choice. */
     var stored = read();
     if (stored) { window.dbConsent = stored; activate(stored); return; }
-    function later() { setTimeout(showBar, 1300); }  /* after the preloader circle has swelled away */
+    function later() { setTimeout(showBar, 1000); }  /* after the preloader circle has swelled away */
     if (html.classList.contains('pre-done')) later();
     else doc.addEventListener('db:ready', later, { once: true });
   })();
