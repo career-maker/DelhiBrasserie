@@ -28,3 +28,8 @@
 .offer-circle small{margin-top:.25rem;font-size:var(--t-2xs);line-height:1.25;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);}
 .offer-badge{position:absolute;right:var(--sp-2);top:var(--sp-2);z-index:2;padding:.4rem .55rem;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18);}
 .offer-badge img{width:clamp(44px,calc(var(--u) * 4.4),68px);}
+
+/* tablet: the stacked photo keeps a wide crop instead of filling a tall block */
+@media (min-width: 600px) and (max-width: 1100px) {
+  .offer-photo{aspect-ratio:16/10;}
+}

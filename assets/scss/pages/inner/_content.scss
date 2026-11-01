@@ -126,3 +126,11 @@
   .faq-grid{grid-template-columns:minmax(0,1fr);}
   .faq-media img{aspect-ratio:16/9;}
 }
+
+/* tablet: stacked split photos stay a sensible size (wide crop, capped height) */
+@media (min-width: 600px) and (max-width: 1100px) {
+  .split-media img{aspect-ratio:16/9;max-height:420px;}
+}
+@media (min-width: 600px) and (max-width: 1100px) {
+  .prose img{display:block;width:auto;max-width:100%;max-height:460px;margin-inline:auto;object-fit:contain;}
+}

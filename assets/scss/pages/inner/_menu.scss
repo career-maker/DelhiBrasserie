@@ -89,3 +89,8 @@ body.header-hidden .menu-nav{top:0;}
   .mi-price{margin-left:auto;}
   .mi-name{flex:1 1 60%;}
 }
+
+/* tablet: keep stacked photos and tiles a sensible size instead of full width */
+@media (min-width: 600px) and (max-width: 1100px) {
+  .menu-tiles{grid-template-columns:repeat(2,minmax(0,1fr));}
+}

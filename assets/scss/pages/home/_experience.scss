@@ -16,3 +16,8 @@
 .tile .go{display:inline-flex;align-items:center;justify-content:center;width:clamp(38px,calc(var(--u) * 3.4),50px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold-soft);color:var(--gold-soft);transition:background-color .3s,color .3s;}
 .tile:hover .go{background:var(--gold-soft);color:var(--ink);}
 .tile .go .ic{width:48%;height:48%;}
+
+/* tablet: menu tiles scale with the width, not the screen height */
+@media (min-width: 600px) and (max-width: 1100px) {
+  .tile{min-height:clamp(260px,44vw,400px);}
+}
