@@ -30,7 +30,9 @@
 .contact-item span span{color:var(--text);font-size:0.9em;}
 
 .btn-outline-red{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1rem;padding:0.6rem 1.2rem;border:1px solid var(--brand);border-radius:2rem;color:var(--brand);font-weight:500;font-size:var(--t-sm);text-decoration:none;transition:all 0.2s;}
-.btn-outline-red:hover{background:var(--brand);color:#fff;}
+.btn-outline-red{--sweep:var(--brand);}
+.btn-outline-red:hover,.btn-outline-red:focus-visible{background:var(--brand);color:#fff;}
+.btn-outline-red .ic{color:currentColor;}
 
 .follow{display:flex;flex-wrap:wrap;gap:0.8rem;}
 .follow a{display:inline-flex;align-items:center;justify-content:center;width:44px;aspect-ratio:1;border-radius:50%;border:1px solid var(--ink);color:var(--ink);transition:background-color 0.25s,color 0.25s,border-color 0.25s;}

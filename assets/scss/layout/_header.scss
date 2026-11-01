@@ -52,7 +52,8 @@
 .nav-right{padding-right:calc(3.6rem + 10.5rem);}
 @media (max-width:640px){.head-book{display:none;}}
 .nav-call{grid-area:1/1;justify-self:start;display:inline-flex;align-items:center;gap:.5rem;font-size:var(--t-sm);text-decoration:none;color:var(--text-2);}
-.nav-call .ic{color:var(--brand);width:1.4rem;height:1.4rem;}
+.nav-call .ic{color:var(--gold-deep);width:1.4rem;height:1.4rem;}
+.site-header.is-stuck .nav-call .ic{color:var(--brand);}
 .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;background:transparent;border:1px solid var(--line);color:var(--ink);transition:background-color .3s,border-color .3s;}
 .menu-btn:hover{background:var(--cream-2);border-color:var(--gold);}
 .menu-btn .ic{width:1.5rem;height:1.5rem;}
@@ -85,6 +86,10 @@ body:has(.page-banner) {
     .nav a,
     .nav-call {
       color: #fff;
+    }
+
+    .nav-call .ic {
+      color: var(--gold);
     }
 
     .nav .sub a {
