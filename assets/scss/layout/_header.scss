@@ -91,6 +91,11 @@ body:has(.page-banner) {
       color: var(--text-2);
     }
 
+    .nav .sub a:hover,
+    .nav .sub a:focus-visible {
+      color: var(--gold-deep);
+    }
+
     .nav a[aria-current="page"],
     .nav a.active {
       color: var(--gold);
