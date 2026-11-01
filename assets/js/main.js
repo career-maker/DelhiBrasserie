@@ -294,6 +294,27 @@
     setTimeout(finish, 3500); /* never leave visitors on the loader */
   })();
 
+  /* ---------- sheen: a band of light glides over photographs and badges on hover (CSS in components/_sheen.scss) ---------- */
+  (function () {
+    function addSheen(el) {
+      if (el.querySelector(':scope > .sheen')) return;
+      var s = doc.createElement('i');
+      s.className = 'sheen';
+      s.setAttribute('aria-hidden', 'true');
+      el.appendChild(s);
+      el.classList.add('has-sheen');
+    }
+    doc.querySelectorAll('.pc-img,.post-hero,.g-item,.split-media,.tile,.why-photo,.faq-photo,.faq-media,.offer-photo,.press-plate,.press-break,.carousel .track li,.t-card,.vcard--channel').forEach(addSheen);
+    doc.querySelectorAll('.ta-badges img,.bb-img,.prose img').forEach(function (img) {
+      if (img.parentNode.classList.contains('glint')) return;
+      var w = doc.createElement('span');
+      w.className = 'glint';
+      img.parentNode.insertBefore(w, img);
+      w.appendChild(img);
+      addSheen(w);
+    });
+  })();
+
   /* ---------- hero slides: fade, counter, arrows, slow autoplay ---------- */
   doc.querySelectorAll('[data-hero]').forEach(function (hero) {
     var slides = [].slice.call(hero.querySelectorAll('.hero-slide'));

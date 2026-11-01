@@ -23,15 +23,19 @@
 .hero h1{font-family:var(--serif);font-weight:400;font-size:var(--t-hero);line-height:1.14;color:#fff;text-wrap:balance;text-shadow:0 2px 20px rgba(0,0,0,.55);margin-bottom:0;}
 .hero h1 em{font-style:normal;color:var(--gold-soft);}
 
-.hero-actions{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;width:100%;margin-top:clamp(2.6rem,6vh,5rem);margin-bottom:0;}
-.hero-actions-l{display:flex;align-items:center;justify-content:flex-start;}
-.hero-actions .ta-badges{display:inline-flex;align-items:center;gap:.6rem;flex-shrink:0;}
-.hero-actions .ta-badges img{display:block;width:clamp(50px,calc(var(--u) * 4.4),68px);height:auto;}
+.hero-actions{display:flex;flex-direction:column;align-items:center;gap:clamp(1.5rem,3.4vh,2.4rem);width:100%;margin-top:clamp(2.6rem,6vh,5rem);margin-bottom:0;}
+.hero-actions .ta-badges{display:inline-flex;align-items:center;justify-content:center;gap:clamp(.7rem,1.4vw,1.2rem);flex-shrink:0;}
+.hero-actions .ta-badges .glint{border-radius:2px;}
+.hero-actions .ta-badges img{display:block;width:clamp(56px,calc(var(--u) * 4.8),76px);height:auto;}
+/* the two awards rise in one after the other once the call-to-action buttons are in */
+.hero-actions .ta-badges .glint{animation:badgeIn 1s var(--ease) both;animation-delay:calc(var(--pre) + .95s);}
+.hero-actions .ta-badges .glint+.glint{animation-delay:calc(var(--pre) + 1.15s);}
+@keyframes badgeIn{from{opacity:0;transform:translateY(18px) scale(.82);filter:blur(6px);}to{opacity:1;transform:none;filter:none;}}
+.js.pre-on:not(.pre-done) .hero-actions .ta-badges .glint{animation:none;opacity:0;}
 
 .hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.7rem,1.4vw,1.6rem);margin-bottom:0;}
 .hero-ctas .btn{min-width:clamp(140px,calc(var(--u) * 12),220px);background-clip:padding-box;}
 .hero-ctas .btn-line{background:rgba(4,13,16,.42);}
-.hero-actions-r{display:block;}
 
 .hero-copy>*{animation:heroUp 1s var(--ease) both;}
 .hero-copy>.hero-overline{animation-delay:calc(var(--pre) + .05s);}
@@ -50,8 +54,6 @@
 .js.pre-on:not(.pre-done) .hero-copy>*{animation:none;opacity:0;}
 
 @media (max-width: 860px){
-  .hero-actions{display:flex;flex-direction:column;gap:1.4rem;margin-top:clamp(1.8rem,4.5vh,3.2rem);}
-  .hero-actions-l{justify-content:center;}
-  .hero-actions-r{display:none;}
+  .hero-actions{margin-top:clamp(1.8rem,4.5vh,3.2rem);}
 }
 
