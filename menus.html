@@ -124,8 +124,13 @@
         <ul>
           <li><a class="fliplink" href="gallery.html"><span class="Link" data-after="Gallery"><span>Gallery</span></span></a></li>
           <li><a class="fliplink" href="new-blog.html"><span class="Link" data-after="Blog"><span>Blog</span></span></a></li>
-          <li><a class="fliplink" href="reviews.html"><span class="Link" data-after="Review"><span>Review</span></span></a></li>
-          <li><a class="fliplink" href="influencer-videos.html"><span class="Link" data-after="Influencer videos"><span>Influencer videos</span></span></a></li>
+          <li class="has-sub">
+            <a class="fliplink" href="reviews.html"><span class="Link" data-after="Reviews"><span>Reviews</span></span> <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg></a>
+            <ul class="sub">
+              <li><a href="reviews.html">Critics</a></li>
+              <li><a href="influencer-videos.html">Influencer Videos</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
 
@@ -174,8 +179,20 @@
     <a href="pre-post-theatre-dining.html">Pre- Post Theatre</a>
     <a href="gallery.html">Gallery</a>
     <a href="new-blog.html">Blog</a>
-    <a href="reviews.html">Review</a>
-    <a href="influencer-videos.html">Influencer videos</a>
+    <div class="drawer-dropdown">
+      <div class="drawer-dropdown-head">
+        <a href="reviews.html">Reviews</a>
+        <button class="drawer-dropdown-toggle" type="button" aria-expanded="false" aria-controls="drawer-sub-reviews" aria-label="Toggle Reviews submenu">
+          <svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>
+        </button>
+      </div>
+      <div class="drawer-dropdown-menu" id="drawer-sub-reviews">
+        <div class="drawer-dropdown-inner">
+          <a href="reviews.html">Critics</a>
+          <a href="influencer-videos.html">Influencer Videos</a>
+        </div>
+      </div>
+    </div>
   </nav>
   <h2>More</h2>
   <nav class="drawer-extra" aria-label="More links">
@@ -242,7 +259,7 @@
             <li><a href="pre-post-theatre-dining.html">Pre - Post Theatre Dining</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="new-blog.html">Blog</a></li>
-            <li><a href="reviews.html">Review</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
             <li><a href="influencer-videos.html">Influencer Videos</a></li>
           </ul>
         </div>
