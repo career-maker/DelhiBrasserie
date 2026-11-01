@@ -47,7 +47,7 @@
 .drawer-close .ic{width:1.4rem;height:1.4rem;}
 .drawer h2{margin:1.8rem 0 .4rem;font-size:var(--t-xs);font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);}
 .drawer nav a{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:clamp(1.1rem,.95rem + .5vw,1.35rem);text-decoration:none;color:var(--ink);transition:color .2s,padding .3s var(--ease);}
-.drawer nav a:hover{color:var(--brand);padding-left:.4rem;}
+.drawer nav a:hover{color:var(--gold-deep);padding-left:.4rem;}
 .drawer nav a.active,.drawer nav a[aria-current="page"]{color:var(--brand);font-weight:500;}
 
 /* Drawer Dropdown Sub-menus */
