@@ -143,3 +143,9 @@
   .bottom-links{justify-content:center;gap:1rem;}
   .credit{margin-top:1rem;}
 }
+
+/* InterSmart credit: the supplied logo is built for a dark background, so it sits directly on the footer */
+.credit p{display:flex;flex-wrap:wrap;align-items:center;justify-content:inherit;gap:.7rem;}
+.credit-logo{display:inline-flex;align-items:center;line-height:0;transition:transform .35s var(--ease),filter .35s;}
+.credit-logo img{display:block;width:auto;height:19px;}
+.credit-logo:hover,.credit-logo:focus-visible{transform:translateY(-2px);filter:drop-shadow(0 4px 10px rgba(247,217,9,.35));}

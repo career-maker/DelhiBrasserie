@@ -92,12 +92,17 @@ html.cc-open .to-top { --lift: calc(var(--cc-h, 0px) + 12px); }
   &:hover { color: var(--gold) !important; }
 }
 
+// tablet and mobile: a compact bar. The message takes two lines, the three actions sit on one row below.
+@media (max-width: 1100px) {
+  .cookie-bar-in { flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: .5rem; padding-top: .7rem; padding-bottom: .7rem; }
+  .cookie-text { flex: 0 0 auto; max-width: none; font-size: clamp(.68rem, .55rem + .55vw, .85rem); line-height: 1.35; }
+  .cookie-actions { flex-wrap: nowrap; justify-content: space-between; gap: .6rem; }
+  .cookie-actions .cookie-link { padding-bottom: .15rem; font-size: clamp(.58rem, .45rem + .5vw, .75rem); letter-spacing: 0; white-space: nowrap; }
+  .cookie-actions .btn { min-height: 36px; padding: 0 1.1rem; font-size: clamp(.62rem, .5rem + .5vw, .78rem); }
+}
 @include bp-mobile {
   // sit above the mobile quick-action bar
   .cookie-bar { bottom: 52px; }
-  .cookie-bar-in { flex-direction: column; align-items: stretch; }
-  .cookie-text { flex: 0 0 auto; max-width: none; font-size: var(--t-2xs); }
-  .cookie-actions { justify-content: space-between; }
   html.cc-open .to-top { --lift: calc(var(--cc-h, 0px) + 52px + 12px); }
 }
 
