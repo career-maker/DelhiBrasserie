@@ -444,9 +444,10 @@
     /* first visit: show the bar once the preloader has finished. Returning visitor: apply the stored choice. */
     var stored = read();
     if (stored) { window.dbConsent = stored; activate(stored); return; }
-    function later() { setTimeout(showBar, 1000); }  /* after the preloader circle has swelled away */
+    function later() { setTimeout(function () { if (!bar.classList.contains('is-open')) showBar(); }, 1000); }  /* after the preloader circle has swelled away */
     if (html.classList.contains('pre-done')) later();
     else doc.addEventListener('db:ready', later, { once: true });
+    window.addEventListener('load', function () { setTimeout(function () { if (!read() && !bar.classList.contains('is-open')) showBar(); }, 2500); });  /* safety net: never depend on the preloader alone */
   })();
 
   /* ---------- hide a section when its content is empty ---------- */
