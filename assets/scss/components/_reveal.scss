@@ -7,7 +7,18 @@
 /* photographs reveal with a slow curtain wipe (applied to the image, so the wrapper stays observable) */
 .js .reveal-mask>img{clip-path:inset(0 0 100% 0);scale:1.1;transition:clip-path 1.4s var(--ease),scale 2.2s var(--ease),transform 1.4s var(--ease);transition-delay:var(--d,0s),var(--d,0s),0s;}
 .js .reveal-mask.in-view>img{clip-path:inset(0 0 0 0);scale:1;}
+/* premium titles: each word rises out of a mask, blur to sharp, staggered (js splits h1-h3 into .tw > .twi) */
+.js .split-title .tw{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em .08em .2em;margin:-.1em -.08em -.2em;}
+.js .split-title .twi{display:inline-block;transform:translateY(115%) rotate(4deg);transform-origin:0 100%;opacity:0;filter:blur(8px);
+  transition:transform 1.2s var(--ease),opacity .9s var(--ease),filter 1s var(--ease);transition-delay:calc(var(--i) * 70ms);}
+.js .split-title.t-in .twi{transform:none;opacity:1;filter:none;}
+.js .split-title.t-reset .twi{transition:none!important;}
+/* hero title: its text-shadow would be clipped by the mask, so words fade up without one */
+.js .hero .split-title .tw{overflow:visible;}
+.js .hero .split-title .twi{transform:translateY(.55em);}
+.js .hero .split-title.t-in .twi{transform:none;}
 @media (prefers-reduced-motion:reduce){
+  .js .split-title .twi{transform:none;opacity:1;filter:none;transition:none;}
   html{scroll-behavior:auto;}
   .js .reveal{opacity:1;transform:none;transition:none;}
   .js .reveal-mask>img{clip-path:none;scale:1;transition:none;}

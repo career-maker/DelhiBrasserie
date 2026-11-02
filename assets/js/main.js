@@ -121,9 +121,59 @@
     });
   }
 
+  /* ---------- premium title animation: words rise out of a mask, blur to sharp, staggered ---------- */
+  var titles = [].slice.call(doc.querySelectorAll('h1, h2, h3')).filter(function (el) {
+    return !el.closest('header, footer, .drawer, [class*="drawer"], .cookie-bar, .cookie-modal, .logo, .marquee, .menu-sec, #preloader');
+  });
+  titles.forEach(function (el) {
+    var n = 0;
+    (function walk(node) {
+      [].slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var f = doc.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (p) {
+            if (!p) return;
+            if (/^\s+$/.test(p)) { f.appendChild(doc.createTextNode(p)); return; }
+            var w = doc.createElement('span'), t = doc.createElement('span');
+            w.className = 'tw'; t.className = 'twi';
+            t.style.setProperty('--i', n++);
+            t.textContent = p; w.appendChild(t); f.appendChild(w);
+          });
+          c.parentNode.replaceChild(f, c);
+        } else if (c.nodeType === 1 && !/^(svg|br|img)$/i.test(c.tagName)) walk(c);
+      });
+    })(el);
+    el.classList.add('split-title');
+  });
+  var html0 = doc.documentElement;
+  var heroTitle = doc.querySelector('.hero h1.split-title');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var tio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('t-in'); tio.unobserve(en.target); }
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -30px 0px' });
+    titles.forEach(function (el) { if (el !== heroTitle) tio.observe(el); });
+    if (heroTitle) {
+      if (html0.classList.contains('pre-done')) heroTitle.classList.add('t-in');
+      else doc.addEventListener('db:ready', function () { heroTitle.classList.add('t-in'); }, { once: true });
+    }
+  } else {
+    titles.forEach(function (el) { el.classList.add('t-in'); });
+  }
+  /* hero: play the title again on every slide change */
+  window.dbReplayHeroTitle = function () {
+    if (!heroTitle || reduceMotion) return;
+    heroTitle.classList.remove('t-in');
+    heroTitle.classList.add('t-reset');
+    void heroTitle.offsetWidth;
+    heroTitle.classList.remove('t-reset');
+    setTimeout(function () { heroTitle.classList.add('t-in'); }, 350);
+  };
+
   /* ---------- reveal on scroll ---------- */
   doc.querySelectorAll('h1, h2, h3, h4, p, img').forEach(function(el) {
-    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-mask') && 
+    if (!el.classList.contains('split-title') && !el.classList.contains('reveal') && !el.classList.contains('reveal-mask') && 
         !el.parentElement.closest('.reveal') && !el.parentElement.closest('.reveal-mask') && 
         !el.closest('.hero-slides') && !el.closest('footer') && !el.closest('.cookie-bar') && 
         !el.closest('.logo') && !el.closest('.marquee') && !el.closest('.takeaway') && 
@@ -337,7 +387,9 @@
     if (tot) tot.textContent = pad(slides.length);
     function go(n) {
       i = (n + slides.length) % slides.length;
+      var changed = !slides[i].classList.contains('is-active');
       slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      if (changed && window.dbReplayHeroTitle) window.dbReplayHeroTitle();
       if (cur) cur.textContent = pad(i + 1);
     }
     function restart() {
