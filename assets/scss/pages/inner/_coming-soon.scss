@@ -1,0 +1,16 @@
+// Coming soon placeholder for hidden inner pages (see CLAUDE.md)
+
+.soon{position:relative;isolation:isolate;display:grid;place-items:center;min-height:clamp(560px,86svh,860px);padding:calc(var(--topbar-h) + var(--nav-h) + var(--sp-4)) 0 var(--sp-5);background:var(--cream-2);overflow:hidden;text-align:center;}
+.soon-flower{position:absolute;z-index:-1;left:50%;top:50%;width:clamp(380px,60vw,820px);height:auto;transform:translate(-50%,-50%);opacity:.14;pointer-events:none;}
+.soon-in{display:flex;flex-direction:column;align-items:center;}
+.soon .script{color:var(--brand);margin-bottom:.6rem;}
+.soon h1{font-family:var(--serif);font-weight:400;font-size:var(--t-hero);line-height:1.1;color:var(--ink);margin-bottom:0;}
+.soon h1 em{font-style:normal;color:var(--brand);}
+.soon-rule{display:block;width:clamp(56px,8vw,96px);height:2px;margin:var(--sp-2) 0;background:var(--gold);}
+.soon-lead{max-width:40ch;font-size:var(--t-lead);color:var(--text-2);margin-bottom:var(--sp-3);}
+.soon-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.7rem,1.4vw,1.4rem);}
+.soon-in>*{animation:heroUp 1s var(--ease) both;}
+.soon-in>.soon-lead{animation-delay:.15s;}
+.soon-in>.soon-actions{animation-delay:.25s;}
+.js.pre-on:not(.pre-done) .soon-in>*{animation:none;opacity:0;}
+@media (prefers-reduced-motion:reduce){.soon-in>*{animation:none;}}

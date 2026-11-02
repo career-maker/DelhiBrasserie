@@ -19,6 +19,9 @@ const SITE = 'https://delhibrasserie.com';
 const BETA = true;
 const BETA_ROBOTS = 'noindex, nofollow, noarchive';
 
+// "hidden": every page except home and 404 builds as the Coming Soon page (see CLAUDE.md, site-mode.json)
+const HIDE_INNER = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'site-mode.json'), 'utf8')).innerPages === 'hidden';
+
 const read = (p) => fs.readFileSync(p, 'utf8');
 const write = (p, s) => {
   fs.mkdirSync(path.dirname(p), { recursive: true });
@@ -181,9 +184,16 @@ const layout = read(path.join(SRC, 'layouts', 'base.html'));
 const sitemap = [];
 let count = 0;
 
-pages.forEach(({ meta, body }) => {
+pages.forEach(({ meta, body: srcBody }) => {
+  let body = srcBody;
   const pagePath = meta.path;
   const is404 = meta.file === '404.html';
+  if (HIDE_INNER && meta.file !== 'index.html' && !is404) {
+    delete meta.redirect; delete meta.scripts; delete meta.banner; meta.schema = '';
+    meta.title = (meta.h1 || meta.title || 'Coming soon').replace(/\s*\|.*$/, '') + ' | Coming soon | The Delhi Brasserie';
+    meta.body_class = 'page-inner page-soon';
+    body = '{{> coming-soon}}';
+  }
 
   // old live URLs that now live inside a merged page: a small redirect page (static hosting has no server rules)
   if (meta.redirect) {
