@@ -1,8 +1,8 @@
 // Skeleton shimmer behind lazy images: shows while the photo downloads, hidden once the opaque image paints over it.
-// Pure CSS, no JS. Footer/logo images are excluded (they have transparent areas).
+// Pure CSS, no JS. Footer, logo and transparent badge images are excluded (they have transparent areas).
 @keyframes sk-shimmer { to { background-position: -200% 0; } }
 
-img[loading="lazy"]:not([alt=""]):not(footer img):not(.logo img) {
+img[loading="lazy"]:not([alt=""]):not(footer img):not(.logo img):not(.bb-img):not(.ta-badges img) {
   background: linear-gradient(100deg, #ece6da 30%, #f7f2e8 50%, #ece6da 70%) 0 0 / 200% 100%;
   animation: sk-shimmer 1.4s linear infinite;
 }

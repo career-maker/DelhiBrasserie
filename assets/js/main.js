@@ -311,7 +311,16 @@
       w.className = 'glint';
       img.parentNode.insertBefore(w, img);
       w.appendChild(img);
-      addSheen(w);
+      /* glint = white silhouette copy of the image, swept by a gradient mask: it follows the artwork's own outline
+         (transparent PNG/WebP badges), not the square box, and works from file:// too */
+      var c = doc.createElement('img');
+      c.className = 'glint-shine';
+      c.src = img.getAttribute('src');
+      c.alt = '';
+      c.setAttribute('aria-hidden', 'true');
+      c.decoding = 'async';
+      w.appendChild(c);
+      w.classList.add('has-glint');
     });
   })();
 

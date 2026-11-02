@@ -13,7 +13,8 @@
 .when dd{margin-top:.2rem;font-family:var(--sans);font-size:var(--t-lead);line-height:1.25;color:var(--ink);}
 .offer-cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-2) var(--sp-2);}
 .bb-card{position:relative;display:flex;align-items:center;gap:clamp(1rem,2vw,1.6rem);margin-top:var(--sp-3);padding:.9rem clamp(1rem,2vw,1.6rem);background:rgba(255,198,111,.16);border:1.5px dashed var(--brand);border-radius:14px;}
-.bb-img{flex:none;width:clamp(110px,calc(var(--u) * 10),160px);height:auto;margin:-.4rem 0;}
+.bb-img{flex:none;width:clamp(110px,calc(var(--u) * 10),160px);height:auto;margin:0;}
+.bb-card .glint{margin:-.4rem 0;}
 .bb-text{display:flex;flex-direction:column;gap:.1rem;padding-left:clamp(1rem,2vw,1.6rem);border-left:1px solid var(--brand);}
 .bb-kicker{font-size:var(--t-2xs);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);}
 .bb-title{font-family:var(--serif);font-size:clamp(1.5rem,2.4vw,2.2rem);font-weight:400;line-height:1.1;color:var(--brand);}

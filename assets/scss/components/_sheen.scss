@@ -6,6 +6,9 @@
 .glint img{display:block;}
 .prose .glint{display:block;width:fit-content;max-width:100%;margin:1.6em auto;}
 .prose .glint img{margin:0;}
+.glint-shine{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;pointer-events:none;filter:brightness(0) invert(1);
+  -webkit-mask:linear-gradient(100deg,transparent 40%,#000 50%,transparent 60%) 100% 0/300% 100% no-repeat;mask:linear-gradient(100deg,transparent 40%,#000 50%,transparent 60%) 100% 0/300% 100% no-repeat;
+  transition:opacity .25s,-webkit-mask-position 0s .25s,mask-position 0s .25s;}
 
 .sheen{position:absolute;top:-10%;bottom:-10%;left:0;z-index:4;width:55%;pointer-events:none;opacity:0;
   background:linear-gradient(100deg,transparent 0,rgba(255,255,255,.08) 30%,rgba(255,236,200,.5) 50%,rgba(255,255,255,.08) 70%,transparent 100%);
@@ -13,6 +16,7 @@
 
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   .has-sheen:hover>.sheen,.has-sheen:focus-visible>.sheen,a:hover>.has-sheen>.sheen{opacity:1;transform:translateX(300%) skewX(-18deg);transition:opacity .2s,transform 1.15s cubic-bezier(.16,1,.3,1);}
-  .glint img{transition:transform .9s var(--ease);}
-  .glint:hover img{transform:scale(1.06);}
+  .glint:hover>.glint-shine,.glint:focus-visible>.glint-shine,a:hover>.glint>.glint-shine{opacity:.6;-webkit-mask-position:0 0;mask-position:0 0;transition:opacity .2s,-webkit-mask-position 1.15s cubic-bezier(.16,1,.3,1),mask-position 1.15s cubic-bezier(.16,1,.3,1);}
+  .glint img:not(.glint-shine){transition:transform .9s var(--ease);}
+  .prose .glint:hover img:not(.glint-shine){transform:scale(1.06);}
 }
