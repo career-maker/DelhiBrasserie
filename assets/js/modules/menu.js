@@ -86,17 +86,14 @@
       });
     }
 
-    // Scroll positioning:
-    // If the user has scrolled past the menu navigation bar, scroll up smoothly
+    // Scroll so the selected section starts right under the sticky tab bar
     if (shouldScroll) {
       var menuNav = nav.closest('.menu-nav');
-      if (menuNav) {
-        var rect = menuNav.getBoundingClientRect();
-        if (rect.top < 0) {
-          var y = window.pageYOffset + rect.top - 10;
-          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-        }
-      }
+      var isWineTab = wineIntro && wineTabIds.indexOf(active.id) !== -1;
+      var target = isWineTab ? wineIntro : active.panel;
+      var navRect = menuNav ? menuNav.getBoundingClientRect() : { bottom: 0 };
+      var y = window.pageYOffset + target.getBoundingClientRect().top - navRect.bottom - 8;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     }
 
     // Update URL hash without disorienting jump
