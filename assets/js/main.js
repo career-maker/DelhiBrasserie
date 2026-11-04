@@ -374,6 +374,18 @@
     });
   })();
 
+  /* ---------- history: Load more / Load less ---------- */
+  (function () {
+    var btn = doc.querySelector('.history-more'), box = btn && doc.getElementById(btn.getAttribute('aria-controls'));
+    if (!box) return;
+    btn.addEventListener('click', function () {
+      var open = box.classList.toggle('is-collapsed') === false;
+      btn.setAttribute('aria-expanded', open);
+      btn.textContent = btn.dataset[open ? 'less' : 'more'];
+      if (!open) box.scrollIntoView({ block: 'nearest' });
+    });
+  })();
+
   /* ---------- hero slides: fade, counter, arrows, slow autoplay ---------- */
   doc.querySelectorAll('[data-hero]').forEach(function (hero) {
     var slides = [].slice.call(hero.querySelectorAll('.hero-slide'));

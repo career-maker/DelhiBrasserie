@@ -135,11 +135,11 @@
   .prose img{display:block;width:auto;max-width:100%;max-height:460px;margin-inline:auto;object-fit:contain;}
 }
 
-/* history: photo grid beside the long story */
-.history-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.6rem,calc(var(--u) * 1),1.2rem);}
-.history-grid .split-media img{aspect-ratio:3/4;height:100%;}
-.history-grid .split-media:nth-child(1){grid-column:span 2;}
-.history-grid .split-media:nth-child(1) img{aspect-ratio:4/3;}
+/* history: story collapsed to roughly the photo's height, Load more / Load less */
+.history-text{overflow:hidden;transition:max-height .6s var(--ease);}
+.history-text.is-collapsed{max-height:34rem;-webkit-mask:linear-gradient(#000 80%,transparent);mask:linear-gradient(#000 80%,transparent);}
+.history-more{margin-top:var(--sp-2);background:none;border-top:0;border-inline:0;font-family:inherit;cursor:pointer;}
+@media (max-width:1100px){.history-text.is-collapsed{max-height:24rem;}}
 
 /* blog side card: Book a table = gold button, cream sweep on hover (same as Deliveroo on home) */
 .side-book .btn-light{background:var(--gold);color:var(--ink);--sweep:#FFF5E5;}
