@@ -354,8 +354,8 @@
       el.appendChild(s);
       el.classList.add('has-sheen');
     }
-    doc.querySelectorAll('.pc-img,.post-hero,.g-item,.split-media,.tile,.why-photo,.faq-photo,.faq-media,.offer-photo,.press-plate,.press-break,.carousel .track li,.t-card,.vcard--channel').forEach(addSheen);
-    doc.querySelectorAll('.ta-badges img,.bb-img,.prose img').forEach(function (img) {
+    doc.querySelectorAll('.pc-img,.g-item,.split-media,.tile,.why-photo,.faq-photo,.faq-media,.offer-photo,.press-plate,.press-break,.carousel .track li,.t-card,.vcard--channel').forEach(addSheen);
+    doc.querySelectorAll('.ta-badges img,.bb-img,.prose:not(.prose--post) img').forEach(function (img) {
       if (img.parentNode.classList.contains('glint')) return;
       var w = doc.createElement('span');
       w.className = 'glint';
