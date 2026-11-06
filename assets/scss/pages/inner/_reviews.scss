@@ -39,10 +39,10 @@
 
 /* influencer videos: the video(s) on the left; the network cards stack on the right,
    sharing its exact height so there's never a gap, whether there's one video or many */
-.vgrid{display:grid;grid-template-columns:minmax(240px,360px) 1fr;gap:var(--sp-3);}
-.vgrid-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--sp-3);}
-.vgrid-channels{display:flex;flex-direction:column;height:100%;gap:var(--sp-3);}
-.vgrid-channels .vcard--channel{flex:1;min-height:14rem;}
+.vgrid{display:grid;grid-template-columns:1fr;gap:var(--sp-4);}
+.vgrid-videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),18rem));justify-content:center;gap:var(--sp-3);}
+.vgrid-channels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-3);}
+.vgrid-channels .vcard--channel{min-height:14rem;}
 .vcard{display:flex;flex-direction:column;background:#fff;border-top:3px solid var(--brand);box-shadow:0 14px 40px rgba(0,0,0,.08);}
 .video-frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:#111;}
 .video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#111;}
@@ -68,8 +68,7 @@
 
 @include bp-stack{
   .vgrid{grid-template-columns:1fr;}
-  .vgrid-channels{height:auto;}
-  .video-frame{aspect-ratio:16/10;}
+  .vgrid-channels{grid-template-columns:1fr;}
   .press-lead-in{grid-template-columns:1fr;}
   .press-plate{aspect-ratio:auto;height:clamp(220px,52vw,420px);}
   .press-break{aspect-ratio:16/7;}

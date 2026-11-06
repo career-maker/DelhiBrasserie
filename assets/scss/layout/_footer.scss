@@ -73,8 +73,6 @@
 .bottom-links li:not(:last-child)::after{content:"|";margin-left:1rem;color:#444;}
 .bottom-links a, .cookie-link{color:#a0a0a0;text-decoration:none;background:none;border:none;padding:0;font-size:inherit;font-family:inherit;cursor:pointer;}
 .bottom-links a:hover, .cookie-link:hover{color:#fff;}
-.credit{display:flex;align-items:center;gap:1rem;font-size:var(--t-xs);}
-.credit strong{color:#fff;}
 
 @include bp-stack{
   .footer-top{grid-template-columns:1fr 1fr;}
@@ -141,11 +139,5 @@
   .footer-bottom-in{flex-direction:column;align-items:center;text-align:center;}
   .bottom-links li:not(:last-child)::after{display:none;}
   .bottom-links{justify-content:center;gap:1rem;}
-  .credit{margin-top:1rem;}
 }
 
-/* InterSmart credit: the supplied logo is built for a dark background, so it sits directly on the footer */
-.credit p{display:flex;flex-wrap:wrap;align-items:center;justify-content:inherit;gap:.7rem;}
-.credit-logo{display:inline-flex;align-items:center;line-height:0;transition:transform .35s var(--ease),filter .35s;}
-.credit-logo img{display:block;width:auto;height:19px;}
-.credit-logo:hover,.credit-logo:focus-visible{transform:translateY(-2px);filter:drop-shadow(0 4px 10px rgba(247,217,9,.35));}
