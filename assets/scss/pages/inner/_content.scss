@@ -145,14 +145,25 @@
 .side-book .btn-light{background:var(--gold);color:var(--ink);--sweep:#FFF5E5;}
 .side-book .btn-light:hover,.side-book .btn-light:focus-visible{color:var(--brand-dark);}
 
-/* pre/post theatre: venue cards */
-.venue-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));gap:var(--sp-3);}
-.venue{background:#fff;padding:var(--sp-3);border-top:3px solid var(--brand);display:flex;flex-direction:column;gap:.75rem;}
-.venue h3{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.2;color:var(--ink);}
+/* pre/post theatre: venue cards. Photo on top, name, what it is, our pre/post-show line, link out.
+   Photos live in assets/images/theatres/<name>.webp: replace a file to swap its photo (3:2, 800px wide). */
+.venue-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,21rem),1fr));gap:var(--sp-4) var(--sp-3);}
+.venue{display:flex;flex-direction:column;background:#fff;box-shadow:0 1px 2px rgba(60,40,20,.06),0 12px 28px -12px rgba(60,40,20,.18);transition:transform .45s var(--ease),box-shadow .45s var(--ease);}
+.venue:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(60,40,20,.08),0 22px 40px -14px rgba(60,40,20,.28);}
+.venue-img{position:relative;display:block;aspect-ratio:3/2;overflow:hidden;background:var(--cream-2);}
+.venue-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease);}
+.venue:hover .venue-img img{transform:scale(1.05);}
+.venue-body{display:flex;flex:1;flex-direction:column;gap:.7rem;padding:var(--sp-3);}
+.venue h3{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.2;color:var(--ink);text-wrap:balance;}
 .venue h3 a{color:inherit;text-decoration:none;transition:color .25s;}
-.venue h3 a:hover{color:var(--brand);}
-.venue p{font-size:var(--t-sm);line-height:1.6;color:var(--text);}
-.venue-cta{margin-top:auto;padding-top:.75rem;border-top:1px solid var(--line);color:var(--ink);font-weight:500;}
+.venue h3 a:hover,.venue h3 a:focus-visible{color:var(--brand);}
+.venue p{font-size:var(--t-sm);line-height:1.65;color:var(--text);}
+.venue-cta{margin-top:auto;padding-top:.9rem;border-top:1px solid var(--line);color:var(--ink);}
+.venue-go{align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;margin-top:.2rem;font-size:var(--t-2xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-dark);text-decoration:none;}
+.venue-go .ic{width:1rem;height:1rem;transition:transform .3s var(--ease);}
+.venue-go:hover,.venue-go:focus-visible{color:var(--brand);}
+.venue-go:hover .ic,.venue-go:focus-visible .ic{transform:translateX(4px);}
+@media (prefers-reduced-motion:reduce){.venue,.venue-img img,.venue-go .ic{transition:none;}.venue:hover{transform:none;}.venue:hover .venue-img img{transform:none;}}
 .venue-feature h2{margin-bottom:var(--sp-2);}
 .venue-feature a,.venue-list+p a{color:var(--brand-dark);}
 .venue-list{list-style:none;padding:0;margin:var(--sp-2) 0;display:grid;gap:.4rem;}
