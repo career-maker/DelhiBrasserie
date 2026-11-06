@@ -94,3 +94,7 @@ body.header-hidden .menu-nav{top:0;}
 @media (min-width: 600px) and (max-width: 1100px) {
   .menu-tiles{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
+
+.halal-line{display:flex;align-items:center;gap:.75rem;}
+.halal-line img{width:56px;height:56px;border-radius:50%;flex:none;}
+.tk-dl{margin-top:var(--sp-2);}
