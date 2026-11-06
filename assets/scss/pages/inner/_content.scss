@@ -144,3 +144,16 @@
 /* blog side card: Book a table = gold button, cream sweep on hover (same as Deliveroo on home) */
 .side-book .btn-light{background:var(--gold);color:var(--ink);--sweep:#FFF5E5;}
 .side-book .btn-light:hover,.side-book .btn-light:focus-visible{color:var(--brand-dark);}
+
+/* pre/post theatre: venue cards */
+.venue-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));gap:var(--sp-3);}
+.venue{background:#fff;padding:var(--sp-3);border-top:3px solid var(--brand);display:flex;flex-direction:column;gap:.75rem;}
+.venue h3{font-family:var(--serif);font-weight:400;font-size:var(--t-h3);line-height:1.2;color:var(--ink);}
+.venue h3 a{color:inherit;text-decoration:none;transition:color .25s;}
+.venue h3 a:hover{color:var(--brand);}
+.venue p{font-size:var(--t-sm);line-height:1.6;color:var(--text);}
+.venue-cta{margin-top:auto;padding-top:.75rem;border-top:1px solid var(--line);color:var(--ink);font-weight:500;}
+.venue-feature h2{margin-bottom:var(--sp-2);}
+.venue-feature a,.venue-list+p a{color:var(--brand-dark);}
+.venue-list{list-style:none;padding:0;margin:var(--sp-2) 0;display:grid;gap:.4rem;}
+.venue-list li::before{content:"\2022";color:var(--brand);margin-right:.6rem;}
